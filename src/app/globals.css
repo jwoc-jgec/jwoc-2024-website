@@ -17,11 +17,12 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  font-family: "Lato", Arial, Helvetica, serif;
+  background: (to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
+  font-size: 1em;
 }
