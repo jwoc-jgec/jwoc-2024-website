@@ -5,6 +5,7 @@ import pratyay from '../assets/team/Pratyay_Roy.jpg'
 import rohan from '../assets/team/Rohan_Gope.jpg'
 import abhigyan from '../assets/team/abhigyan.jpeg'
 import sandy from '../assets/team/Sandipan_Chatterjee.jpg'
+import garfield from '../assets/team/garfield.png'
 
 export const team = [
     {
@@ -75,6 +76,16 @@ export const team = [
         "Twitterr Url": "https://twitter.com/Sandipan2003?t=pJsCBvmrxB98Y4WTkycVlw&s=09",
         "Your Image in 1:1": "https://drive.google.com/open?id=1KtEpjXi-GY7WdsGSVzXNIcu6TMIT7872",
         "imagefilename": sandy,
+        "Untitled Question": "Option 1"
+    },
+    {
+        "Timestamp": "1/20/2023 0:05:37",
+        "Full Name": "Garfield",
+        "Linkedin Url": "#",
+        "Github url": "#",
+        "Twitterr Url": "#",
+        "Your Image in 1:1": "https://pyxis.nymag.com/v1/imgs/51a/4cd/e8480db6fb8d12c91c43f903c85d03f322-garfield-trailer.1x.rsquare.w1400.png",
+        "imagefilename": garfield,
         "Untitled Question": "Option 1"
     }
 ]
