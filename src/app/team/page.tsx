@@ -8,11 +8,9 @@ function page() {
   return (
     <div className="main-team-container">
       <div className="content">
-        {/* <ul className="team"> */}
           {team.map((data, idx) => {
             return <TeamCards key={idx} teamData={data} />;
           })}
-        {/* </ul> */}
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+/* rgba(25, 10, 48, 0.6) */
 
 :root {
-    --blue: rgb(4, 41, 134);
-    --dark: #ffffff;
+    --blue: rgba(25, 10, 48, 1);
+    --dark: wheat;
     --deg: -86deg;
     --trans: all 0.4s ease;
 }
@@ -14,8 +15,9 @@ body {
     display: flex;
     justify-content: center;
     font-family: "Lato", Arial, Helvetica, serif;
+    background-color: rgba(25, 10, 48, 0.6);
     /* background: linear-gradient(to left, rgb(17, 24, 39), rgb(88, 28, 135), rgb(124, 58, 237)); */
-    background: linear-gradient(to top, rgb(251, 146, 60), rgb(56, 189, 248));
+    /* background: linear-gradient(to top, rgb(251, 146, 60), rgb(56, 189, 248)); */
     /* linear-gradient(to left, rgb(17, 24, 39), rgb(88, 28, 135), rgb(124, 58, 237)) */
     font-size: 1em;
     transition: var(--trans);
@@ -82,7 +84,6 @@ h2 {
     transition: var(--trans);
     border-radius: 7px;
 }
-
 .member:nth-of-type(even) {
     text-align: right;
     background: linear-gradient(-83deg,
@@ -164,10 +165,11 @@ h3 {
     margin-top: -2.25em;
     left: 9vmin;
     padding: 0.5em 0.75em;
-    color: rgb(23, 4, 53);
-    font-weight: 500;
+    color: rgb(27, 3, 82);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 800;
     border-radius: 0.25em;
-    font-size: 1.35em;
+    font-size: 25px;
     transform-origin: left bottom;
     z-index: 2;
     transition: var(--trans);
@@ -179,12 +181,12 @@ h3 {
     transform: rotate(2deg);
     transition: var(--trans);
     transform-origin: right bottom;
-    background: linear-gradient(182deg, rgb(132, 212, 255) 60%, var(--dark) 0 100%);
+    /* background: linear-gradient(182deg, rgb(132, 212, 255) 60%, var(--dark) 0 100%); */
 }
 
 .member:hover h3 {
     transition: var(--trans);
-    background: linear-gradient(182deg, var(--dark) 60%, rgb(132, 212, 255)0 100%);
+    /* background: linear-gradient(182deg, var(--dark) 60%, rgb(132, 212, 255)0 100%); */
     transform: rotate(0deg);
     transition: var(--trans);
 }

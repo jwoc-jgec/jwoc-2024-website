@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import Image from "next/image";
 import React from "react";
 import "../cssFiles/team.css";
 import { FaLinkedin } from "react-icons/fa6";
@@ -24,7 +25,12 @@ const TeamCards = (data: TeamCardsProps) => {
     <>
       <li className="member tag">
         <div className="thumb">
-          <img src={data.teamData.imagefilename.src} alt="Team Member" />
+          <Image
+            src={data.teamData.imagefilename.src}
+            width={50}
+            height={50}
+            alt="Team Member"
+          />
         </div>
         <div className="description">
           <h3>{data.teamData["Full Name"]}</h3>
@@ -33,14 +39,26 @@ const TeamCards = (data: TeamCardsProps) => {
             HTML, CSS, and JavaScript and shakes the pom-poms for CodePen.
           </p>
           <div className="link">
-            <a className="linkedin" href={data.teamData["Linkedin Url"]} target="_blank">
-              <FaLinkedin fontSize="2.2em" color="white"/>
+            <a
+              className="linkedin"
+              href={data.teamData["Linkedin Url"]}
+              target="_blank"
+            >
+              <FaLinkedin fontSize="2.2em" color="wheat" />
             </a>
-            <a className="github" href={data.teamData["Github url"]} target="_blank">
-              <FaGithubSquare fontSize="2.2em" color="white" />
+            <a
+              className="github"
+              href={data.teamData["Github url"]}
+              target="_blank"
+            >
+              <FaGithubSquare fontSize="2.2em" color="wheat" />
             </a>
-            <a className="github" href={data.teamData["Twitterr Url"]} target="_blank">
-              <FaSquareXTwitter fontSize="2.2em" color="white" />
+            <a
+              className="github"
+              href={data.teamData["Twitterr Url"]}
+              target="_blank"
+            >
+              <FaSquareXTwitter fontSize="2.2em" color="wheat" />
             </a>
           </div>
         </div>
