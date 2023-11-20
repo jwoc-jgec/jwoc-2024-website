@@ -26,7 +26,7 @@ const TeamCards = (data: TeamCardsProps) => {
       <li className="member tag">
         <div className="thumb">
           <Image
-            src={data.teamData.imagefilename.src}
+            src={data.teamData.imagefilename}
             width={50}
             height={50}
             alt="Team Member"

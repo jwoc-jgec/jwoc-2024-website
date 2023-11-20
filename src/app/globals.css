@@ -2,27 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+/* rgba(25, 10, 48, 0.6) */
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  font-family: "Lato", Arial, Helvetica, serif;
-  background: (to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
-  font-size: 1em;
-}
+
