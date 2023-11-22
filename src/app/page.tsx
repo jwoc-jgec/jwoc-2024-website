@@ -3,7 +3,7 @@ import "./globals.css";
 export default function Home() {
   return (
     <main
-      className={` flex max-w-7xl mx-auto flex-col justify-between items-start pt-28 px-5 md:flex-row`}
+      className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-28 px-5 md:flex-row`}
     >
       <div className="flex font-black text-center md:text-start flex-col text-[#00FFFF]">
         <div className="pb-14">
@@ -21,11 +21,12 @@ export default function Home() {
           Open Source contribution. By JGEC. For all. Plunge into Open Source
           contribution. By JGEC. For all.
         </p>
-        <div className="flex flex-col items-center md:items-start">
+        <div className="group flex flex-col items-center md:items-start">
           <Link
             href={"/mentee-register"}
             className="relative flex items-center justify-center drop-shadow-cyanGlow py-3 px-10 md:py-5 md:px-28 bg-cyan-300 bg-opacity-10 font-bold text-lg md:text-2xl ring-2 ring-cyan-300"
           >
+            <section className="absolute py-6 md:py-10 bg-cyan-300 bg-opacity-30  transition-all duration-500 hover  w-0 left-0 group-hover:left-0  group-hover:w-full" />
             Register as mentee{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +36,7 @@ export default function Home() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
               className="lucide mt-1 ml-1 lucide-chevron-right"
             >
@@ -49,7 +50,7 @@ export default function Home() {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
               className="lucide lucide-triangle-right absolute bottom-1 right-1 fill-cyan-300"
             >
@@ -69,7 +70,7 @@ export default function Home() {
               fill="none"
               stroke="currentColor"
               strokeWidth="1"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
               className="lucide lucide-arrow-up-right"
             >

@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -16,6 +16,16 @@ module.exports = {
       },
     },
     extend: {
+      dropShadow: {
+        glow: [
+          "0 0px 60px rgba(255,255, 255, 0.75)",
+          "0 0px 65px rgba(255, 255,255, 0.2)",
+        ],
+        cyanGlow: [
+          "0 0px 60px rgba(0,255, 255, 0.75)",
+          "0 0px 65px rgba(0, 255,255, 0.60)",
+        ],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -73,4 +83,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
