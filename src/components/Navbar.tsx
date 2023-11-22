@@ -22,10 +22,14 @@ function Navbar() {
             home
           </Link>
           {/* <Link href={"/leaderboard"} className="hover:drop-shadow-cyanGlow">
-          leaderboard
-        </Link> */}
+            leaderboard
+          </Link> */}
+
           <Link href={"/timeline"} className="hover:drop-shadow-cyanGlow">
             timeline
+          </Link>
+          <Link href={"/project"} className="hover:drop-shadow-cyanGlow">
+            projects
           </Link>
           <Link href={"/sponsors"} className="hover:drop-shadow-cyanGlow">
             sponsors
