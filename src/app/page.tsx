@@ -3,21 +3,21 @@ import "./globals.css";
 export default function Home() {
   return (
     <main
-      className={` flex max-w-7xl mx-auto flex-col justify-between py-10 pt-16 px-5 md:flex-row`}
+      className={` flex max-w-7xl mx-auto flex-col justify-between items-start pt-28 px-5 md:flex-row`}
     >
-      <div className="flex text-center md:text-start flex-col text-[#00FFFF]">
+      <div className="flex font-black text-center md:text-start flex-col text-[#00FFFF]">
         <div className="pb-14">
-          <p className="text-xl md:text-3xl font-semibold pb-1 drop-shadow-glow">
+          <p className="text-xl md:text-3xl font-medium pb-1 drop-shadow-glow">
             Welcome to
           </p>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-glow border-stroke">
             A MONTH OF
           </h1>
-          <h2 className="text-5xl md:text-7xl font-extrabold tracking-wide drop-shadow-cyanGlow">
+          <h2 className="text-5xl md:text-7xl tracking-wide drop-shadow-cyanGlow">
             Open Source
           </h2>
         </div>
-        <p className="text-sm max-w-xl text-neutral-200 pb-10">
+        <p className="text-sm max-w-xl font-light text-neutral-200 pb-10">
           Open Source contribution. By JGEC. For all. Plunge into Open Source
           contribution. By JGEC. For all.
         </p>
@@ -41,10 +41,24 @@ export default function Home() {
             >
               <path d="m9 18 6-6-6-6" />
             </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-triangle-right absolute bottom-1 right-1 fill-cyan-300"
+            >
+              <path d="M22 18a2 2 0 0 1-2 2H3c-1.1 0-1.3-.6-.4-1.3L20.4 4.3c.9-.7 1.6-.4 1.6.7Z" />
+            </svg>
           </Link>
           <Link
             href={""}
-            className="underline flex items-end underline-offset-4 pt-5"
+            className="underline font-light flex items-end underline-offset-4 pt-5"
           >
             I want to become a mentor
             <svg
@@ -66,9 +80,9 @@ export default function Home() {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <div className="w-[30rem] h-[30rem] rounded-full bg-cyan-500 z-0 blur-3xl opacity-20" />
+        <div className="w-96 h-96 md:w-80 md:h-80 xl:w-[30rem] xl:h-[30rem] rounded-full bg-cyan-500 z-0 blur-3xl opacity-20" />
 
-        <div className="text-8xl  text-white drop-shadow-glow absolute z-10">
+        <div className="text-[8rem] text-white drop-shadow-glow absolute z-10">
           05
         </div>
       </div>

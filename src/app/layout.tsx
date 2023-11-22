@@ -1,4 +1,4 @@
-import Navbar from "@/Components/Navbar";
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Orbitron } from "next/font/google";
 import "./globals.css";
