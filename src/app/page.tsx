@@ -23,7 +23,7 @@ export default function Home() {
         </p>
         <div className="flex flex-col items-center md:items-start">
           <Link
-            href={"/login"}
+            href={"/mentee-register"}
             className="relative flex items-center justify-center drop-shadow-cyanGlow py-3 px-10 md:py-5 md:px-28 bg-cyan-300 bg-opacity-10 font-bold text-lg md:text-2xl ring-2 ring-cyan-300"
           >
             Register as mentee{" "}
@@ -57,7 +57,7 @@ export default function Home() {
             </svg>
           </Link>
           <Link
-            href={""}
+            href={"/mentor-register"}
             className="underline font-light flex items-end underline-offset-4 pt-5"
           >
             I want to become a mentor
