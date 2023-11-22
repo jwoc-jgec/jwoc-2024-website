@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
-/* rgba(25, 10, 48, 0.6) */
 
-
+.border-stroke {
+  color: #190c32;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.15rem white;
+}

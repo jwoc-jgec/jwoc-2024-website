@@ -1,5 +1,5 @@
 import Link from "next/link";
-import './globals.css'
+import "./globals.css";
 export default function Home() {
   return (
     <main
@@ -10,7 +10,7 @@ export default function Home() {
           <p className="text-xl md:text-3xl font-semibold pb-1 drop-shadow-glow">
             Welcome to
           </p>
-          <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-glow">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-glow border-stroke">
             A MONTH OF
           </h1>
           <h2 className="text-5xl md:text-7xl font-extrabold tracking-wide drop-shadow-cyanGlow">
