@@ -1,5 +1,5 @@
 import React from "react";
-import "../../cssFiles/team.css";
+import "../../css/team.css";
 import { team } from "@/Data/team";
 import TeamCards from "../../components/TeamCards";
 

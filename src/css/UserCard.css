@@ -1,0 +1,64 @@
+.parofile-parent {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute ;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(41,19,46,1) 20%, rgba(44,19,56,1) 50%, rgba(45,19,60,1) 50%, rgba(46,19,65,1) 50%, rgba(47,19,68,1) 50%, rgba(50,20,80,1) 87%, rgba(50,20,80,1) 136%);
+}
+
+
+.userCard {
+    width: 80%;
+    height: 70%;
+    background-color: #d6c2c214;
+    backdrop-filter: blur(30px);
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.top-banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selectionStatus {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.userInfo {
+    margin: 5px 0;
+}
+
+.userCard:hover {
+    transform: scale(1.05);
+}
+
+.projectCard {
+    background-color: #141121;
+    color: #fbfbfb;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    margin-top: 12%;
+    box-shadow: 0 0 20px rgba(12, 227, 66, 0.5);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .techStack {
+    margin: 10px 0;
+  }
+  
+  .projectCard:hover {
+    transform: scale(1.015);
+  }
