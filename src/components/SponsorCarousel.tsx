@@ -99,8 +99,9 @@ const SponsorCarousel = () => {
       <div className="space-y-5">
         <Marquee>
           <div className="flex gap-x-5">
-            {firstHalf.map((partner) => (
+            {firstHalf.map((partner, idx) => (
               <SponsorCard
+                key={idx}
                 link={partner.link}
                 name={partner.name}
                 imgLink="https://avatars.githubusercontent.com/u/95464181?s=280&v=4"
@@ -110,8 +111,9 @@ const SponsorCarousel = () => {
         </Marquee>
         <Marquee direction="right">
           <div className="flex gap-x-5">
-            {secondHalf.map((partner) => (
+            {secondHalf.map((partner, idx) => (
               <SponsorCard
+                key={idx}
                 link={partner.link}
                 name={partner.name}
                 imgLink="https://avatars.githubusercontent.com/u/95464181?s=280&v=4"
