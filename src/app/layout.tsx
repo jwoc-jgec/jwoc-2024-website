@@ -4,8 +4,8 @@ import { Orbitron } from "next/font/google";
 import "./globals.css";
 import SessionProvider from "./Provider";
 import { getServerSession } from "next-auth";
-import { Toaster } from "react-hot-toast";
 import MobileNavbar from "@/components/MobileNavbar";
+import { Toaster } from "@/components/ui/toaster";
 
 const orbitron = Orbitron({ subsets: ["latin"] });
 
@@ -26,6 +26,7 @@ export default async function RootLayout({
           <MobileNavbar />
           <Navbar />
           {children}
+          <Toaster />
         </body>
       </SessionProvider>
     </html>

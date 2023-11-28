@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -17,7 +17,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-gradient-to-b md:hidden text-white from-[#291352] to-[#190C32] absolute top-0 z-50 w-full">
+    <nav className="bg-gradient-to-b md:hidden text-white from-[#291352] to-[#190C32] top-0 sticky z-50 w-full">
       <div className="items-center px-4  max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <Link href={`/`}>
@@ -34,7 +34,7 @@ export default function Navbar() {
               className="text-white outline-none p-2 rounded-md"
               onClick={() => setState(!state)}
             >
-              <Menu />
+              {state ? <X /> : <Menu />}
             </button>
           </div>
         </div>
