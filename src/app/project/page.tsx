@@ -60,9 +60,9 @@ function ProjectCard({
           src={image ?? ""}
         /> */}
         <div className="">
-          <h3 className="text-2xl font-extrabold text-yellow-200 line-clamp-2">
+          <div className="text-2xl font-extrabold text-yellow-200 line-clamp-2">
             {name}
-          </h3>
+          </div>
           <div className="flex flex-col text-neutral-100 gap-3 text-lg font-bold">
             <p className="text-base">By {authorName}</p>
             <div className="flex gap-6">
