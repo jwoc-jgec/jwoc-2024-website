@@ -17,7 +17,7 @@ function Navbar() {
           />
         </Link>
 
-        <div className="flex items-center gap-x-20 font-bold md:text-xl ">
+        <div className="flex items-center gap-x-10 xl:gap-x-20 font-bold text-lg xl:text-xl ">
           <Link href={"/"} className="hover:drop-shadow-cyanGlow">
             home
           </Link>

@@ -24,10 +24,10 @@ export default function Home() {
         <div className="group flex flex-col items-center md:items-start">
           <Link
             href={"/register"}
-            className="relative flex items-center justify-center drop-shadow-cyanGlow py-3 px-10 md:py-5 md:px-28 bg-cyan-300 bg-opacity-10 font-bold text-lg md:text-2xl ring-2 ring-cyan-300"
+            className="relative flex w-11/12 items-center justify-center drop-shadow-cyanGlow py-3 px-10 md:py-5 md:px-28 bg-cyan-300 bg-opacity-10 font-bold text-lg md:text-2xl ring-2 ring-cyan-300"
           >
             <section className="absolute py-6 md:py-10 bg-cyan-300 bg-opacity-30  transition-all duration-500 hover  w-0 left-0 group-hover:left-0  group-hover:w-full" />
-            Register as mentee{" "}
+            Register Now{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -57,7 +57,7 @@ export default function Home() {
               <path d="M22 18a2 2 0 0 1-2 2H3c-1.1 0-1.3-.6-.4-1.3L20.4 4.3c.9-.7 1.6-.4 1.6.7Z" />
             </svg>
           </Link>
-          <Link
+          {/* <Link
             href={"/register"}
             className="underline font-light flex items-end underline-offset-4 pt-5"
           >
@@ -77,7 +77,7 @@ export default function Home() {
               <path d="M7 7h10v10" />
               <path d="M7 17 17 7" />
             </svg>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div className="flex items-center justify-center">
