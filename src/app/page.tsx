@@ -1,7 +1,9 @@
 import Link from "next/link";
 import "./globals.css";
+import SponsorCarousel from "@/components/SponsorCarousel";
 export default function Home() {
   return (
+    <>
     <main
       className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-28 px-5 md:flex-row`}
     >
@@ -88,5 +90,7 @@ export default function Home() {
         </div>
       </div>
     </main>
+    <SponsorCarousel/>
+    </>
   );
 }
