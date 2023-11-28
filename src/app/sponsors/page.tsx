@@ -38,7 +38,7 @@ function SponsorSection({ sponsorCategory }: { sponsorCategory: string }) {
 function page() {
   return (
     <div className="min-h-screen flex flex-col items-center text-white p-5">
-      <h1 className="text-4xl md:text-5xl text-center font-black py-5">
+      <h1 className="text-4xl pt-16 md:pt-0 md:text-5xl text-center font-black py-5">
         Our Sponsors
       </h1>
       <div className="flex flex-col items-start w-full">

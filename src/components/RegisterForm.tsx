@@ -378,18 +378,18 @@ export default function RegisterForm() {
     }
   };
   return (
-    <div className="flex items-center justify-center gap-4 h-screen bg-wheat text-lime-200 font-mono ">
+    <div className="flex items-center justify-center h-[80vh]">
       {regType.length <= 0 && (
-        <div className="flex flex-col items-center justify-center text-2xl h-2/5 w-2/4 fill-transparent bg-slate-800">
+        <div className="flex flex-col items-center gap-5 py-10 px-8 rounded-md justify-center text-xl bg-slate-800">
           <button
             onClick={handleRegTypeMentee}
-            className="w-2/4 text-wheat backdrop-blur-md bg-blue-950 border border-wheat p-2 rounded mb-4"
+            className="text-white  bg-blue-950 border border-white p-2 rounded"
           >
             Mentee Registration
           </button>
           <button
             onClick={handleRegTypeMentor}
-            className="w-2/4 text-wheat backdrop-blur-md bg-blue-950 border border-wheat p-2 rounded"
+            className="text-white  bg-blue-950 border border-white p-2 rounded"
           >
             Mentor Registration
           </button>
