@@ -1,5 +1,3 @@
-
-
 body *,
 body *:before,
 body *:after {
@@ -11,8 +9,8 @@ body *:after {
   --trans: all 0.4s ease;
 }
 
-body{
-  overflow-x : hidden;
+body {
+  overflow-x: hidden;
 }
 .main-team-container {
   margin: 0;
@@ -20,7 +18,7 @@ body{
   /* height: 100vh; */
   /* display: flex; */
   justify-content: center;
-  background-color:aliceblue;
+  background-color: aliceblue;
   transition: var(--trans);
 }
 .main-team-container {
@@ -160,7 +158,7 @@ h2 {
   color: #ffffff;
 }
 
-h3 {
+h4 {
   background: linear-gradient(
     182deg,
     rgb(132, 212, 255) 60%,
@@ -182,7 +180,7 @@ h3 {
   transition: var(--trans);
 }
 
-.member:nth-of-type(even) h3 {
+.member:nth-of-type(even) h4 {
   left: inherit;
   right: 9vmin;
   transform: rotate(2deg);

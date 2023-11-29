@@ -50,9 +50,9 @@ function page() {
                     <p className="mb-3 text-base text-yellow-300">
                       20 Dec - 14 Jan
                     </p>
-                    <h4 className="mb-3 font-bold text-2xl md:text-2xl">
+                    <div className="mb-3 font-bold text-2xl md:text-2xl">
                       Mentee Registration
-                    </h4>
+                    </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
                       The period when aspiring individuals sign up to
                       participate as mentees in the program.
@@ -65,9 +65,9 @@ function page() {
                     <p className="mb-3 text-base text-yellow-300">
                       20 Dec - 7 Jan
                     </p>
-                    <h4 className="mb-3 font-bold text-2xl md:text-2xl">
+                    <div className="mb-3 font-bold text-2xl md:text-2xl">
                       Mentor Registration
-                    </h4>
+                    </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
                       The timeframe dedicated to mentors signing up to offer
                       guidance and support to mentees. Mentors often provide
@@ -80,9 +80,9 @@ function page() {
                   <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
                   <div className="order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right">
                     <p className="mb-3 text-base text-yellow-300"> 10 Jan</p>
-                    <h4 className="mb-3 font-bold text-2xl md:text-2xl">
+                    <div className="mb-3 font-bold text-2xl md:text-2xl">
                       Project Announced
-                    </h4>
+                    </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
                       The official announcement of the projects or initiatives
                       available for mentees to work on. This phase includes
@@ -97,9 +97,9 @@ function page() {
                     <p className="mb-3 text-base text-yellow-300">
                       10 Dec - 14 Jan
                     </p>
-                    <h4 className="mb-3 font-bold  text-2xl md:text-2xl text-left">
+                    <div className="mb-3 font-bold  text-2xl md:text-2xl text-left">
                       Community Bonding
-                    </h4>
+                    </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
                       A period before the active project work begins, where
                       participants, including mentors and mentees, get to know
@@ -112,9 +112,9 @@ function page() {
                   <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
                   <div className="order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right">
                     <p className="mb-3 text-base text-yellow-300">25 Jan</p>
-                    <h4 className="mb-3 font-bold text-2xl md:text-2xl">
+                    <div className="mb-3 font-bold text-2xl md:text-2xl">
                       Coding Phase 1 starts
-                    </h4>
+                    </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
                       The commencement of the initial coding phase where mentees
                       begin working on their projects.
@@ -125,9 +125,9 @@ function page() {
                   <div className="order-1 w-1/12 sm:w-5/12"></div>
                   <div className="order-1 w-full sm:w-5/12 px-1 py-4">
                     <p className="mb-3 text-base text-yellow-300">15 Feb</p>
-                    <h4 className="mb-3 font-bold  text-2xl md:text-2xl text-left">
+                    <div className="mb-3 font-bold  text-2xl md:text-2xl text-left">
                       Coding Phase 2 starts
-                    </h4>
+                    </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
                       The subsequent phase following the initial phase, where
                       more intensive coding and development take place. Mentees
@@ -140,9 +140,9 @@ function page() {
                   <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
                   <div className="order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right">
                     <p className="mb-3 text-base text-yellow-300">25 Feb</p>
-                    <h4 className="mb-3 font-bold text-2xl md:text-2xl">
+                    <div className="mb-3 font-bold text-2xl md:text-2xl">
                       Coding Ends
-                    </h4>
+                    </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
                       The conclusion of the coding period, indicating that
                       mentees must finalize their projects and prepare for
@@ -156,9 +156,9 @@ function page() {
                   <div className="order-1 w-1/12 sm:w-5/12"></div>
                   <div className="order-1 w-full sm:w-5/12 px-1 py-4">
                     <p className="mb-3 text-base text-yellow-300">28 Feb</p>
-                    <h4 className="mb-3 font-bold  text-2xl md:text-2xl text-left">
+                    <div className="mb-3 font-bold  text-2xl md:text-2xl text-left">
                       Results
-                    </h4>
+                    </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
                       The announcement of the outcomes or results of the
                       projects. This phase involves evaluation, judging, and

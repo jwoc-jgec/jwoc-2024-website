@@ -117,15 +117,33 @@ export default function Home() {
       });
       return;
     }
+    fetch("/api/menteeReg", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("response from Server", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     alert(JSON.stringify(data, null, 4));
+
     console.log(data);
   }
 
   return (
+    // <div
+    //   className={`${inter.className}  absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}
+    // >
     <div
-      className={`${inter.className}  absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}
+      className={`${inter.className} p-10  flex flex-col items-center justify-center`}
     >
-      <Card className="w-[350px]">
+      <Card className="w-80 md:w-[400px]">
         <CardHeader>
           <CardTitle>Register</CardTitle>
           <CardDescription>Register as JWOC Mentee.</CardDescription>

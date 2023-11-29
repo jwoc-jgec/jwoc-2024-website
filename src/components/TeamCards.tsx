@@ -33,7 +33,7 @@ const TeamCards = (data: TeamCardsProps) => {
           />
         </div>
         <div className="description">
-          <h3>{data.teamData["Full Name"]}</h3>
+          <h4>{data.teamData["Full Name"]}</h4>
           <p>
             Chris is a front-end developer and designer. He writes a bunch of
             HTML, CSS, and JavaScript and shakes the pom-poms for CodePen.
