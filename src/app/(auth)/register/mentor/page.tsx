@@ -117,7 +117,51 @@ export default function Home() {
       });
       return;
     }
-    alert(JSON.stringify(data, null, 4));
+
+    const {
+      Address: ipAddress,
+      collegeName: college,
+      phoneNo: phone,
+      question1: answer1,
+      question2: answer2,
+      ...rest
+    } = data;
+
+    const renamedData = {
+      ipAddress,
+      college,
+      phone,
+      answer2,
+      answer1,
+      ...rest,
+    };
+
+    fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(renamedData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("response from Server", data);
+        if (data.message === "User registered.") {
+          toast({
+            title: "Successfully Registered",
+          });
+        } else {
+          toast({
+            title: "Something went Wrong",
+            variant: "destructive",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    // alert(JSON.stringify(data, null, 4));
+
     console.log(data);
   }
 
