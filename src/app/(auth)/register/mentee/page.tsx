@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,11 +14,9 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -117,21 +114,50 @@ export default function Home() {
       });
       return;
     }
+
+    const {
+      Address: ipAddress,
+      collegeName: college,
+      phoneNo: phone,
+      question1: isFirstTime,
+      question2: answer1,
+      ...rest
+    } = data;
+
+    const renamedData = {
+      ipAddress,
+      college,
+      phone,
+      isFirstTime,
+      answer1,
+      ...rest,
+    };
+
     fetch("/api/menteeReg", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(renamedData),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log("response from Server", data);
+        if (data.message === "User registered.") {
+          toast({
+            title: "Successfully Registered",
+          });
+        } else {
+          toast({
+            title: "Something went Wrong",
+            variant: "destructive",
+          });
+        }
       })
       .catch((error) => {
         console.error(error);
       });
-    alert(JSON.stringify(data, null, 4));
+    // alert(JSON.stringify(data, null, 4));
 
     console.log(data);
   }
