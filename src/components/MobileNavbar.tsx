@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -58,6 +58,14 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <Link
+            onClick={() => setState((prev) => !prev)}
+            className="font-bold text-lg pl-3 flex items-center"
+            href="/login"
+          >
+            Login
+            <ArrowRight className="ml-2" />
+          </Link>
         </div>
       </div>
     </nav>

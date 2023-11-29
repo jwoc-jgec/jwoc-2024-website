@@ -25,7 +25,7 @@ export default function Home() {
           </p>
           <div className="group flex flex-col items-center md:items-start">
             <Link
-              href={"/mentor-register"}
+              href={"/register"}
               className="relative flex w-11/12 items-center justify-center drop-shadow-cyanGlow py-3 px-10 md:py-5 md:px-28 bg-cyan-300 bg-opacity-10 font-bold text-lg md:text-2xl ring-2 ring-cyan-300"
             >
               <section className="absolute py-6 md:py-10 bg-cyan-300 bg-opacity-30  transition-all duration-500 hover  w-0 left-0 group-hover:left-0  group-hover:w-full" />
