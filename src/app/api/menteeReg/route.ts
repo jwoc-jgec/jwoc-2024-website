@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       isFirstTime,
-      answer1
+      answer1,
     } = await req.json();
     // console.log(name);
     // console.log(email);
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       isFirstTime,
-      answer1
+      answer1,
     });
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -39,11 +39,11 @@ export default function Navbar() {
           </div>
         </div>
         <div
-          className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-            state ? "block" : "hidden"
+          className={`flex-1 justify-self-center pb-7 transition-all bg-gradient-to-t pt-5 from-[#291352] to-[#190C32] w-full left-0  absolute mt-8 md:block md:pb-0 md:mt-0 ${
+            state ? "top-7" : "-top-[27rem]"
           }`}
         >
-          <ul className="justify-center pb-5 pl-3 items-center space-y-8">
+          <ul className="justify-center pb-5 pl-6 items-center space-y-8">
             {menus.map((item, idx) => (
               <li
                 key={idx}
@@ -58,6 +58,14 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+          <Link
+            onClick={() => setState((prev) => !prev)}
+            className="font-bold text-lg pl-6 pt-2 flex items-center"
+            href="/login"
+          >
+            Login
+            <ArrowRight className="ml-2" />
+          </Link>
         </div>
       </div>
     </nav>
