@@ -39,6 +39,7 @@ export const authOptions = {
           await connectMongoDB();
           let user: CustomUser | null = null;
           user = await Mentor.findOne({ email });
+          console.log(user);
           if (!user) {
             return null;
           }
@@ -51,6 +52,7 @@ export const authOptions = {
           if (!passwordsMatch) {
             return null;
           }
+
           return user as any;
         } catch (error) {
           console.log("Error: ", error);
@@ -65,6 +67,6 @@ export const authOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET as string,
   pages: {
-    signIn: "/profile",
+    signIn: "/login",
   },
 };

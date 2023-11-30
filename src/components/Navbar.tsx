@@ -1,9 +1,11 @@
 "use client";
 
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
 function Navbar() {
+  const { status } = useSession();
   return (
     <nav className="sticky backdrop-blur-xl top-0 z-50 bg-gradient-to-b from-[#291352] to-[#190C32]">
       <div className="hidden  md:visible md:flex pt-5 pb-5 max-w-7xl mx-auto items-center justify-between text-white px-5 ">
@@ -37,12 +39,19 @@ function Navbar() {
           <Link href={`/team`} className="hover:drop-shadow-cyanGlow">
             team
           </Link>
-          <Link
-            href={"/login"}
-            className="hover:drop-shadow-cyanGlow bg-violet-900 px-6 py-2 rounded-full hover:bg-violet-950 transition-all duration-300"
-          >
-            login
-          </Link>
+
+          {status === "unauthenticated" ? (
+            <div
+              onClick={() => signIn()}
+              className="hover:cursor-pointer hover:drop-shadow-cyanGlow bg-violet-900 px-6 py-2 rounded-full hover:bg-violet-950 transition-all duration-300"
+            >
+              login
+            </div>
+          ) : (
+            <Link href={`/profile`} className="hover:drop-shadow-cyanGlow">
+              profile
+            </Link>
+          )}
         </div>
       </div>
     </nav>

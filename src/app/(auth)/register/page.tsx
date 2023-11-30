@@ -1,5 +1,7 @@
 // import { Button } from "@/components/ui/button";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
 function RegistrationButton({ title, link }: { title: string; link: string }) {
@@ -42,7 +44,9 @@ function RegistrationButton({ title, link }: { title: string; link: string }) {
   );
 }
 
-function page() {
+async function page() {
+  const session = await getServerSession();
+  if (session) redirect("/profile");
   return (
     <div className="flex justify-center items-center flex-col h-[90vh] gap-y-14 text-white">
       <h1 className="text-4xl md:text-5xl font-bold p-5 text-center">

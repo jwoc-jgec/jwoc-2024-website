@@ -2,11 +2,13 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 export default function Navbar() {
   const [state, setState] = React.useState(false);
+  const { status } = useSession();
 
   const menus = [
     { title: "Home", path: "/" },
@@ -58,14 +60,27 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <Link
-            onClick={() => setState((prev) => !prev)}
-            className="font-bold text-lg pl-6 pt-2 flex items-center"
-            href="/login"
-          >
-            Login
-            <ArrowRight className="ml-2" />
-          </Link>
+          {status === "unauthenticated" ? (
+            <Link
+              onClick={() => setState((prev) => !prev)}
+              className="font-bold text-lg pl-6 pt-2 flex items-center"
+              href="/api/auth/signin"
+            >
+              Login
+              <ArrowRight className="ml-2" />
+            </Link>
+          ) : (
+            <Link
+              href="/profile"
+              onClick={() => {
+                setState((prev) => !prev);
+              }}
+              className="font-bold text-lg pl-6 pt-2 flex items-center"
+              // href="/api/auth/signout"
+            >
+              Profile
+            </Link>
+          )}
         </div>
       </div>
     </nav>
