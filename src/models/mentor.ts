@@ -19,14 +19,14 @@ const mentorSchema = mongoose.Schema(
     linkedIn: { type: String, required: true },
     RegisteredProjectId: [
       {
-        projId: { type: mongoose.Schema.Types.ObjectId, ref: "Project" 
-         },
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Project" 
       },
     ],
     acceptedPjectId: [
       {
-        projId:{ type: mongoose.Schema.Types.ObjectId, ref: "Project" 
-         },
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Project" 
       },
     ],
     PRMerged: { type: Number, default: 0 },
