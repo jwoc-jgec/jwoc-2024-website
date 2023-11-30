@@ -38,8 +38,9 @@ import { ArrowRight } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
+import { useRouter } from "next/navigation";
 const registerSchema = z.object({
+ 
   email: z.string().email(),
   name: z
     .string()
@@ -88,6 +89,7 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
+  const router = useRouter()
   const { toast } = useToast();
   const [formStep, setFormStep] = React.useState(0);
   const form = useForm<Input>({
@@ -148,8 +150,10 @@ export default function Home() {
         console.log("response from Server", data);
         if (data.message === "User registered.") {
           toast({
-            title: "Successfully Registered",
+            title: "Congratulations",
+            description: "Successfully Registered for JWOC 2K24!",
           });
+        router.push('/login')
         } else {
           toast({
             title: "Something went Wrong",
