@@ -1,0 +1,227 @@
+section#about div.heading{
+    position: relative;
+    margin: auto 4rem;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    /* border-top: 2px solid rgba(218,175,255,.8); */
+  }
+  
+  section#about div.heading h1{
+    padding: 0.3rem 0.5rem;
+    width: fit-content;
+    font-size: 2rem;
+    font-weight: 600;
+    /* text-4xl md:text-6xl font-extrabold text-white border-stroke */
+    /* letter-spacing: 2px; */
+    align-items: center;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 10px rgba(50, 69, 107, 0.2); */
+  }
+  
+  section#about div.heading span.pseudo {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    background: white;
+    z-index: -1;
+  }
+  
+  section#about div.heading span.divider_1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.15rem;
+    border-radius: 2px;
+    background: white;
+    z-index: -1;
+  }
+  
+  
+  /* **************************** About Section **************************** */
+  
+  section#about {
+    position: relative;
+    margin: 10rem auto;
+    margin-bottom: 5rem;
+  }
+  
+  
+  /* =============== About Description/Desc =============== */
+  
+  section#about div.about {
+    position: relative;
+    margin: -2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  section#about div.about .fig {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  section#about div.about .fig img {
+    margin: auto;
+    margin-top: 7rem;
+    margin-left: 4rem;
+    width: 45%;
+    height: auto;
+    opacity: .1;
+    z-index: -1;
+  }
+  
+  section#about div.about .desc {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 2rem;
+    width: 70%;
+    border-radius: 20px;
+    color: white;
+    /* background: rgba(255, 255, 255, 0.9); */
+    background-color: rgba(218,175,255,.05);
+    /* box-shadow: 0 8px 16px rgba(50, 69, 107, 0.2); */
+  }
+  
+  section#about div.about .desc h2 {
+    position: relative;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+    /* font-family: var(--codefont);
+    color: var(--lightblack); */
+    text-align: left;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  section#about div.about .desc h2 span {
+    margin: auto;
+    margin-left: 1rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+    background: #4d0eae;
+    border-radius: 10px;
+    user-select: none;
+  }
+  
+  section#about div.about .desc h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -30%;
+    /* height: 1rem; */
+    width: 80%;
+    /* background: linear-gradient(45deg, #4d0eae,#d846a5,#fff); */
+    border-radius: 4px;
+  }
+  
+  section#about div.about .desc p {
+    margin: 1rem auto 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    /* font-family: var(--mainfont); */
+    /* color: var(--lightblack); */
+    text-align: justify;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+  }
+  
+  section#about div.about .desc a.btn {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    /* font-family: var(--codefont);
+    color: var(--darkwhite); */
+    background: linear-gradient(45deg, #4d0eae,#d846a5);
+    background-size: 200%;
+    outline: none;
+    border: none;
+    text-align: justify;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  section#about div.about .desc a.btn:hover {
+    background-position: bottom right;
+  }
+
+  
+/* **************************** Responsive **************************** */
+
+@media (max-width: 1240px) {
+    section#about div.about .desc {
+      right: 5%;
+      width: 80%;
+    }
+    section#about div.info {
+      margin: 20rem auto 5rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    section#about div.about {
+      flex-direction: column;
+    }
+    section#about div.info {
+      margin: 15rem auto 5rem;
+    }
+    section#about div.about .fig img {
+      margin-top: auto;
+      margin-left: auto;
+    }
+    section#about div.about .desc {
+      margin: 2rem auto;
+      right: 0;
+      width: 95%;
+      position: relative;
+    }
+    section#about::before {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    section#about div.info .content {
+      flex-direction: column;
+    }
+    section#about div.info img {
+      margin: -8rem auto;
+    }
+    section#about div.info .info_card {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 472px) {
+    section#about div.heading {
+      margin: auto 2rem;
+    }
+    section#about div.about .desc {
+      padding: 4rem 2rem;
+    }
+    section#about div.info {
+      margin: 10rem auto 5rem;
+    }
+  }

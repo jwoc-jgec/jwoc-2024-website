@@ -1,0 +1,157 @@
+section#stats div.heading{
+    position: relative;
+    margin: auto 4rem;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  section#stats div.heading h1{
+    padding: 0.3rem 0.5rem;
+    width: fit-content;
+    font-size: 2rem;
+    font-weight: 600;
+    /* text-4xl md:text-6xl font-extrabold text-white border-stroke */
+    /* letter-spacing: 2px; */
+    align-items: center;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 10px rgba(50, 69, 107, 0.2); */
+  }
+  
+  section#stats div.heading span.pseudo {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    background: white;
+    z-index: -1;
+  }
+  
+  section#stats div.heading span.divider_1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.15rem;
+    border-radius: 2px;
+    background: white;
+    z-index: -1;
+  }
+  
+section#stats {
+    position: relative;
+    margin: 5rem auto;
+  }
+  
+  section#stats div.stats {
+    margin: 2rem auto;
+    padding: 4rem 2rem;
+    /* background: rgba(62, 100, 255, 0.9) url(../../assets/img/pattern_bg.png) fixed center / 80%; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 13rem);
+    place-content: center;
+    place-items: center;
+    gap: 2rem;
+  }
+  
+  section#stats div.stats .stats_card {
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    border-radius: 10px;
+    /* background: rgba(24, 24, 24, 0.9); */
+    background-color: rgba(218,175,255,.05);
+
+    /* box-shadow: 0 8px 16px rgba(50, 69, 107, 0.2); */
+    transition: all 0.4s ease;
+  }
+  
+  section#stats div.stats .stats_card:hover {
+    transform: translateY(-1rem);
+  }
+  
+  section#stats div.stats .stats_card i {
+    margin: auto;
+    padding: 1.5rem;
+    font-size: 2rem;
+    background: white;
+    background: linear-gradient(45deg, #3d0a8a,#e75db7);
+    opacity: .5;
+
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border-radius: 50%;
+  }
+  
+  section#stats div.stats .stats_card p {
+    margin: 1rem auto 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    /* font-family: var(--codefont); */
+    color: white;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  
+  section#stats div.stats .stats_card h4 {
+    margin: 0.5rem auto;
+    font-size: 2rem;
+    font-weight: 600;
+    /* font-family: var(--codefont); */
+    color: white;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  
+  section#stats div.stats .stats_card span {
+    margin: 0.5rem auto;
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: var(--mainfont);
+    font-style: italic;
+    text-align: center;
+    color: var(--darkgrey);
+  }
+  
+  /* **************************** Responsive **************************** */
+  
+  @media (max-width: 992px) {
+    section#stats div.stats {
+      padding: 6rem 2rem;
+    }
+    section#stats div.stats .stats_card i {
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+    section#stats div.stats .stats_card p {
+      font-size: 1.2rem;
+    }
+    section#stats div.stats .stats_card h4 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 572px) {
+    section#stats div.stats {
+      padding: 4rem 1rem;
+      grid-template-columns: repeat(auto-fill, 20rem);
+    }
+    section#stats div.stats .stats_card i {
+      font-size: 3rem;
+    }
+    section#stats div.stats .stats_card p {
+      font-size: 2rem;
+    }
+    section#stats div.stats .stats_card h4 {
+      font-size: 2.5rem;
+    }
+  }

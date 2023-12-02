@@ -17,7 +17,7 @@ const config: Config = {
           "0 0px 60px rgba(0,255, 255, 0.75)",
           "0 0px 65px rgba(0, 255,255, 0.60)",
         ],
-      },
+      }
     },
   },
   plugins: [],
