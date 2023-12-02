@@ -1,1 +1,1 @@
-Welcome to JWOC 2024
+Official Website of JGEC Winter of Code
