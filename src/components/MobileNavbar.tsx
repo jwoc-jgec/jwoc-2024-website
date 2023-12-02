@@ -4,7 +4,9 @@ import * as React from "react";
 import Link from "next/link";
 import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { Inter } from "next/font/google";
 import { useSession } from "next-auth/react";
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Navbar() {
   const [state, setState] = React.useState(false);
@@ -14,12 +16,12 @@ export default function Navbar() {
     { title: "Home", path: "/" },
     { title: "Timeline", path: "/timeline" },
     { title: "Projects", path: "/project" },
-    { title: "sponsors", path: "/sponsors" },
+    { title: "Sponsors", path: "/sponsors" },
     { title: "Team", path: "/team" },
   ];
 
   return (
-    <nav className="bg-gradient-to-b md:hidden text-white from-[#291352] to-[#190C32] top-0 sticky z-50 w-full">
+    <nav className={`${inter.className} bg-gradient-to-b md:hidden text-white from-[#291352] to-[#190C32] top-0 sticky z-50 w-full`}>
       <div className="items-center px-4  max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <Link href={`/`}>
@@ -49,7 +51,7 @@ export default function Navbar() {
             {menus.map((item, idx) => (
               <li
                 key={idx}
-                className="text-white text-lg font-bold hover:text-indigo-600"
+                className="text-white text-lg hover:text-indigo-600"
               >
                 <Link
                   onClick={() => setState((prev) => !prev)}
