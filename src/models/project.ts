@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { models } from "mongoose";
 
 const projectSchema = new mongoose.Schema(
     {
@@ -27,6 +27,11 @@ const projectSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Mentor",
             required : true
+        },
+        videoLink: String,
+        edited: {
+            type: Boolean,
+            default: false
         }
     },
     {
@@ -34,6 +39,6 @@ const projectSchema = new mongoose.Schema(
     }
 )
 
-const Project = mongoose.model("Project", projectSchema);
+const Project = models.Project || mongoose.model("Project", projectSchema);
 
 export default Project;
