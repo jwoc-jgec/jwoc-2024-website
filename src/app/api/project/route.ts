@@ -2,6 +2,7 @@ import { connectMongoDB } from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import Project from "@/models/project";
 import Mentor from "@/models/mentor";
+import mongoose, { ObjectId } from "mongoose";
 
 export async function POST(req : NextRequest) {
     try {
@@ -10,7 +11,7 @@ export async function POST(req : NextRequest) {
         await connectMongoDB();
         
         // Get all the required data from request
-        const { projectName, projectLink, projectDescription, projectTypes, projectTags, mentorId } = await req.json();
+        const { projectName, projectLink, projectDescription, projectTypes, projectTags, videoLink, mentorId } = await req.json();
         
         // Find the projectOwner in mentor collection
         const mentor = await Mentor.findById(mentorId);
@@ -27,6 +28,7 @@ export async function POST(req : NextRequest) {
             projectDescription,
             projectTypes,
             projectTags,
+            videoLink,
             projectOwner : mentorId
         });
 
@@ -60,25 +62,58 @@ export async function GET(req : NextRequest) {
         // Get all queries
         const queries = req.nextUrl.searchParams;
 
-
-        let projects;
-        // Find all projects filtered by projectTypes
+        // Find all projects
         if(!queries.has("mentorId")){
-            const domain = queries.get("domain");
-            if(domain != "all")
-                projects = await Project.find({projectTypes : domain});
-            else
-                projects = await Project.find();
+            const projects = await Project.aggregate([
+                {
+                    $lookup: {
+                        from: 'mentors',
+                        localField: 'projectOwner',
+                        foreignField: '_id',
+                        as: 'ownerDetails'
+                    }
+                },
+                {
+                    $project: {
+                        'ownerDetails.password': false,
+                        'ownerDetails.question1': false,
+                        'ownerDetails.question2': false,
+                        'ownerDetails.answer1': false,
+                        'ownerDetails.answer2': false
+                    }
+                }
+            ]);
+
+            return NextResponse.json({ message: "Projects found successfully.", data : projects }, { status: 200 }); 
         }
 
-        // Find projects of a particular mentor
+        // Find details of a particular mentor
         else{
-            const mentor = await Mentor.findById(queries.get("mentorId"));
-            projects = await Project.find({_id : {$in : mentor.RegisteredProjectId}});
+            const mentor = await Mentor.aggregate([
+                {
+                    $match: {
+                        _id: new mongoose.Types.ObjectId(queries.get("mentorId")!)
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'projects',
+                        let: { projectIds: "$RegisteredProjectId" },
+                        pipeline: [
+                            {
+                                $match: {
+                                    $expr: {
+                                        $in: ["$_id", "$$projectIds"]
+                                    }
+                                }
+                            }
+                        ],
+                        as: "registeredProjects"
+                    }
+                }
+            ])
+            return NextResponse.json({ message: "Projects found successfully.", data : mentor }, { status: 200 });
         }
-
-        return NextResponse.json({ message: "Projects found successfully.", data : projects }, { status: 200 });
-
 
     } catch (error) {
         console.log(error);
@@ -95,17 +130,7 @@ export async function PATCH(req : NextRequest) {
         const { projectId, projectName, projectDescription, projectLink, projectTags, videoLink } = await req.json();
 
         // Update the datails as require
-        if(projectName) {
-            await Project.findByIdAndUpdate(projectId, {projectName, edited : true});
-        } else if(projectDescription) {
-            await Project.findByIdAndUpdate(projectId, {projectDescription, edited : true});
-        } else if(projectLink) {
-            await Project.findByIdAndUpdate(projectId, {projectLink, edited : true});
-        } else if(projectTags) {
-            await Project.findByIdAndUpdate(projectId, {projectTags, edited : true});
-        } else if(videoLink) {
-            await Project.findByIdAndUpdate(projectId, {videoLink, edited : true});
-        }
+        await Project.findByIdAndUpdate(projectId, {projectName, projectDescription, projectLink, projectTags, videoLink, edited : true});
 
         return NextResponse.json({ message: "Project Details updated successfully." }, { status : 200 });
 
