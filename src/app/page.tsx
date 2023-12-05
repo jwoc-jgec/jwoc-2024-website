@@ -2,11 +2,12 @@ import Link from "next/link";
 import "./globals.css";
 import SponsorCarousel from "@/components/SponsorCarousel";
 import About from "@/components/About";
-import Rewards from "@/components/Rewards"
+import Rewards from "@/components/Rewards";
 import { Inter } from "next/font/google";
-import jgec from '../assets/img/jgec logo.png';
+import jgec from "../assets/img/jgec logo.png";
 import Footer from "@/components/Footer";
-const inter = Inter({ subsets: ['latin'] })
+import Image from "next/image";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   // const targetDate = new Date('2023-12-20T00:00:00').getTime();
@@ -25,22 +26,34 @@ export default function Home() {
               A MONTH OF
             </h1>
             {/* <h2 className="text-5xl md:text-7xl tracking-wide drop-shadow-cyanGlow"> */}
-            <h2 className="text-5xl md:text-7xl tracking-wide" style={{backgroundImage:"linear-gradient(315deg,#4d0eae,#d846a5)",WebkitBackgroundClip:"text",backgroundClip:"text",WebkitTextFillColor:"transparent"}}>
+            <h2
+              className="text-5xl md:text-7xl tracking-wide"
+              style={{
+                backgroundImage: "linear-gradient(315deg,#4d0eae,#d846a5)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
               Open Source
             </h2>
           </div>
-          <p className={`text-sm max-w-xl font-light text-neutral-200 pb-10 ${inter.className}`}>
+          <p
+            className={`text-sm max-w-xl font-light text-neutral-200 pb-10 ${inter.className}`}
+          >
             {/* Open Source contribution. By JGEC. For all. Plunge into Open Source
             contribution. By JGEC. For all. */}
-            JWoC (JGEC Winter of Code) is a coding event organised annually by JGEC which helps students to plunge into Open Source contribution and get the realm of Software Development.
+            JWoC (JGEC Winter of Code) is a coding event organised annually by
+            JGEC which helps students to plunge into Open Source contribution
+            and get the realm of Software Development.
           </p>
 
           <div className="group flex flex-col items-center md:items-start">
             <Link
               href={"/register"}
-              className="relative rounded-md flex w-8/12 text-white items-center justify-center py-3 px-10 md:py-3 md:px-10 bg-black bg-opacity-20 font-bold text-lg md:text-2xl ring-2 ring-[#168D8F] transition-all duration-500 hover:text-[#168D8F] hover:ring-white"
+              className="relative rounded-md flex w-10/12 text-white items-center justify-center py-3 px-10 md:py-3 md:px-10 bg-black bg-opacity-20 font-bold text-lg md:text-2xl ring-2 ring-[#168D8F] transition-all duration-500 hover:text-[#168D8F] hover:ring-white"
             >
-              <section className="absolute py-3 md:py-10 transition-all duration-500 hover  w-0 left-0 group-hover:left-0  group-hover:w-full" />
+              {/* <section className="absolute py-3 md:py-10 transition-all duration-500 hover  w-0 left-0 group-hover:left-0  group-hover:w-full" /> */}
               Register Now{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -92,25 +105,32 @@ export default function Home() {
             </svg>
           </Link> */}
           </div>
-          <p className={`text-sm max-w-xl mt-6 text-neutral-200 pb-10 ${inter.className} `}>
+          <p
+            className={`text-sm max-w-xl flex flex-col items-center md:items-start mt-6 text-neutral-200 pb-10 ${inter.className} `}
+          >
             <span className="font-light">IN ASSOCIATION WITH</span>
-            <a href="https://jgec.ac.in" target="_blank"><img src={jgec.src} alt="JGEC" height={140} width={140} className="rounded-md mt-6" /></a>
+            <Link href="https://jgec.ac.in" target="_blank">
+              <Image
+                src={jgec.src}
+                alt="JGEC"
+                height={140}
+                width={140}
+                className="rounded-md mt-6"
+              />
+            </Link>
           </p>
         </div>
         <div className="flex items-center justify-center">
           <div className="w-96 h-96 md:w-80 md:h-80 xl:w-[30rem] xl:h-[30rem] rounded-full  z-0 blur-3xl opacity-20" />
 
-          <div className="text-[8rem] text-white absolute z-10">
-            05
-          </div>
+          <div className="text-[8rem] text-white absolute z-10">05</div>
         </div>
       </main>
-      <About/>
+      <About />
       <SponsorCarousel />
       {/* <Stats/> */}
-      <Rewards/>
-      <Footer/>
-
+      <Rewards />
+      <Footer />
     </>
   );
 }

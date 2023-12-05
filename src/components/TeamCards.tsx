@@ -1,6 +1,6 @@
-"use client"
-import { StaticImageData } from "next/image";
-import React, { useState } from 'react';
+"use client";
+import Image, { StaticImageData } from "next/image";
+import React, { useState } from "react";
 // import "../css/team1.css";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithubSquare } from "react-icons/fa";
@@ -18,7 +18,7 @@ interface TeamCardsProps {
     "Twitter Url": string;
     "Your Image in 1:1": string;
     imagefilename: StaticImageData;
-    "designation": string;
+    designation: string;
   };
 }
 
@@ -75,48 +75,64 @@ const TeamCards = (data: TeamCardsProps) => {
 
   return (
     // <div className="container">
-      <div className="card">
-        <div className="card__border ">
-                   <img
-                    className="card__img"
-            src={data.teamData.imagefilename.src}
-            width={300}
-            height={300}
-            alt={data.teamData.designation}
-          />
-        </div>
+    <div className="card">
+      <div className="card__border ">
+        <Image
+          className="card__img"
+          src={data.teamData.imagefilename.src}
+          width={300}
+          height={300}
+          alt={data.teamData.designation}
+        />
+      </div>
 
-        <h3 className="card__name">{`[${data.teamData["Full Name"]}]`}</h3>
-        <span className="card__profession">{data.teamData.designation.toUpperCase()}</span>
+      <h3 className="card__name">{`[${data.teamData["Full Name"]}]`}</h3>
+      <span className="card__profession">
+        {data.teamData.designation.toUpperCase()}
+      </span>
 
-        <div className="card__social" id="card-social">
-          <div className="card__social-control">
-            <div className="card__social-toggle" onClick={showSocial}>
-              {isSocialVisible?<IoIosAddCircle/>:<MdCancel/>}
-            </div>
+      <div className="card__social" id="card-social">
+        <div className="card__social-control">
+          <div className="card__social-toggle" onClick={showSocial}>
+            {isSocialVisible ? <IoIosAddCircle /> : <MdCancel />}
+          </div>
 
-            {isSocialVisible ? <span className=" text-white font-bold text-lg card__social-text">Social Media</span>:
+          {isSocialVisible ? (
+            <span className=" text-white font-bold text-lg card__social-text">
+              Social Media
+            </span>
+          ) : (
             <ul className="card__social-list">
-              <a href={data.teamData['Github url']} target="_blank" className="card__social-link">
+              <a
+                href={data.teamData["Github url"]}
+                target="_blank"
+                className="card__social-link"
+              >
                 <FaGithubSquare fontSize="1.3em" />
               </a>
 
-              <a href={data.teamData["Linkedin Url"]} target="_blank" className="card__social-link">
+              <a
+                href={data.teamData["Linkedin Url"]}
+                target="_blank"
+                className="card__social-link"
+              >
                 <FaLinkedin fontSize="1.3em" />
               </a>
 
-              <a href={data.teamData["Twitter Url"]} target="_blank" className="card__social-link">
-            
-               <FaSquareXTwitter fontSize="1.3em" />
-
+              <a
+                href={data.teamData["Twitter Url"]}
+                target="_blank"
+                className="card__social-link"
+              >
+                <FaSquareXTwitter fontSize="1.3em" />
               </a>
-            </ul>}
-          </div>
+            </ul>
+          )}
         </div>
       </div>
+    </div>
     // </div>
   );
-
 };
 
 export default TeamCards;
