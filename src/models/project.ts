@@ -29,6 +29,10 @@ const projectSchema = new mongoose.Schema(
             required : true
         },
         videoLink: String,
+        PRMerged: {
+            type: Number,
+            default: 0
+        },
         edited: {
             type: Boolean,
             default: false
