@@ -150,12 +150,12 @@ export default function ProfilePage() {
     <div className="flex flex-row gap-16 align-middle items-center justify-center font-sans ">
       <div className="w-[40vw] h-[80vh] flex flex-col justify-center items-center">
         <ProfileCard userData={userData} />
-        <button onClick={() => signOut({ callbackUrl: "/" })} className="  bg-[#debad647] shadow-lg backdrop-blur-[40px] flex flex-row gap-5 p-[2vh] mt-[3vh] rounded-[10px] text-white">
-          <span className= " font-mono text-xl ">Logout</span>
-          <TbLogout
-            
-            fontSize="1.3em"
-          />
+        <button
+          onClick={() => signOut({ callbackUrl: "/" })}
+          className="  bg-[#debad647] shadow-lg backdrop-blur-[40px] flex flex-row gap-5 p-[2vh] mt-[3vh] rounded-[10px] text-white"
+        >
+          <span className=" font-mono text-xl ">Logout</span>
+          <TbLogout fontSize="1.3em" />
         </button>
       </div>
       <div className="w-[60vw]">
@@ -177,7 +177,7 @@ export default function ProfilePage() {
                     name="projectName"
                     className="w-full p-2 border-b border-white bg-transparent focus:outline-none  focus:border-gray-400 "
                     placeholder="Enter project name"
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                     onChange={(e) =>
                       setProjectData({
@@ -198,7 +198,7 @@ export default function ProfilePage() {
                     name="ProjectLink"
                     className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
                     placeholder="Enter project Github Link"
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                     onChange={(e) =>
                       setProjectData({
@@ -252,7 +252,7 @@ export default function ProfilePage() {
                     name="ProjectTags"
                     className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
                     placeholder="Enter Tech stack of this project"
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                     onChange={(e) =>
                       setProjectData({
@@ -273,7 +273,7 @@ export default function ProfilePage() {
                     name="ProjectYtLink"
                     className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
                     placeholder="Enter YouTube link"
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                     onChange={(e) =>
                       setProjectData({
@@ -293,7 +293,7 @@ export default function ProfilePage() {
                     name="projectDescription"
                     className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400 resize-none"
                     placeholder="Enter project description"
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                     onChange={(e) =>
                       setProjectData({
@@ -314,7 +314,7 @@ export default function ProfilePage() {
                     name="ProjectYtLink"
                     className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
                     placeholder="Enter the tech stack"
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                     onChange={(e) =>
                       setProjectData({

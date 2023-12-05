@@ -6,9 +6,9 @@ import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useSession } from "next-auth/react";
-import logo from '../assets/jwoc_logos/jwoc_sticker.svg';
+import logo from "../assets/jwoc_logos/jwoc_sticker.svg";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Navbar() {
   const [state, setState] = React.useState(false);
@@ -23,7 +23,9 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`${inter.className} bg-transition md:hidden text-white from-[#291352] to-[#190C32] top-0 z-50 w-full`}>
+    <nav
+      className={`${inter.className} backdrop-blur-2xl sticky md:hidden text-white top-0 z-50 w-full`}
+    >
       <div className="items-center px-4  max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <Link href={`/`}>
@@ -45,7 +47,7 @@ export default function Navbar() {
           </div>
         </div>
         <div
-          className={`flex-1 justify-self-center pb-7 transition-all bg-gradient-to-t pt-5 from-[#291352] to-[#190C32] w-full left-0  absolute mt-8 md:block md:pb-0 md:mt-0 ${
+          className={`flex-1 justify-self-center pb-7 transition-all bg-slate-900 pt-5 w-full left-0 z-50  absolute mt-8 md:block md:pb-0 md:mt-0 ${
             state ? "top-7" : "-top-[27rem]"
           }`}
         >
