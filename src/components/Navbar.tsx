@@ -52,7 +52,7 @@ function Navbar() {
               <LogIn/> <span>Login</span>
             </div>
           ) : (
-            <Link href={`/profile`} className="hover:drop-shadow-cyanGlow">
+            <Link href={`/profile`} className="bg-violet-900 px-6 py-2 rounded-full hover:bg-violet-950 transition-all duration-300">
               profile
             </Link>
           )}
