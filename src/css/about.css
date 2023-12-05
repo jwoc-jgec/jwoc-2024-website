@@ -24,7 +24,7 @@ section#about div.heading{
   
   section#about div.heading span.pseudo {
     position: absolute;
-    top: -1rem;
+    top: -2rem;
     left: -1rem;
     width: 3rem;
     height: 3rem;
@@ -43,7 +43,16 @@ section#about div.heading{
     background: white;
     z-index: -1;
   }
-  
+  section#about div.heading span.divider_2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.15rem;
+    height: 100vh;
+    border-radius: 2px;
+    background: white;
+    z-index: -1;
+  }
   
   /* **************************** About Section **************************** */
   
@@ -220,8 +229,5 @@ section#about div.heading{
     }
     section#about div.about .desc {
       padding: 4rem 2rem;
-    }
-    section#about div.info {
-      margin: 10rem auto 5rem;
     }
   }

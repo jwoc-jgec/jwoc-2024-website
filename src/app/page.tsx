@@ -2,11 +2,14 @@ import Link from "next/link";
 import "./globals.css";
 import SponsorCarousel from "@/components/SponsorCarousel";
 import About from "@/components/About";
-import Stats from "@/components/Stats";
+import Rewards from "@/components/Rewards"
 import { Inter } from "next/font/google";
+import jgec from '../assets/img/jgec logo.png';
+import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  // const targetDate = new Date('2023-12-20T00:00:00').getTime();
   return (
     <>
       <main
@@ -31,10 +34,11 @@ export default function Home() {
             contribution. By JGEC. For all. */}
             JWoC (JGEC Winter of Code) is a coding event organised annually by JGEC which helps students to plunge into Open Source contribution and get the realm of Software Development.
           </p>
+
           <div className="group flex flex-col items-center md:items-start">
             <Link
               href={"/register"}
-              className="relative rounded-md flex w-8/12 text-white items-center justify-center py-3 px-10 md:py-3 md:px-10 bg-cyan-300 bg-opacity-10 font-bold text-lg md:text-2xl ring-2 ring-[#d846a5]"
+              className="relative rounded-md flex w-8/12 text-white items-center justify-center py-3 px-10 md:py-3 md:px-10 bg-black bg-opacity-20 font-bold text-lg md:text-2xl ring-2 ring-[#168D8F] transition-all duration-500 hover:text-[#168D8F] hover:ring-white"
             >
               <section className="absolute py-3 md:py-10 transition-all duration-500 hover  w-0 left-0 group-hover:left-0  group-hover:w-full" />
               Register Now{" "}
@@ -88,6 +92,10 @@ export default function Home() {
             </svg>
           </Link> */}
           </div>
+          <p className={`text-sm max-w-xl mt-6 text-neutral-200 pb-10 ${inter.className} `}>
+            <span className="font-light">IN ASSOCIATION WITH</span>
+            <a href="https://jgec.ac.in" target="_blank"><img src={jgec.src} alt="JGEC" height={140} width={140} className="rounded-md mt-6" /></a>
+          </p>
         </div>
         <div className="flex items-center justify-center">
           <div className="w-96 h-96 md:w-80 md:h-80 xl:w-[30rem] xl:h-[30rem] rounded-full  z-0 blur-3xl opacity-20" />
@@ -99,7 +107,10 @@ export default function Home() {
       </main>
       <About/>
       <SponsorCarousel />
-      <Stats/>
+      {/* <Stats/> */}
+      <Rewards/>
+      <Footer/>
+
     </>
   );
 }

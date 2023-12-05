@@ -1,21 +1,43 @@
+import aliah from '../assets/community_partner_logo/aliah.png'
+import acm from '../assets/community_partner_logo/acm.jpeg'
 import bbit from '../assets/community_partner_logo/bbit.png'
-import befikra from '../assets/community_partner_logo/befikra community.png'
-import cgec from '../assets/community_partner_logo/CGEC.png'
-import citk from '../assets/community_partner_logo/CITK.jpg'
-import cncg from '../assets/community_partner_logo/cncg jalandhar.png'
-import codesscafe from '../assets/community_partner_logo/codess cafe.png'
-import cu from '../assets/community_partner_logo/CU.png'
-import gcettb from '../assets/community_partner_logo/gcettb.jpg'
-import iitk from '../assets/community_partner_logo/IITK.png'
-import lpu from '../assets/community_partner_logo/LPU.png'
-import nitdgp from '../assets/community_partner_logo/NITDGP.png'
+import befikra from '../assets/community_partner_logo/befikra.png'
+import cgec from '../assets/community_partner_logo/cgec.png'
+import citk from '../assets/community_partner_logo/citk.png'
+import cncg from '../assets/community_partner_logo/cncg.png'
+import codesscafe from '../assets/community_partner_logo/codess.png'
+import cu from '../assets/community_partner_logo/cu.png'
+import codeiiest from '../assets/community_partner_logo/codeiiest.png'
+import gcettb from '../assets/community_partner_logo/gcettb.png'
+import iitk from '../assets/community_partner_logo/iitk.png'
+import iiest from '../assets/community_partner_logo/iiest.png'
+import iem from '../assets/community_partner_logo/iem.jpeg'
+import ju from '../assets/community_partner_logo/ju.png'
+import lpu from '../assets/community_partner_logo/lpu.png'
+import makaut from '../assets/community_partner_logo/makaut.jpeg'
+import nitdgp from '../assets/community_partner_logo/nitdgp.png'
 import nitdgplug from '../assets/community_partner_logo/nitdgplug.png'
-import noobcode from '../assets/community_partner_logo/NoobCode.jpg'
-import sxccal from '../assets/community_partner_logo/sxccal logo.jpeg'
-import tfug from '../assets/community_partner_logo/tfug.jpg'
+import noobcode from '../assets/community_partner_logo/noobcode.png'
+import osdev from '../assets/community_partner_logo/osdev.png'
+import sxccal from '../assets/community_partner_logo/sxccal.png'
+import tfug from '../assets/community_partner_logo/tfug.png'
 
 
 export const community_partners = [
+  {
+    name: "IACS ACM Student Chapter",
+    link: "https://www.linkedin.com/company/iacs-acm-student-chapter/", // Insert link for IACS ACM Student Chapter
+    imagefilename:acm
+  },
+  {
+    name:"CODE IIEST",
+    link:"https://www.linkedin.com/company/codeiiest-iiest/",
+    imagefilename:codeiiest
+  },
+    {name:"GDSC Aliah",
+      link:"https://linktr.ee/gdscaliah",
+      imagefilename:aliah    
+    },
     {
       name: "GDSC SXCCAL (Xaviers)",
       link: "https://linktr.ee/gdscsxccal",
@@ -31,15 +53,10 @@ export const community_partners = [
       link: "https://gdsc.community.dev/university-of-calcutta-kolkata/",
       imagefilename:cu
     },
-    // {
-    //   name: "GDSC RKMGEC",
-    //   link: "", // Insert link for GDSC RKMGEC
-    //   imagefilename:
-    // },
     {
-      name: "IACS ACM Student Chapter",
-      link: "", // Insert link for IACS ACM Student Chapter
-      imagefilename:null
+      name: "GDSC JU",
+      link: "https://linktr.ee/gdscju2023", // Insert link for GDSC RKMGEC
+      imagefilename:ju
     },
     {
       name: "Befikra Community",
@@ -79,7 +96,7 @@ export const community_partners = [
     {
       name: "GDSC MAKAUT",
       link: "https://linktr.ee/gdscmakaut",
-      imagefilename:null
+      imagefilename:makaut
     },
     {
       name: "GDSC IITK",
@@ -103,17 +120,22 @@ export const community_partners = [
     },
     {
       name: "The GNU/Linux Users' Group, NIT Durgapur",
-      link: "", // Insert link for The GNU/Linux Users' Group, NIT Durgapur
+      link: "https://nitdgplug.org/", // Insert link for The GNU/Linux Users' Group, NIT Durgapur
       imagefilename:nitdgplug
     },
     {
       name: "GDSC IIEST",
-      link: "", // Insert link for GDSC IIEST
-      imagefilename:null
+      link: "https://gdsc.community.dev/indian-institute-of-engineering-science-and-technology-shibpur-howrah/", // Insert link for GDSC IIEST
+      imagefilename:iiest
     },
     {
       name: "GDSC IEM",
       link: "https://gdsc.community.dev/institute-of-engineering-management-kolkata/",
-      imagefilename:null
+      imagefilename:iem
     },
+    {
+      name:"OS Dev Community",
+      link:"https://www.linkedin.com/company/os-community/",
+      imagefilename:osdev
+    }
   ];

@@ -1,0 +1,150 @@
+/* **************************** Registration Section **************************** */
+
+section#register {
+    position: relative;
+    margin: 2rem auto;
+  }
+  
+  
+  section#register div.sub_head {
+    position: relative;
+    margin: 0 auto 4rem;
+  }
+  
+  section#register div.sub_head h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #787a91;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  
+  section#register div.details {
+    margin: 2rem 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  section#register div.details img.reg_img {
+    position: absolute;
+    margin: auto;
+    width: 30%;
+    height: auto;
+    z-index: -1;
+  }
+  
+  section#register div.details .register_card {
+    margin: 2rem;
+    padding: 4rem 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    background: rgba(218,175,255,.05);
+    /* box-shadow: 0 8px 14px rgba(50, 69, 107, 0.2); */
+  }
+  
+  section#register div.details .register_card img {
+    margin: auto;
+    width: 5rem;
+    height: auto;
+    z-index: 1;
+  }
+  
+  section#register div.details .register_card h4 {
+    position: relative;
+    margin: 2rem auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* font-family: var(--codefont); */
+    color: #787a91;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  
+  section#register div.details .register_card h4::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -30%;
+    height: 0.6rem;
+    width: 100%;
+    border-radius: 4px;
+    /* background: linear-gradient(90deg, , var(--primarylight), var(--darkwhite)); */
+    background:linear-gradient(45deg, rgba(218,175,255,0),rgba(218,175,255,.05),#4d0eae,rgba(218,175,255,.05),rgba(218,175,255,0) )
+  }
+  
+  section#register div.details .register_card p {
+    margin: 1rem auto;
+    font-size: 1rem;
+    font-weight: 500;
+    /* font-family: var(--mainfont); */
+    color: white;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  
+  section#register div.details .register_card a.btn {
+    margin: 2rem auto 1rem;
+    padding: 0.4rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    /* font-family: var(--codefont); */
+    color: white;
+    background: #4d0eae;
+    letter-spacing: 0.6px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+  }
+  
+  section#register div.details .register_card a.btn:hover {
+    transform: scale(1.02);
+    background-color: #390b7e;
+  }
+  
+  /* **************************** Responsive **************************** */
+  
+  @media (max-width: 992px) {
+    section#register div.details .register_card img {
+      width: 8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    section#register div.details {
+      flex-direction: column;
+    }
+    section#register div.details img.reg_img {
+      margin: -15rem auto -5rem;
+      width: 50%;
+    }
+    section#register div.details .register_card {
+      margin: 2rem;
+    }
+  }
+  
+  @media (max-width: 572px) {
+    section#register div.heading {
+      margin: auto 2rem;
+    }
+    section#register div.heading h1,
+    section#register div.sub_head h2 {
+      font-size: 2.7rem;
+    }
+    section#register div.details {
+      margin: 2rem;
+    }
+    section#register div.details img.reg_img {
+      display: none;
+    }
+    section#register div.details .register_card img {
+      width: 6rem;
+    }
+    section#register div.details .register_card h4 {
+      font-size: 2.8rem;
+    }
+  }
+  

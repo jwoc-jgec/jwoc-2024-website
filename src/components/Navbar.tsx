@@ -4,6 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from '../assets/jwoc_logos/jwoc_sticker.svg';
+import {LogIn} from 'lucide-react'
 
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ['latin'] })
@@ -16,7 +17,7 @@ function Navbar() {
         <Link href={`/`}>
           <Image
             src={logo}
-            alt={`JWOC Logo`}
+            alt={`JWoC Logo`}
             height={80}
             width={80}
             className=""
@@ -34,9 +35,9 @@ function Navbar() {
           <Link href={"/timeline"} className="">
             Timeline
           </Link>
-          <Link href={"/project"} className="">
+          {/* <Link href={"/project"} className="">
             Projects
-          </Link>
+          </Link> */}
           <Link href={"/sponsors"} className="">
             Sponsors
           </Link>
@@ -46,9 +47,9 @@ function Navbar() {
           {status === "unauthenticated" ? (
             <div
               onClick={() => signIn()}
-              className="bg-violet-900 px-6 py-2 rounded-full hover:bg-violet-950 transition-all duration-300"
+              className="bg-[#4d0eae] px-2 py-2 rounded-md flex items-center gap-1 cursor-pointer hover:bg-violet-950 transition-all duration-300"
               >
-              login
+              <LogIn/> <span>Login</span>
             </div>
           ) : (
             <Link href={`/profile`} className="hover:drop-shadow-cyanGlow">

@@ -1,3 +1,14 @@
+
+:root {
+  --first-color: hsl(29, 80%, 58%);
+  --first-color-light: hsl(29, 80%, 70%);
+  --black-color: hsl(29, 16%, 10%);
+  --text-color: hsl(24, 5%, 79%);
+  --body-color: hsl(29, 100%, 99%);
+  --h3-font-size: 1.125rem;
+  --smaller-font-size: .75rem;
+}
+
 body *,
 body *:before,
 body *:after {
@@ -21,240 +32,336 @@ body {
   /* background-color: aliceblue; */
   transition: var(--trans);
 }
+
+
+/* .content {
+    width: 100vw;
+    /* display: flex; 
+  } */
+
 .main-team-container {
   width: 100vw;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
   justify-content: center;
   align-items: center;
   text-align: center;
   transition: var(--trans);
 }
 
-.link {
-  color: --var(rgb(141, 141, 206)) !important;
-  height: 5vh;
-  display: flex;
-  flex-direction: row;
-  transition: var(--trans);
+
+a {
+  text-decoration: none;
 }
 
-.link a {
-  padding: 0.4vh;
+ul {
+  list-style: none;
 }
 
-.link a:hover {
-  transition: var(--trans);
-  transform: scale(1.15);
+img {
+  max-width: 100%;
+  height: auto;
 }
+
+/*=============== CARD ===============*/
+/* .content {
+  /* height: 100vh; */
+  /* margin-inline: 1.5rem; */
+  /* display: grid;
+  place-items: center; */
+/* } */
 
 .content {
-  width: 100vw;
-}
+    width: 100vw;
+    /* display: flex; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+  }
 
-h2 {
+.card {
+  position: relative;
+  width: 27vw;
+  /* background-color: var(--black-color); */
+  background-color: rgba(218,175,255,.05);
+
+  padding: 1.25rem 2rem 3rem;
+  border-radius: 1.5rem;
   text-align: center;
-}
-
-.team {
-  padding: 2em 0 2em 2.5em;
-  margin: 0;
-}
-
-.member {
   max-width: 40vw;
-  margin: 1.5em 0 0.5em;
   padding: 2em;
-  background: linear-gradient(
-    83deg,
-    var(--blue) 0 97%,
-    #fff0 calc(97% + 1px) 100%
-  );
   position: relative;
   list-style: none;
   display: inline-block;
-  transform: scale(0.85);
+  transform: scale(0.65);
   transition: var(--trans);
-  border-radius: 7px;
+  border-radius: 10px;
+  backdrop-filter: blur(20px);
+  /* box-shadow: 2px 2px 12px #ccc ; */
+  
 }
-.member:nth-of-type(even) {
-  text-align: right;
-  background: linear-gradient(
-    -83deg,
-    var(--blue) 0 97%,
-    #fff0 calc(97% + 1px) 100%
-  );
-}
-
-.thumb {
-  width: 13vmin;
-  height: 13vmin;
-  float: left;
-  margin-right: 1.25em;
-  background: linear-gradient(
-    var(--deg),
-    var(--dark) 0 70%,
-    var(--blue) 0% 100%
-  );
-  transform: rotate(-4deg);
-  transition: var(--trans);
-  border-radius: 0.25em;
-  overflow: hidden;
-  margin-left: -3em;
-  padding: 0.5em;
-  transition: var(--trans);
-}
-
-.member:nth-of-type(even) .thumb {
-  --deg: 86deg;
-  float: right;
-  margin-left: 2em;
-  margin-right: -3em;
+.card:nth-of-type(even):hover{
+  transform: scale(0.8);
   transform: rotate(4deg);
 }
-.member:nth-of-type(odd) .thumb {
-  --deg: -86deg;
-  float: left;
+.card:nth-of-type(odd):hover{
+  transform: scale(0.8);
+  transform: rotate(-4deg);
 }
-
-.thumb img {
-  width: 100%;
-  height: 100%;
-  border-radius: 0.25em;
-  filter: grayscale(1);
-  background: var(--dark);
+.card__img {
+  /* width: 96px; */
+  border-radius: 50%;
 }
-
-.member:hover {
-  transform: scale(1);
-  transition: var(--trans);
-  filter: drop-shadow(0px 20px 10px #0008);
+.card__border {
+  /* width: 110px;
+  height: 110px; */
+  /* border: 2px solid var(--first-color); */
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 0.75rem;
 }
-
-.member:hover .thumb {
-  padding: 0.1em;
-  transition: var(--trans);
-  transform: rotate(-1deg);
-  --deg: -89deg;
-}
-
-.member:nth-of-type(even):hover .thumb {
-  --deg: 91deg;
-}
-
-.member:hover .thumb img {
-  filter: none;
-  transition: var(--trans);
-}
-
-.description {
-  padding-top: 1vmin;
-}
-
-.description p {
-  padding: 2em 0.2em 0.2em 2em;
-  margin-bottom: 2em;
-  color: #ffffff;
-}
-
-h4 {
-  background: linear-gradient(
-    182deg,
-    rgb(132, 212, 255) 60%,
-    var(--dark) 0 100%
-  );
-  display: inline;
-  transform: rotate(-2deg);
-  position: absolute;
-  margin-left: 1em;
-  margin-top: -2.25em;
-  left: 9vmin;
-  padding: 0.5em 0.75em;
-  color: rgb(23, 4, 53);
+.card__name {
+  color: white;
+  font-size: var(--h3-font-size);
   font-weight: 500;
-  border-radius: 0.25em;
-  font-size: 1.35em;
-  transform-origin: left bottom;
-  z-index: 2;
-  transition: var(--trans);
+  font-size: 1.7em;
+  margin-bottom: .4rem;
+
+}
+.card__profession {
+  color: var(--text-color);
+  font-size: var(--smaller-font-size);
+  background-color: #4d0eae;
+  padding: 6px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.card__social {
+  width: 57%;
+  padding: 0.5rem;
+  border-radius: 3rem;
+  border: 2px solid white;
+  text-align: initial;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1.75rem;
+  /* margin: 0 auto;
+  margin-left: .5rem; */
+  /* rotate: -100deg; */
+  overflow: hidden;
+  transform-origin: 18px 17px;
+}
+.card__social-control {
+  position: relative;
+  transform-origin: 18px 18px;
+  transition: transform 0.45s ease;
+  transform: rotate(0);
+}
+.card__social-toggle {
+  display: inline-flex;
+  background-color: #4d0eae;
+  color: white;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+.card__social-text {
+  display: block;
+  /* color: var(--black-color); */
+  /* font-size: var(--smaller-font-size); */
+  font-weight: 500;
+  line-height: normal;
+}
+.card__social-list {
+  display: inline-flex;
+  column-gap: 0.75rem;
+  transform-origin: 18px 17px;
+}
+.card__social-link {
+  display: inline-flex;
+  background-color: white;
+  color: var(--black-color);
+  font-size: 1.25rem;
+  padding: 6px;
+  border-radius: 50%;
+  transition: all .4s ease-in-out;
+}
+.card__social-link:hover{
+  background-color: #168D8F;
+  color: white;
+}
+.card__social-text, .card__social-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-left: 3.1rem;
+}
+.card__social-text {
+  top: 0.5rem;
 }
 
-.member:nth-of-type(even) h4 {
-  left: inherit;
-  right: 9vmin;
-  transform: rotate(2deg);
-  transition: var(--trans);
-  transform-origin: right bottom;
-  background: linear-gradient(
-    182deg,
-    rgb(132, 212, 255) 60%,
-    var(--dark) 0 100%
-  );
+
+/* @media (max-width:1270px){
+  .card__social-link {
+    font-size: 1rem;
+  }
 }
 
-/* .member:hover h3 {
-  transition: var(--trans);
-  background: linear-gradient(
-    182deg,
-    var(--dark) 60%,
-    rgb(132, 212, 255) 0 100%
-  );
-  transform: rotate(0deg);
-  transition: var(--trans);
+
+@media (max-width: 992px) {
+  section#rewards div.sub_head {
+    padding: 1rem 2.5rem;
+  }
+  section#rewards div.sub_head h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  section#rewards div.content .reward_card:nth-child(2) .fig {
+    width: 20rem;
+  }
+  section#rewards div.content .reward_card:nth-child(4) .fig {
+    width: 20rem;
+  }
+  section#rewards div.content .reward_card:nth-child(5) .fig {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 472px) {
+  section#rewards div.heading {
+    margin: auto 2rem;
+  }
+  section#rewards div.sub_head h2 {
+    font-size: 1.8rem;
+  }
+  section#rewards div.sub_head p {
+    font-size: 1.2rem;
+  }
+  section#rewards div.content {
+    padding: 2rem;
+  }
+  section#rewards div.content .reward_card {
+    margin: 0;
+  }
 } */
 
-.tag:nth-of-type(even):after {
-  content: "Core-Member";
-  font-size: 0.75em;
-  position: absolute;
-  top: -1.5em;
-  background: var(--blue);
-  left: 4em;
-  transform: rotate(3deg);
-  padding: 0.35em 0.75em 0.5em;
-  border-radius: 0.25em;
-  color: var(--blue);
-  font-weight: bold;
-  background-color: var(--dark);
-  transition: all 0.5s ease;
-  border: 4px solid var(--blue);
+
+/* Further adjustments for even smaller screens */
+/* @media only screen and (max-width: 480px) {
+} */
+@media only screen and (max-width: 480px) {
+  .content{
+    display: flex;
+    flex-direction: column;
+  }
+  .card {
+    width: 90vw;
+    max-width: 100%;
+    /* padding: 1.5rem; */
+    padding: 2.5em;
+
+  }
+
+  .card__border img{
+    width: 250px;
+    height: 250px;
+
+  }
+
+  .card__name {
+    font-size: 1.5em;
+  }
+
+  .card__profession {
+    font-size: 1em;
+  }
+
+  .card__social {
+    width: 90%;
+    bottom: -1.5rem;
+  }
+  .card:nth-of-type(even):hover{
+    transform: scale(0.4);
+    transform: rotate(1deg);
+  }
+  .card:nth-of-type(odd):hover{
+    transform: scale(0.4);
+    transform: rotate(-1deg);
+  }
+  .card__social {
+    width: 60%;
+  }
 }
 
-.tag:nth-of-type(odd):after {
-  border: 4px solid var(--blue);
-  content: "Core-Member";
-  font-size: 0.75em;
-  position: absolute;
-  top: -1.5em;
-  background: var(--dark);
-  right: 4em;
-  transform: rotate(3deg);
-  padding: 0.35em 0.75em 0.5em;
-  border-radius: 0.25em;
-  color: var(--bue);
-  transition: all 0.4s ease;
-  font-weight: bold;
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .card {
+    width: 50vw;
+    max-width: 50vw;
+    padding: 2rem;
+  }
+
+  .card__border {
+    width: 300px;
+    height: 300px;
+  }
+
+  .card__name {
+    font-size: 1.6em;
+  }
+
+  .card__profession {
+    font-size: 1.1em;
+  }
+
+  .card__social {
+    /* width: 55%; */
+    bottom: -1.75rem;
+  }
+
+  /* .card__social-text, .card__social-list {
+    padding-left: 2rem;
+  } */
 }
 
-.tag:hover::after {
-  border: 2px solid var(--blue);
-  transition: all 0.4s ease;
-  transform: rotate(-3deg);
-}
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .card {
+    width: 50vw;
+    max-width: 50vw;
+    padding: 2rem;
+  }
 
-.co-funder:nth-of-type(even):after {
-  right: inherit;
-  left: 4em;
-  transform: rotate(-3deg);
-}
+  .card__border {
+    width: 300px;
+    height: 300px;
+  }
 
-.description p a img {
-  float: left;
-  width: 22px;
-  filter: invert(1);
-  border-radius: 0.15em;
-  padding: 2px;
-  background: #fff;
-  margin-right: 2px;
+  .card__name {
+    font-size: 1.7em;
+  }
+
+  .card__profession {
+    font-size: 1.2em;
+  }
+
+  .card__social {
+    width: 50%;
+    bottom: -2rem;
+  }
+
+  /* .card__social-text, .card__social-list {
+    padding-left: 2.5rem;
+  } */
 }

@@ -1,35 +1,72 @@
 import { Award, Trophy } from "lucide-react";
+import { StaticImageData } from "next/image";
+import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import { sponsorsData } from "@/Data/sponsorData";
 
-function SponsorCard({ imgLink }: { imgLink: string }) {
+function SponsorCard({
+  imgLink,
+  category,
+  link,
+}: {
+  imgLink: StaticImageData;
+  category:string;
+  link: string;
+}) {
   return (
-    <div className="h-64 w-64 md:h-96 md:w-96 bg-violet-950 rounded-xl flex items-center justify-center ring-1 ring-yellow-400">
-      <Image
-        height={300}
-        width={300}
-        alt=""
-        className="rounded-xl  h-52 w-52 md:h-80 md:w-80 object-cover"
-        src={imgLink}
-      />
-    </div>
+    // <div className="h-64 w-64 md:h-96 md:w-96 bg-violet-950 rounded-xl flex items-center justify-center ring-1 ring-yellow-400">
+    //   <Image
+    //     height={300}
+    //     width={300}
+    //     alt=""
+    //     className="rounded-xl  h-52 w-52 md:h-80 md:w-80 object-cover"
+    //     src={imgLink}
+    //   />
+    // </div>
+    <Link
+      target="_blank"
+      href={link}
+      className="flex w-64 p-3 flex-col rounded-xl items-center justify-center"
+    >
+      <div className="h-44 w-44 mx-5 rounded-lg flex flex-col items-center justify-center ">
+        <Image
+          height={200}
+          width={200}
+          alt=""
+          className={`rounded-xl object-cover p-4 ${category!='Community Partner'?'bg-[#afadad1c] backdrop-blur':'rounded-3xl'}`}
+          src={imgLink}
+        />
+      </div>
+    </Link>
   );
 }
 
-function SponsorSection({ sponsorCategory }: { sponsorCategory: string }) {
+function SponsorSection({
+  sponsorCategory,
+  sponsorCategoryImg,
+  sponsors
+}: {
+  sponsorCategory: string;
+  sponsorCategoryImg: StaticImageData;
+  sponsors:Array<{
+    name: string;
+    link: string;
+    imagefilename: StaticImageData;
+  }>
+}) {
   return (
     <div className="flex flex-col items-start w-full max-w-7xl mx-auto p-5">
-      <h2 className="text-2xl md:text-4xl font-bold flex gap-4 py-5 items-center">
-        <Award color="yellow" size={40} />
+      <h2 className="text-xl mr-4 md:text-2xl font-bold flex gap-4 p-5 items-center justify-center">
+        {/* <> */}
+        <Image height={100} width={100} alt={sponsorCategory} src={sponsorCategoryImg} />
         {sponsorCategory}
       </h2>
       <div className="flex items-center justify-center gap-8 flex-wrap py-5">
-        {[1, 1, 1, 1, 1].map((item, idx) => (
-          <SponsorCard
-            key={idx}
-            imgLink={`https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.asus.com%2Fmedia%2FOdin%2FWebsites%2FUS%2FNews%2Fsjvqt8fhzfcjxkfg%2Ftuf_logo.png&f=1&nofb=1&ipt=9a5b33164e024e654bdfec14aea9d9c2760a5e2ab66e4ec3191a0bdd35ef8052&ipo=images`}
-          />
-        ))}
+        {sponsors.map((data,idx)=>{
+          return <SponsorCard imgLink={data.imagefilename} category={sponsorCategory} link={data.link} key={idx}/>
+          // <Image height={200} width={200} className="rounded-xl" alt={data['name']} src={data.imagefilename}/>
+        })}
       </div>
     </div>
   );
@@ -42,9 +79,12 @@ function page() {
         Our Sponsors
       </h1>
       <div className="flex flex-col items-start w-full">
-        <SponsorSection sponsorCategory="Gold Sponsors" />
-        <SponsorSection sponsorCategory="Silver Sponsors" />
-        <SponsorSection sponsorCategory="Bronze Sponsors" />
+        {
+          sponsorsData.map((data,idx)=>{
+            return <SponsorSection sponsorCategory={data['tier']} sponsorCategoryImg={data['tierimg']} sponsors={data['data']} />
+
+          })
+        }
       </div>
     </div>
   );

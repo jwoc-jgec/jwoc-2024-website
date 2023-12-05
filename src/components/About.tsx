@@ -16,7 +16,6 @@ const About = () => {
         <span className="pseudo"> </span>
         <h1 className="font-bold text-white border-stroke">About Us</h1>
         <span className="divider_1"></span>
-        <span className="divider_2"></span>
       </div>
 
       <div className="about container">
@@ -26,7 +25,7 @@ const About = () => {
         <div className={`desc ${inter.className}`}>
           <h2>JWoC: <span>How it Works?</span></h2>
           <p>
-          JWOC provides a fully immersive learning experience for students and first-time 
+          JWoC provides a fully immersive learning experience for students and first-time 
           contributors by promoting the wonders of open-source software and crafting a community 
           of new and experienced technical developers. The best projects are selected for this program. 
           Students get acquainted with the projects from the mentors during the Community Bonding Period.

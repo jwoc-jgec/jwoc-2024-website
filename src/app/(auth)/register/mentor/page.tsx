@@ -1,6 +1,7 @@
 "use client";
 import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
+import { useEffect,useState } from "react";
 import {
   Form,
   FormControl,
@@ -39,6 +40,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useRouter } from "next/navigation";
+import CountDown from "@/components/CountDown";
 const registerSchema = z.object({
  
   email: z.string().email(),
@@ -89,6 +91,23 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
+  const targetDate = new Date('December 25, 2023 00:00:00 GMT+0530').getTime()
+  const [timeUp, setTimeUp] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const remainingTime = targetDate - now;
+
+      if(remainingTime <= 0 && !timeUp) {
+        setTimeUp(true);
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+
+  }, [targetDate]);
   const router = useRouter()
   const { toast } = useToast();
   const [formStep, setFormStep] = React.useState(0);
@@ -151,7 +170,7 @@ export default function Home() {
         if (data.message === "User registered.") {
           toast({
             title: "Congratulations",
-            description: "Successfully Registered for JWOC 2K24!",
+            description: "Successfully Registered for JWoC 2K24!",
           });
         router.push('/login')
         } else {
@@ -170,13 +189,14 @@ export default function Home() {
   }
 
   return (
-    <div
+    <>
+    {!timeUp?<CountDown targetDate={targetDate} title="Mentor"/>:<div
       className={`${inter.className}  p-10  flex flex-col items-center justify-center`}
     >
       <Card className="w-80 md:w-[400px]">
         <CardHeader>
           <CardTitle>Register</CardTitle>
-          <CardDescription>Register as JWOC Mentor.</CardDescription>
+          <CardDescription>Register as JWoC Mentor.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -560,6 +580,7 @@ export default function Home() {
           </Form>
         </CardContent>
       </Card>
-    </div>
+    </div>}
+    </>
   );
 }

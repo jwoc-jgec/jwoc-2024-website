@@ -153,7 +153,7 @@ const Page = () => {
   return (
     <div className="min-h-screen flex flex-col items-center p-5">
       <h1 className="md:text-5xl text-4xl py-10 text-white font-black">
-        JWOC Projects
+        JWoC Projects
       </h1>
       <div className="pb-10">
         <Form {...form}>

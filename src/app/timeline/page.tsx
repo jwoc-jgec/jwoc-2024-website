@@ -11,18 +11,18 @@ function page() {
       <div className=" text-white py-8">
         <div className="heading timeline">
           <span className="pseudo"> </span>
-          <h1 className="font-bold text-black border-stroke">JWoC 2024 Timeline</h1>
+          <h1 className="font-bold border-stroke text-center ">JWoC 2024 Timeline</h1>
           <span className="divider_1"></span>
         </div>
         <div className={`container mx-auto flex flex-col items-start md:flex-row my-6 ${inter.className}`}>
           <div className="flex flex-col w-full md:top-36 lg:w-1/3 mt-2 md:mt-12 px-0 sm:px-8">
             <p className="text-sm md:text-base text-white mb-4">
-            <p className="font-bold">Have a look what we scheduled for you!</p>
+            <p className="font-extrabold text-[#168D8F]">Have a look what we scheduled for you!</p>
             Lets start the Debugging, Decoding, Developing journey!
             </p>
             <a
               href="#timeline"
-              className="bg-[#00000082] flex gap-x-2 mr-auto hover:bg-gradient-to-br from-[#4d0eae] to-[#d846a5] hover:transition-opacity hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-[#fff] hover:border-[#000]"
+              className="bg-[#00000082] flex gap-x-2 mr-auto transition-all duration-500  hover:text-[#168D8F] rounded shadow hover:shadow-lg py-2 px-4 border border-[#fff] "
             >
               Explore Now <Compass/>
             </a>
@@ -30,13 +30,14 @@ function page() {
           <div className="ml-0 md:ml-12 lg:w-2/3 sticky" id="timeline">
             <div className=" mx-auto w-full h-full">
               <div className="relative wrap overflow-hidden px-0 py-10 sm:p-10 h-full">
+
                 <div
-                  className="border-2-2 border-yellow-555 sm:right-[50%] absolute h-full border"
+                  className=" border-2-2 border-yellow-555 sm:right-[50%] absolute h-full border"
                   style={{
                     position: "absolute",
                     // right: "50%",
-                    border: "2px solid #FFC100",
-                    borderRadius: "1%",
+                    border: "2px solid #4d0eae",
+                    borderRadius: "5%",
                   }}
                 ></div>
                 <div
@@ -44,10 +45,12 @@ function page() {
                   style={{
                     position: "absolute",
                     // left: "50%",
-                    border: "2px solid #FFC100",
-                    borderRadius: "1%",
+                    border: "2px solid #4d0eae",
+                    borderRadius: "5%",
                   }}
                 ></div>
+
+                
                 <div className="mb-8 flex justify-between flex-row ml-5 sm:flex-row-reverse items-center left-timeline">
                   <div className="order-2 sm:order-1 w-1/12 sm:w-5/12"></div>
                   <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 text-left sm:text-right">
@@ -58,7 +61,7 @@ function page() {
                       Mentee Registration
                     </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
-                    Registration begins for Mentees!
+                    Registration period for Mentees!
                     </p>
                   </div>
                 </div>
@@ -72,7 +75,7 @@ function page() {
                       Mentor Registration
                     </div>
                     <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
-                    Registration begins for Mentors!
+                    Registration period for Mentors!
                     </p>
                   </div>
                 </div>

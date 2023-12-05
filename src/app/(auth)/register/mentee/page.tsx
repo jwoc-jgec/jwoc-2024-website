@@ -35,6 +35,8 @@ import { ArrowRight } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import CountDown from "@/components/CountDown";
+import { useEffect,useState } from "react";
 
 const registerSchema = z.object({
   email: z.string().email(),
@@ -85,6 +87,24 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
+  const targetDate = new Date('December 20, 2023 00:00:00 GMT+0530').getTime()
+  const [timeUp, setTimeUp] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const remainingTime = targetDate - now;
+
+      if(remainingTime <= 0 && !timeUp) {
+        setTimeUp(true);
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+
+  }, [targetDate]);
+
   const { toast } = useToast();
   const [formStep, setFormStep] = React.useState(0);
   const form = useForm<Input>({
@@ -166,13 +186,14 @@ export default function Home() {
     // <div
     //   className={`${inter.className}  absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}
     // >
-    <div
+    <>
+    {!timeUp ?<CountDown targetDate={targetDate} title="Mentee" />:<div
       className={`${inter.className} p-10  flex flex-col items-center justify-center`}
     >
       <Card className="w-80 md:w-[400px]">
         <CardHeader>
           <CardTitle>Register</CardTitle>
-          <CardDescription>Register as JWOC Mentee.</CardDescription>
+          <CardDescription>Register as JWoC Mentee.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -556,6 +577,8 @@ export default function Home() {
           </Form>
         </CardContent>
       </Card>
-    </div>
+    </div>}
+    </>
+    
   );
 }
