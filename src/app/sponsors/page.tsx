@@ -6,10 +6,12 @@ import React from "react";
 import { sponsorsData } from "@/Data/sponsorData";
 
 function SponsorCard({
+  key,
   imgLink,
   category,
   link,
 }: {
+  key:number;
   imgLink: StaticImageData;
   category:string;
   link: string;
@@ -43,10 +45,12 @@ function SponsorCard({
 }
 
 function SponsorSection({
+  key,
   sponsorCategory,
   sponsorCategoryImg,
   sponsors
 }: {
+  key:number;
   sponsorCategory: string;
   sponsorCategoryImg: StaticImageData;
   sponsors:Array<{
@@ -81,7 +85,7 @@ function page() {
       <div className="flex flex-col items-start w-full">
         {
           sponsorsData.map((data,idx)=>{
-            return <SponsorSection sponsorCategory={data['tier']} sponsorCategoryImg={data['tierimg']} sponsors={data['data']} />
+            return <SponsorSection key={idx} sponsorCategory={data['tier']} sponsorCategoryImg={data['tierimg']} sponsors={data['data']} />
 
           })
         }
