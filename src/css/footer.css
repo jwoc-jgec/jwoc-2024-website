@@ -55,21 +55,29 @@ footer{
 
 
 @media (max-width:660px){
-  .main{
+  .footer-sec  .main{
     gap:10px;
     margin: 0;
-
+    grid-template-columns: auto;
   }
-  
-  .icons{
-    display: flex;
-  }
-  
- 
-  
   .row{
     grid-column: 1/4;
+    /* flex-direction: row; */
   }
+  .newsletter-des{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .newsletter-des .icons a{
+    padding: 1rem ;
+  }
+.icons{
+  /* flex-direction: column; */
+  margin-bottom: 5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 }
 
 

@@ -13,7 +13,7 @@ function Navbar() {
   const { status } = useSession();
   return (
     <nav className={`top-0 z-50 bg-transparent ${inter.className}`}>
-      <div className="hidden md:visible md:flex pt-3 pb-3 max-w-7xl mx-auto items-center justify-between text-white px-5 ">
+      <div className="hidden md:visible md:flex pt-3 pb-3 max-w-7xl mx-auto items-center justify-between text-white px-2 ">
         <Link href={`/`}>
           <Image
             src={logo}

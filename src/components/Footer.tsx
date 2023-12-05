@@ -77,7 +77,7 @@ const Footer = () => {
       <div className="newsletter row">
         <div className="newsletter-des">
           
- <div className=" rounded-lg p-6 w-72 text-center">
+        <div className=" rounded-lg p-6 w-72 text-center">
     <h2 className="text-2xl font-bold text-[#787a91] mb-4">Contact Us</h2>
         <form onSubmit={handleSubmit} className="space-y-4 text-black">
           <div className="flex gap-3">
