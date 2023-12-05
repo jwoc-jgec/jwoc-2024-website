@@ -7,6 +7,7 @@ import { FaGithubSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { IoIosAddCircle } from "react-icons/io";
 import { MdCancel } from "react-icons/md";
+import { motion } from "framer-motion";
 
 interface TeamCardsProps {
   key: number;
@@ -75,62 +76,76 @@ const TeamCards = (data: TeamCardsProps) => {
 
   return (
     // <div className="container">
-    <div className="card">
-      <div className="card__border ">
-        <Image
-          className="card__img"
-          src={data.teamData.imagefilename.src}
-          width={300}
-          height={300}
-          alt={data.teamData.designation}
-        />
-      </div>
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 100,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 1.1,
+      }}
+    >
+      <div className="card">
+        <div className="card__border ">
+          <Image
+            className="card__img"
+            src={data.teamData.imagefilename.src}
+            width={300}
+            height={300}
+            alt={data.teamData.designation}
+          />
+        </div>
 
-      <h3 className="card__name">{`[${data.teamData["Full Name"]}]`}</h3>
-      <span className="card__profession">
-        {data.teamData.designation.toUpperCase()}
-      </span>
+        <h3 className="card__name">{`${data.teamData["Full Name"]}`}</h3>
+        <span className="card__profession">
+          {data.teamData.designation.toUpperCase()}
+        </span>
 
-      <div className="card__social" id="card-social">
-        <div className="card__social-control">
-          <div className="card__social-toggle" onClick={showSocial}>
-            {isSocialVisible ? <IoIosAddCircle /> : <MdCancel />}
+        <div className="card__social" id="card-social">
+          <div className="card__social-control">
+            <div className="card__social-toggle" onClick={showSocial}>
+              {isSocialVisible ? <IoIosAddCircle /> : <MdCancel />}
+            </div>
+
+            {isSocialVisible ? (
+              <span className=" text-white font-bold text-lg card__social-text">
+                Social Media
+              </span>
+            ) : (
+              <ul className="card__social-list">
+                <a
+                  href={data.teamData["Github url"]}
+                  target="_blank"
+                  className="card__social-link"
+                >
+                  <FaGithubSquare fontSize="1.3em" />
+                </a>
+
+                <a
+                  href={data.teamData["Linkedin Url"]}
+                  target="_blank"
+                  className="card__social-link"
+                >
+                  <FaLinkedin fontSize="1.3em" />
+                </a>
+
+                <a
+                  href={data.teamData["Twitter Url"]}
+                  target="_blank"
+                  className="card__social-link"
+                >
+                  <FaSquareXTwitter fontSize="1.3em" />
+                </a>
+              </ul>
+            )}
           </div>
-
-          {isSocialVisible ? (
-            <span className=" text-white font-bold text-lg card__social-text">
-              Social Media
-            </span>
-          ) : (
-            <ul className="card__social-list">
-              <a
-                href={data.teamData["Github url"]}
-                target="_blank"
-                className="card__social-link"
-              >
-                <FaGithubSquare fontSize="1.3em" />
-              </a>
-
-              <a
-                href={data.teamData["Linkedin Url"]}
-                target="_blank"
-                className="card__social-link"
-              >
-                <FaLinkedin fontSize="1.3em" />
-              </a>
-
-              <a
-                href={data.teamData["Twitter Url"]}
-                target="_blank"
-                className="card__social-link"
-              >
-                <FaSquareXTwitter fontSize="1.3em" />
-              </a>
-            </ul>
-          )}
         </div>
       </div>
-    </div>
+    </motion.div>
     // </div>
   );
 };

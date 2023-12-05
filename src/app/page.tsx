@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import "./globals.css";
 import SponsorCarousel from "@/components/SponsorCarousel";
@@ -7,6 +8,7 @@ import { Inter } from "next/font/google";
 import jgec from "../assets/img/jgec logo.png";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { motion } from "framer-motion";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -19,14 +21,33 @@ export default function Home() {
         {/* <img src={bg.src} alt="img" className="h-screen w-screen z-20"/> */}
         <div className="flex font-black text-center md:text-start flex-col text-[#00FFFF]">
           <div className="pb-14">
-            <p className="text-xl md:text-3xl font-medium pb-1 text-[#d846a5]">
+            <motion.p
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.5,
+              }}
+              className="text-xl md:text-3xl font-medium pb-1 text-[#d846a5]"
+            >
               Welcome to
-            </p>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white border-stroke">
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, x: 200 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.7,
+              }}
+              className="text-4xl md:text-6xl font-extrabold text-white border-stroke"
+            >
               A MONTH OF
-            </h1>
+            </motion.h1>
             {/* <h2 className="text-5xl md:text-7xl tracking-wide drop-shadow-cyanGlow"> */}
-            <h2
+            <motion.h2
+              initial={{ opacity: 0, x: 300 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.9,
+              }}
               className="text-5xl md:text-7xl tracking-wide"
               style={{
                 backgroundImage: "linear-gradient(315deg,#4d0eae,#d846a5)",
@@ -36,9 +57,14 @@ export default function Home() {
               }}
             >
               Open Source
-            </h2>
+            </motion.h2>
           </div>
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+            }}
             className={`text-sm max-w-xl font-light text-neutral-200 pb-10 ${inter.className}`}
           >
             {/* Open Source contribution. By JGEC. For all. Plunge into Open Source
@@ -46,9 +72,18 @@ export default function Home() {
             JWoC (JGEC Winter of Code) is a coding event organised annually by
             JGEC which helps students to plunge into Open Source contribution
             and get the realm of Software Development.
-          </p>
+          </motion.p>
 
-          <div className="group flex flex-col items-center md:items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -200 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.9,
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.8 }}
+            className="group flex flex-col items-center md:items-start"
+          >
             <Link
               href={"/register"}
               className="relative rounded-md flex w-10/12 text-white items-center justify-center py-3 px-10 md:py-3 md:px-10 bg-black bg-opacity-20 font-bold text-lg md:text-2xl ring-2 ring-[#168D8F] transition-all duration-500 hover:text-[#168D8F] hover:ring-white"
@@ -104,7 +139,7 @@ export default function Home() {
               <path d="M7 17 17 7" />
             </svg>
           </Link> */}
-          </div>
+          </motion.div>
           <p
             className={`text-sm max-w-xl flex flex-col items-center md:items-start mt-6 text-neutral-200 pb-10 ${inter.className} `}
           >
