@@ -2,6 +2,7 @@ import { connectMongoDB } from "@/lib/mongodb";
 import Mentee from "@/models/mentee";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import { sendEmail } from "@/utils/mailer";
 
 export async function POST(req: Request) {
   try {
@@ -26,7 +27,7 @@ export async function POST(req: Request) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
     await connectMongoDB();
-    await Mentee.create({
+    const savedMentee = await Mentee.create({
       type: "Mentee",
       name,
       email,
@@ -41,6 +42,10 @@ export async function POST(req: Request) {
       isFirstTime,
       answer1,
     });
+
+    // send verification mail for verify Email ID
+    await sendEmail({ email, userType: "Mentee", userId: savedMentee._id})
+
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {
     console.log(error);

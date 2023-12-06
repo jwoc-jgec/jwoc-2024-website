@@ -3,6 +3,7 @@ import Mentor from "@/models/mentor";
 import Mentee from "@/models/mentee";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import { sendEmail } from "@/utils/mailer";
 
 export async function POST(req: Request) {
   try {
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
     
     const hashedPassword = await bcrypt.hash(password, 10);
     await connectMongoDB();
-    await Mentor.create({
+    const savedMentor = await Mentor.create({
       name,
       email,
       password: hashedPassword,
@@ -41,6 +42,10 @@ export async function POST(req: Request) {
       answer1,
       answer2,
     });
+
+    // send verification mail for verify Email ID
+    await sendEmail({ email, userType: "Mentor", userId: savedMentor._id})
+
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {
     console.log(error);
