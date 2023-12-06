@@ -37,7 +37,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import CountDown from "@/components/CountDown";
 import { useEffect,useState } from "react";
-
+import { useRouter } from "next/navigation";
 const registerSchema = z.object({
   email: z.string().email(),
   name: z
@@ -89,7 +89,7 @@ type Input = z.infer<typeof registerSchema>;
 export default function Home() {
   const targetDate = new Date('December 20, 2023 00:00:00 GMT+0530').getTime()
   const [timeUp, setTimeUp] = useState(false);
-
+const router = useRouter()
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -165,8 +165,10 @@ export default function Home() {
         console.log("response from Server", data);
         if (data.message === "User registered.") {
           toast({
-            title: "Successfully Registered",
+            title: "Congratulations",
+            description: "Successfully Registered for JWoC 2K24!",
           });
+          router.push('/')
         } else {
           toast({
             title: "Something went Wrong",
@@ -177,8 +179,6 @@ export default function Home() {
       .catch((error) => {
         console.error(error);
       });
-    // alert(JSON.stringify(data, null, 4));
-
     console.log(data);
   }
 

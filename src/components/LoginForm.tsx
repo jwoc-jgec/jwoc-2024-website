@@ -48,8 +48,8 @@ export default function LoginForm() {
     // ✅ This will be type-safe and validated.
 
     signIn("credentials", {
-      email: values.email,
-      password: values.password,
+      email: values.email.trim(),
+      password: values.password.trim(),
     });
     console.log(values);
   }
@@ -71,7 +71,7 @@ export default function LoginForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="johndoe@gmail.com" {...field} />
+                    <Input placeholder="jwoc@gmail.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

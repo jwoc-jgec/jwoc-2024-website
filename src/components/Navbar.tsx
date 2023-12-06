@@ -12,8 +12,8 @@ const inter = Inter({ subsets: ['latin'] })
 function Navbar() {
   const { status } = useSession();
   return (
-    <nav className={`top-0 z-50 bg-transparent ${inter.className}`}>
-      <div className="hidden md:visible md:flex pt-3 pb-3 max-w-7xl mx-auto items-center justify-between text-white px-2 ">
+    <nav className={`top-0 bg-transparent ${inter.className}`}>
+      <div className="hidden md:visible md:flex pt-7 max-w-7xl mx-auto items-center justify-between text-white px-2 ">
         <Link href={`/`}>
           <Image
             src={logo}
@@ -49,7 +49,7 @@ function Navbar() {
               onClick={() => signIn()}
               className="bg-[#4d0eae] px-2 py-2 rounded-md flex items-center gap-1 cursor-pointer hover:bg-violet-950 transition-all duration-300"
               >
-              <LogIn/> <span>Login</span>
+              <LogIn/> <span>MentorLocker</span>
             </div>
           ) : (
             <Link href={`/profile`} className="bg-violet-900 px-6 py-2 rounded-full hover:bg-violet-950 transition-all duration-300">

@@ -73,7 +73,6 @@ async function page() {
   if (session) redirect("/profile");
   return (
     <div>
-
       <div>
         {/* <RegistrationButton title="Register as Mentor" link="mentor" /> */}
         <RegistrationButton title="Register as Mentee" link="mentee" />

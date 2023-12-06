@@ -9,15 +9,20 @@ import jgec from "../assets/img/jgec logo.png";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import SnowFall from "@/components/SnowFall";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   // const targetDate = new Date('2023-12-20T00:00:00').getTime();
   return (
     <>
+    <div className="absolute w-full overflow-x-hidden" >
+    <SnowFall />
+    </div>
       <main
         className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-28 px-5 md:flex-row`}
       >
+        
         {/* <img src={bg.src} alt="img" className="h-screen w-screen z-20"/> */}
         <div className="flex font-black text-center md:text-start flex-col text-[#00FFFF]">
           <div className="pb-14">
@@ -65,15 +70,12 @@ export default function Home() {
             transition={{
               duration: 0.5,
             }}
-            className={`text-sm max-w-xl font-light text-neutral-200 pb-10 ${inter.className}`}
+            className={`max-w-xl font-light text-[16px] text-neutral-200 pb-10 ${inter.className}`}
           >
-            {/* Open Source contribution. By JGEC. For all. Plunge into Open Source
-            contribution. By JGEC. For all. */}
             JWoC (JGEC Winter of Code) is a coding event organised annually by
             JGEC which helps students to plunge into Open Source contribution
             and get the realm of Software Development.
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0, x: -200 }}
             animate={{ opacity: 1, x: 0 }}

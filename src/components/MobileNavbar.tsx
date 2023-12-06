@@ -72,7 +72,7 @@ export default function Navbar() {
               className="font-bold text-lg pl-6 pt-2 flex items-center"
               href="/api/auth/signin"
             >
-              Login
+              MentorLocker
               <ArrowRight className="ml-2" />
             </Link>
           ) : (

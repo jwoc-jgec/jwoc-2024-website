@@ -1,26 +1,28 @@
-import aliah from "../assets/community_partner_logo/aliah.png";
-import acm from "../assets/community_partner_logo/acm.jpeg";
-import bbit from "../assets/community_partner_logo/bbit.png";
-import befikra from "../assets/community_partner_logo/befikra.png";
-import cgec from "../assets/community_partner_logo/CGEC.png";
-import citk from "../assets/community_partner_logo/citk.png";
-import cncg from "../assets/community_partner_logo/cncg.png";
-import codesscafe from "../assets/community_partner_logo/codess.png";
-import cu from "../assets/community_partner_logo/CU.png";
-import codeiiest from "../assets/community_partner_logo/codeiiest.png";
-import gcettb from "../assets/community_partner_logo/gcettb.png";
-import iitk from "../assets/community_partner_logo/IITK.png";
-import iiest from "../assets/community_partner_logo/iiest.png";
-import iem from "../assets/community_partner_logo/iem.jpeg";
-import ju from "../assets/community_partner_logo/ju.png";
-import lpu from "../assets/community_partner_logo/LPU.png";
-import makaut from "../assets/community_partner_logo/makaut.jpeg";
-import nitdgp from "../assets/community_partner_logo/NITDGP.png";
-import nitdgplug from "../assets/community_partner_logo/nitdgplug.png";
-import noobcode from "../assets/community_partner_logo/noobcode.png";
-import osdev from "../assets/community_partner_logo/osdev.png";
-import sxccal from "../assets/community_partner_logo/sxccal.png";
-import tfug from "../assets/community_partner_logo/tfug.png";
+import aliah from '../assets/community_partner_logo/aliah.png'
+import acm from '../assets/community_partner_logo/acm.jpeg'
+import bbit from '../assets/community_partner_logo/bbit.png'
+import befikra from '../assets/community_partner_logo/befikra.png'
+import cgec from '../assets/community_partner_logo/CGEC.png'
+import citk from '../assets/community_partner_logo/citk.png'
+import cncg from '../assets/community_partner_logo/cncg.png'
+import codesscafe from '../assets/community_partner_logo/codess.png'
+import cu from '../assets/community_partner_logo/CU.png'
+import codeiiest from '../assets/community_partner_logo/codeiiest.png'
+import gcettb from '../assets/community_partner_logo/gcettb.png'
+import iitk from '../assets/community_partner_logo/IITK.png'
+import iiest from '../assets/community_partner_logo/iiest.png'
+import iem from '../assets/community_partner_logo/iem.jpeg'
+import ju from '../assets/community_partner_logo/ju.png'
+import lpu from '../assets/community_partner_logo/LPU.png'
+import makaut from '../assets/community_partner_logo/makaut.jpeg'
+import nitdgp from '../assets/community_partner_logo/NITDGP.png'
+import nitdgplug from '../assets/community_partner_logo/nitdgplug.png'
+import noobcode from '../assets/community_partner_logo/NoobCode.jpg'
+import osdev from '../assets/community_partner_logo/osdev.png'
+import sxccal from '../assets/community_partner_logo/sxccal.png'
+import tfug from '../assets/community_partner_logo/tfug.png'
+
+
 
 export const community_partners = [
   {
