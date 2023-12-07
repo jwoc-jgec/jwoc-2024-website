@@ -45,7 +45,7 @@ const Stats = () => {
             duration: 1.5,
           }}
           // viewport={{ once: true, amount: 0.8 }}
-          className={`sub_head ${inter.className}`}
+          className={`sub_head `}
         >
           <h2>
             Why you must register for{" "}
@@ -54,7 +54,7 @@ const Stats = () => {
           <p>Because exciting rewards & prizes are waiting just for you.</p>
         </motion.div>
 
-        <div className={`${inter.className} content`}>
+        <div className={` content`}>
           <motion.div
             initial={{
               opacity: 0,

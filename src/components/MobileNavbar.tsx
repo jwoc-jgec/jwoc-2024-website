@@ -7,12 +7,14 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useSession } from "next-auth/react";
 import logo from "../assets/jwoc_logos/jwoc_sticker.svg";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Navbar() {
   const [state, setState] = React.useState(false);
   const { status } = useSession();
+  const path = usePathname();
 
   const menus = [
     { title: "Home", path: "/" },
@@ -55,7 +57,9 @@ export default function Navbar() {
             {menus.map((item, idx) => (
               <li
                 key={idx}
-                className="text-white text-lg hover:text-indigo-600"
+                className={`${
+                  path == item.path && "text-blue-500 font-bold"
+                } text-xl`}
               >
                 <Link
                   onClick={() => setState((prev) => !prev)}
