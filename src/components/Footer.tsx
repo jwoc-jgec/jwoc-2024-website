@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 const Footer = () => {
 
-  const [state, handleSubmit] = useForm(process.env.CONTACT_FORM!);
+  const [state, handleSubmit] = useForm("mleyqgkp");
   const [formData, setFormData] = useState({
     name: '',
     email: '',
