@@ -9,20 +9,20 @@ import jgec from "../assets/img/jgec logo.png";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import SnowFall from "@/components/SnowFall";
+import SnowFall from "@/components/snowFall";
+import ContactUs from "@/components/ContactUs";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   // const targetDate = new Date('2023-12-20T00:00:00').getTime();
   return (
     <>
-    <div className="absolute w-full overflow-x-hidden" >
-    <SnowFall />
-    </div>
+      <div className="absolute w-full overflow-x-hidden">
+        <SnowFall />
+      </div>
       <main
         className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-28 px-5 md:flex-row`}
       >
-        
         {/* <img src={bg.src} alt="img" className="h-screen w-screen z-20"/> */}
         <div className="flex font-black text-center md:text-start flex-col text-[#00FFFF]">
           <div className="pb-14">
@@ -32,7 +32,7 @@ export default function Home() {
               transition={{
                 duration: 0.5,
               }}
-              className="text-xl md:text-3xl font-medium pb-1 text-[#d846a5]"
+              className="text-xl md:text-4xl font-medium pb-1 text-[#d846a5]"
             >
               Welcome to
             </motion.p>
@@ -42,7 +42,7 @@ export default function Home() {
               transition={{
                 duration: 0.7,
               }}
-              className="text-4xl md:text-6xl font-extrabold text-white border-stroke"
+              className="text-4xl md:text-7xl text-white border-stroke"
             >
               A MONTH OF
             </motion.h1>
@@ -53,7 +53,7 @@ export default function Home() {
               transition={{
                 duration: 0.9,
               }}
-              className="text-5xl md:text-7xl tracking-wide"
+              className="text-5xl md:text-8xl tracking-tight font-bold"
               style={{
                 backgroundImage: "linear-gradient(315deg,#4d0eae,#d846a5)",
                 WebkitBackgroundClip: "text",
@@ -167,6 +167,7 @@ export default function Home() {
       <SponsorCarousel />
       {/* <Stats/> */}
       <Rewards />
+      <ContactUs />
       <Footer />
     </>
   );

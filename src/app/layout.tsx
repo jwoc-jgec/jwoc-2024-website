@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
-import { Orbitron } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import SessionProvider from "./Provider";
 import { getServerSession } from "next-auth";
@@ -11,7 +11,7 @@ import favimg from "../assets/jwoc_logos/favicon.png";
 import Footer from "@/components/Footer";
 import bg from "../assets/bg/13.png";
 
-const orbitron = Orbitron({ subsets: ["latin"] });
+const lato = Lato({ weight: ["100", "300", "400"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "JWoC: JGEC Winter of Code",
@@ -27,7 +27,15 @@ export default async function RootLayout({
     <html lang="en">
       <link rel="icon" href={favimg.src} />
       <SessionProvider session={session}>
-        <body className={`${orbitron.className} h-auto bg-[#202020]`}>
+        <body
+          className={`${lato.className} h-auto bg-[#202020]`}
+          // style={{
+          // backgroundImage: `url(${bg.src})`,
+          // background:`black url(${bg.src}) right no-repeat`,
+          // background: `linear-gradient(rgba(0, 0, 0), rgba(0, 0, 0)) url(${bg.src}) right no-repeat`,
+          // width: '100%',
+          // height: '100%',backgroundSize:"cover",backgroundPosition:"center",backgroundRepeat:"no-repeat"}}
+        >
           <MobileNavbar />
           <Navbar />
           {children}

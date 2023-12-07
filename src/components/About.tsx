@@ -1,11 +1,6 @@
-import { StaticImageData } from "next/image";
-import Image from "next/image";
 import React from "react";
 import sticker from "../assets/jwoc_logos/jwoc_sticker.svg";
 import "../css/about.css";
-import { Inter } from "next/font/google";
-// const jetbrains = Inter({subsets:["latin"]})
-const inter = Inter({ subsets: ["latin"] });
 
 const About = () => {
   return (
@@ -21,7 +16,7 @@ const About = () => {
           <div className="fig">
             <img src={sticker.src} alt="Logo" />
           </div>
-          <div className={`desc ${inter.className}`}>
+          <div className={`desc`}>
             <h2>
               JWoC: <span>How it Works?</span>
             </h2>
