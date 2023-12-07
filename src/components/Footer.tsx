@@ -9,12 +9,15 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdEmail, MdMail } from "react-icons/md";
 import '../css/footer.css'
 import logo from '../assets/jwoc_logos/jwoc_sticker.svg';
+import { useForm, ValidationError } from "@formspree/react";
 
 // const jetbrains = Inter({subsets:["latin"]})
 const inter = Inter({ subsets: ['latin'] })
 
 
 const Footer = () => {
+
+  const [state, handleSubmit] = useForm(process.env.CONTACT_FORM!);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,11 +31,15 @@ const Footer = () => {
     });
   };
 
-  const handleSubmit = (e:any) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted:', formData);
+  if (state.succeeded) {
+    return <p>Thanks for joining!</p>;
   }
+  // const handleSubmit = (e:any) => {
+  //   e.preventDefault();
+  //   // Add your form submission logic here
+  //   console.log('Form submitted:', formData);
+  // }
+
   return (
     <>
   
@@ -102,6 +109,11 @@ const Footer = () => {
               className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none "
               required
             />
+            <ValidationError 
+              prefix="Email" 
+              field="email"
+              errors={state.errors}
+            />
           </div>
           </div>
           <div>
@@ -114,9 +126,15 @@ const Footer = () => {
               // rows="3"
               required
             ></textarea>
+            <ValidationError 
+              prefix="Message" 
+              field="message"
+              errors={state.errors}
+            />
           </div>
           <button
             type="submit"
+            // disabled={state.submitting}
             className="bg-white text-blue-600 font-bold transition-all duration-1000 ease-in-out px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
           >
             Send
