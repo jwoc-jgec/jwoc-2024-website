@@ -21,8 +21,10 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { signIn } from "next-auth/react";
+import { useEffect } from "react";
 const formSchema = z.object({
   email: z.string().email({ message: "Enter a vaild email" }),
   password: z.string().min(6, {
@@ -31,6 +33,10 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
+  useEffect(() => {
+    AOS.init()
+}, [])
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,7 +60,9 @@ export default function LoginForm() {
     console.log(values);
   }
   return (
-    <Card className="md:w-[400px]">
+    <Card className="md:w-[400px]" data-aos="fade-down"
+    data-aos-easing="linear"
+    data-aos-duration="500">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Login to your account</CardTitle>
         <CardDescription>

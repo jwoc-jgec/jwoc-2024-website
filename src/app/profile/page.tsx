@@ -147,8 +147,8 @@ export default function ProfilePage() {
   // console.log("userData", userData.name);
 
   return (
-    <div className="flex flex-row gap-16 align-middle items-center justify-center font-sans ">
-      <div className="w-[40vw] h-[80vh] flex flex-col justify-center items-center">
+    <div className="flex flex-col md:flex-row gap-16 items-center justify-center font-sans">
+    <div className="md:w-[80vw] h-[80vh] flex flex-col justify-center items-center">
         <ProfileCard userData={userData} />
         <button
           onClick={() => signOut({ callbackUrl: "/" })}

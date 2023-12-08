@@ -1,4 +1,4 @@
-section#rewards div.heading{
+section#rewards div.heading-1{
     position: relative;
     margin: auto 4rem;
     user-select: none;
@@ -8,7 +8,7 @@ section#rewards div.heading{
     /* border-top: 2px solid rgba(218,175,255,.8); */
   }
   
-  section#rewards div.heading h1{
+  section#rewards div.heading-1 h1{
     padding: 0.3rem 0.5rem;
     width: fit-content;
     font-size: 2rem;
@@ -22,7 +22,7 @@ section#rewards div.heading{
     /* box-shadow: 0 4px 10px rgba(50, 69, 107, 0.2); */
   }
   
-  section#rewards div.heading span.pseudo {
+  section#rewards div.heading-1 span.pseudo-1-1-1-1 {
     position: absolute;
     top: -2rem;
     left: -1rem;
@@ -33,7 +33,7 @@ section#rewards div.heading{
     z-index: -1;
   }
   
-  section#rewards div.heading span.divider_1 {
+  section#rewards div.heading-1 span.divider_1 {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,7 +43,7 @@ section#rewards div.heading{
     background: white;
     z-index: -1;
   }
-  section#rewards div.heading span.divider_2 {
+  section#rewards div.heading-1 span.divider_2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -162,7 +162,7 @@ section#rewards {
   }
   
   @media (max-width: 472px) {
-    section#rewards div.heading {
+    section#rewards div.heading-1 {
       margin: auto 2rem;
     }
     section#rewards div.sub_head h2 {

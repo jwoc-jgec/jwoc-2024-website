@@ -187,7 +187,13 @@ const router = useRouter()
     //   className={`${inter.className}  absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}
     // >
     <>
-    {!timeUp ?<CountDown targetDate={targetDate} title="Mentee" />:<div
+    {!timeUp ?<CountDown targetDate={targetDate} title="Mentee" data-aos="fade-left"
+    data-aos-anchor="#example-anchor"
+    data-aos-offset="500"
+    data-aos-duration="500"/>:<div data-aos="fade-left"
+    data-aos-anchor="#example-anchor"
+    data-aos-offset="500"
+    data-aos-duration="500"
       className={`${inter.className} p-10  flex flex-col items-center justify-center`}
     >
       <Card className="w-80 md:w-[400px]">
