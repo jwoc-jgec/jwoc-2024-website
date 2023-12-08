@@ -167,7 +167,7 @@ export default function Home() {
       <SponsorCarousel />
       {/* <Stats/> */}
       <Rewards />
-      <ContactUs />
+      {/* <ContactUs /> */}
       <Footer />
     </>
   );

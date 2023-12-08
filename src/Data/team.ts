@@ -1,7 +1,6 @@
 import atri from "../assets/team/Atri_Sukul.jpg";
 import sayan from "../assets/team/Sayan_Majumder.png";
 import animesh from "../assets/team/Animesh_Bag.jpg";
-import rohan from "../assets/team/Rohan_Gope.jpg";
 import abhigyan from "../assets/team/abhigyan.jpeg";
 import sandy from "../assets/team/Sandipan_Chatterjee.jpg";
 import ankit from "../assets/team/ankit.jpeg";
@@ -82,18 +81,6 @@ export const team = [
     "Twitter Url": "https://twitter.com/ankit_2509",
     "Your Image in 1:1": "",
     imagefilename: ankit,
-    designation: "Organiser",
-  },
-
-  {
-    Timestamp: "1/19/2023 23:36:24",
-    "Full Name": "Rohan Gope",
-    "Linkedin Url": "https://www.linkedin.com/in/rohan-gope-a96072199",
-    "Github url": "https://github.com/Darkrider0007",
-    "Twitter Url": "https://twitter.com/RohanGope6",
-    "Your Image in 1:1":
-      "https://drive.google.com/open?id=1MbsRqdKG1cGe6RO2w60dD6fCD4f64YZm",
-    imagefilename: rohan,
     designation: "Organiser",
   },
 ];

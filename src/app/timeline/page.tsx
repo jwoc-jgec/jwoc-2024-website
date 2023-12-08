@@ -8,14 +8,8 @@ import { BarLoader } from "react-spinners";
 const inter = Inter({ subsets: ["latin"] });
 
 function page() {
-  const [loading, setLoading] = useState(false);
-
 
   return (
-    <>
-      {loading ? (
-        <BarLoader color="#07a1d9" style={{display: "block" , margin: "0 auto"}}/>
-      ) : (
         <section>
           <div className=" text-white py-8">
             <div className="heading timeline">
@@ -186,8 +180,6 @@ function page() {
             </div>
           </div>
         </section>
-      )}
-    </>
   );
 }
 

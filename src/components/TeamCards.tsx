@@ -23,7 +23,7 @@ interface TeamCardsProps {
 const TeamCards = (data: TeamCardsProps) => {
   return (
     <div className="nft">
-      <div className="main">
+      <div className="main-1">
         <img
           className="tokenImage"
           src={data.teamData.imagefilename.src}

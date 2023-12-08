@@ -22,9 +22,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-
+import { signIn } from "next-auth/react";
 const formSchema = z.object({
   email: z.string().email({ message: "Enter a vaild email" }),
   password: z.string().min(6, {
@@ -46,7 +44,9 @@ export default function LoginForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-
+   if (window.event ) {
+    window.event.preventDefault();
+   } 
     signIn("credentials", {
       email: values.email.trim(),
       password: values.password.trim(),
