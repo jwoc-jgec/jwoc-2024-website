@@ -7,7 +7,7 @@ import logo from "../assets/jwoc_logos/jwoc_sticker.svg";
 import { LogIn } from "lucide-react";
 
 import { Inter } from "next/font/google";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 function Navbar() {

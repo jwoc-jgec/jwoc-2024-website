@@ -9,8 +9,8 @@ import jgec from "../assets/img/jgec logo.png";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import SnowFall from "@/components/snowFall";
-import ContactUs from "@/components/ContactUs";
+import SnowFall from "@/components/SnowFall"; 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
