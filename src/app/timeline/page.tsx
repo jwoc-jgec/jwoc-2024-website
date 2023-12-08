@@ -6,11 +6,17 @@ import timeline from "../../assets/img/timeline.svg";
 import "../../css/timeline.css";
 import { BarLoader } from "react-spinners";
 const inter = Inter({ subsets: ["latin"] });
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 function page() {
+  useEffect(() => {
+    AOS.init()
+}, [])
 
   return (
-        <section>
+        <section data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="500" >
           <div className=" text-white py-8">
             <div className="heading timeline">
               <span className="pseudo"> </span>

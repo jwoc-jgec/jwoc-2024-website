@@ -26,8 +26,8 @@ const Stats = () => {
   return (
     <>
       <section id="rewards" className=" text-white max-w-[82rem]">
-        <div className="heading">
-          <span className="pseudo"></span>
+        <div className="heading-1">
+          <span className="pseudo-1"></span>
           <h1 className="font-bold border-stroke">Rewards</h1>
           <span className="divider_1"></span>
         </div>

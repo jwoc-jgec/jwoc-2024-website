@@ -1,11 +1,13 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/team1.css";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithubSquare, FaTwitterSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 interface TeamCardsProps {
   key: number;
   teamData: {
@@ -21,8 +23,11 @@ interface TeamCardsProps {
 }
 
 const TeamCards = (data: TeamCardsProps) => {
+  useEffect(() => {
+    AOS.init()
+}, [])
   return (
-    <div className="nft">
+    <div className="nft" data-aos="flip-left">
       <div className="main-1">
         <img
           className="tokenImage"

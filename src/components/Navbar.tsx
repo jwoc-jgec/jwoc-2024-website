@@ -14,7 +14,12 @@ function Navbar() {
   const { status } = useSession();
   const path = usePathname();
   return (
-    <nav className={`top-0 bg-transparent ${inter.className}`}>
+    <nav
+      className={`top-0 bg-transparent ${inter.className}`}
+      data-aos="fade-down"
+      data-aos-easing="linear"
+      data-aos-duration="500"
+    >
       <div className="hidden md:visible md:flex pt-7 max-w-7xl mx-auto items-center justify-between text-white px-2 ">
         <Link href={`/`}>
           <Image
