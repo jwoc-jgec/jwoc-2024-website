@@ -81,7 +81,7 @@ const registerSchema = z.object({
   question1: z.enum(["yes", "no"], {
     required_error: "You need to select yes ot no.",
   }),
-  question2: z.string().min(3, { message: "Answer Required" }).max(255),
+  question2: z.string().min(1, { message: "Answer Required" }).max(255),
   year: z.string().min(1).max(1),
   password: z.string().min(6).max(100),
   confirmPassword: z.string().min(6).max(100),

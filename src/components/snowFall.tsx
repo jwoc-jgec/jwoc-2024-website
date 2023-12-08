@@ -1,13 +1,13 @@
-"use client"
-import React from 'react'
-import Snowfall from 'react-snowfall'
+"use client";
+import React from "react";
+import Snowfall from "react-snowfall";
 
 const SnowFall = () => {
   return (
-    <div style={{width: '100vw' , height : '100vh' , background: 'transparent', position: 'relative' }}>
-    <Snowfall />
+    <div className="first-line:w-screen h-screen bg-transparent relative ">
+     <Snowfall snowflakeCount={250} />
     </div>
-  )
-}
+  );
+};
 
-export default SnowFall
+export default SnowFall;

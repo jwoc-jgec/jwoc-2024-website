@@ -3,6 +3,7 @@ import "../../css/team.css";
 import { team } from "@/Data/team";
 import TeamCards from "../../components/TeamCards";
 import { Inter } from "next/font/google";
+// import "../css/team.css";
 const inter = Inter({subsets:['latin']})
 
 function page() {
