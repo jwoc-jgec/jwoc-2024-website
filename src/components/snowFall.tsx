@@ -5,7 +5,7 @@ import Snowfall from "react-snowfall";
 const SnowFall = () => {
   return (
     <div className="first-line:w-screen h-screen bg-transparent relative ">
-      <Snowfall snowflakeCount={300} />
+     {window.innerWidth <= 600 ? <Snowfall snowflakeCount={50} /> : <Snowfall snowflakeCount={300} />}
     </div>
   );
 };
