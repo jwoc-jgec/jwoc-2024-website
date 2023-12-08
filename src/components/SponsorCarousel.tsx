@@ -1,27 +1,26 @@
-"use client"
 import Image from "next/image";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { community_partners } from "@/Data/communityData";
 import { StaticImageData } from "next/image";
 import dummy_img from '../assets/bg/bg_image.png'
-
 const halfwayThrough = Math.ceil(community_partners.length / 2);
 
 const firstHalf = community_partners.slice(0, halfwayThrough);
 const secondHalf = community_partners.slice(halfwayThrough);
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import { useEffect } from "react";
-
 const SponsorCarousel = () => {
-  useEffect(() => {
-    AOS.init()
-}, [])
+  const animationVariants = {
+    initial: {
+      y: -100, // Start from the top (off-screen)
+      opacity: 0, // Start with 0 opacity
+    },
+    animate: {
+      y: 0, // Move to the original position
+      opacity: 1, // Fade in
+    },
+  };
   return (
-    <div className=" text-white py-10" data-aos="fade-down"
-    data-aos-easing="linear"
-    data-aos-duration="500" >
+   <div className=" text-white py-10">
       <div className="text-3xl lg:text-4xl py-10 text-center font-bold">
         Community Partners
       </div>

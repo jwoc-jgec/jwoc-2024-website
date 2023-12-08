@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import { Award, Trophy } from "lucide-react";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import { sponsorsData } from "@/Data/sponsorData";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { motion } from 'framer-motion';
+
 function SponsorCard({
   key,
   imgLink,
@@ -93,19 +93,25 @@ function SponsorSection({
     </div>
   );
 }
+const animationVariants = {
+  initial: {
+    y: -100, // Start from the top (off-screen)
+    opacity: 0, // Start with 0 opacity
+  },
+  animate: {
+    y: 0, // Move to the original position
+    opacity: 1, // Fade in
+  },
+};
+
 
 function page() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
-    <div
-      data-aos="fade-down"
-      data-aos-easing="linear"
-      data-aos-duration="500"
-      className="  min-h-screen flex flex-col items-center text-white p-5"
-    >
+     <motion.div
+    initial="initial"
+    animate="animate"
+    variants={animationVariants}
+    transition={{ duration: 1 }} className="  min-h-screen flex flex-col items-center text-white p-5">
       <h1 className="text-4xl pt-16 md:pt-0 md:text-5xl text-center font-black py-5">
         Our Sponsors
       </h1>
@@ -121,7 +127,7 @@ function page() {
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

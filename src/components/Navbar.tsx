@@ -9,78 +9,90 @@ import { LogIn } from "lucide-react";
 import { Inter } from "next/font/google";
 import { usePathname } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
-
+import { motion } from "framer-motion";
 function Navbar() {
   const { status } = useSession();
   const path = usePathname();
+  const animationVariants = {
+    initial: {
+      y: -100, // Start from the top (off-screen)
+      opacity: 0, // Start with 0 opacity
+    },
+    animate: {
+      y: 0, // Move to the original position
+      opacity: 1, // Fade in
+    },
+  };
   return (
-    <nav
-      className={`top-0 bg-transparent ${inter.className}`}
-      data-aos="fade-down"
-      data-aos-easing="linear"
-      data-aos-duration="500"
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={animationVariants}
+      transition={{ duration: 1 }}
     >
-      <div className="hidden md:visible md:flex pt-7 max-w-7xl mx-auto items-center justify-between text-white px-2 ">
-        <Link href={`/`}>
-          <Image
-            src={logo}
-            alt={`JWoC Logo`}
-            height={80}
-            width={80}
-            className=""
-          />
-        </Link>
-
-        <div className="flex items-center gap-x-10 xl:gap-x-10 text-lg xl:text-xl ">
-          <Link
-            href={"/"}
-            className={path == "/" ? "text-blue-600 font-bold" : ""}
-          >
-            Home
+      <nav className={`top-0 bg-transparent ${inter.className}`}>
+        <div className="hidden md:visible md:flex pt-7 max-w-7xl mx-auto items-center justify-between text-white px-2 ">
+          <Link href={`/`}>
+            <Image
+              src={logo}
+              alt={`JWoC Logo`}
+              height={80}
+              width={80}
+              className=""
+            />
           </Link>
-          {/* <Link href={"/leaderboard"} className={path ==  ?"text-blue-600 font-bold":""}>
+
+          <div className="flex items-center gap-x-10 xl:gap-x-10 text-lg xl:text-xl ">
+            <Link
+              href={"/"}
+              className={path == "/" ? "text-blue-600 font-bold" : ""}
+            >
+              Home
+            </Link>
+            {/* <Link href={"/leaderboard"} className={path ==  ?"text-blue-600 font-bold":""}>
             leaderboard
           </Link> */}
 
-          <Link
-            href={"/timeline"}
-            className={path == "/timeline" ? "text-blue-600 font-bold" : ""}
-          >
-            Timeline
-          </Link>
-          {/* <Link href={"/project"} className={path ==  ?"text-blue-600 font-bold":""}>
+            <Link
+              href={"/timeline"}
+              className={path == "/timeline" ? "text-blue-600 font-bold" : ""}
+            >
+              Timeline
+            </Link>
+            {/* <Link href={"/project"} className={path ==  ?"text-blue-600 font-bold":""}>
             Projects
           </Link> */}
-          <Link
-            href={"/sponsors"}
-            className={path == "/sponsors" ? "text-blue-600 font-bold" : ""}
-          >
-            Sponsors
-          </Link>
-          <Link
-            href={`/team`}
-            className={path == "/team" ? "text-blue-600 font-bold" : ""}
-          >
-            Team
-          </Link>
-          {status === "unauthenticated" ? (
-            <div
-              onClick={() => signIn()}
-              className="bg-[#4d0eae] px-2 py-2 rounded-md flex items-center gap-1 cursor-pointer hover:bg-violet-950 transition-all duration-300"
-            >
-              <LogIn /> <span>MentorLocker</span>
-            </div>
-          ) : (
             <Link
-              href={`/profile`}
-              className="bg-violet-900 px-6 py-2 rounded-full hover:bg-violet-950 transition-all duration-300"
+              href={"/sponsors"}
+              className={path == "/sponsors" ? "text-blue-600 font-bold" : ""}
             >
-              profile
+              Sponsors
             </Link>
-          )}
+            <Link
+              href={`/team`}
+              className={path == "/team" ? "text-blue-600 font-bold" : ""}
+            >
+              Team
+            </Link>
+            {status === "unauthenticated" ? (
+              <div
+                onClick={() => signIn()}
+                className="bg-[#4d0eae] px-2 py-2 rounded-md flex items-center gap-1 cursor-pointer hover:bg-violet-950 transition-all duration-300"
+              >
+                <LogIn /> <span>MentorLocker</span>
+              </div>
+            ) : (
+              <Link
+                href={`/profile`}
+                className="bg-violet-900 px-6 py-2 rounded-full hover:bg-violet-950 transition-all duration-300"
+              >
+                profile
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </motion.div>
   );
 }
 

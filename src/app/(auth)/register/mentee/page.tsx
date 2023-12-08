@@ -181,19 +181,27 @@ const router = useRouter()
       });
     console.log(data);
   }
+  const animationVariants = {
+    initial: {
+      y: -100, // Start from the top (off-screen)
+      opacity: 0, // Start with 0 opacity
+    },
+    animate: {
+      y: 0, // Move to the original position
+      opacity: 1, // Fade in
+    },
+  };
 
   return (
     // <div
     //   className={`${inter.className}  absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}
     // >
     <>
-    {!timeUp ?<CountDown targetDate={targetDate} title="Mentee" data-aos="fade-left"
-    data-aos-anchor="#example-anchor"
-    data-aos-offset="500"
-    data-aos-duration="500"/>:<div data-aos="fade-left"
-    data-aos-anchor="#example-anchor"
-    data-aos-offset="500"
-    data-aos-duration="500"
+    {!timeUp ?<CountDown targetDate={targetDate} title="Mentee" />:<motion.div
+    initial="initial"
+    animate="animate"
+    variants={animationVariants}
+    transition={{ duration: 1 }}
       className={`${inter.className} p-10  flex flex-col items-center justify-center`}
     >
       <Card className="w-80 md:w-[400px]">
@@ -583,7 +591,7 @@ const router = useRouter()
           </Form>
         </CardContent>
       </Card>
-    </div>}
+    </motion.div>}
     </>
     
   );

@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import {
   FormField,
@@ -21,10 +19,8 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { motion } from "framer-motion";
 import { signIn } from "next-auth/react";
-import { useEffect } from "react";
 const formSchema = z.object({
   email: z.string().email({ message: "Enter a vaild email" }),
   password: z.string().min(6, {
@@ -33,10 +29,7 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
-  useEffect(() => {
-    AOS.init()
-}, [])
-
+ 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -59,10 +52,23 @@ export default function LoginForm() {
     });
     console.log(values);
   }
+  const animationVariants = {
+    initial: {
+      y: -100, // Start from the top (off-screen)
+      opacity: 0, // Start with 0 opacity
+    },
+    animate: {
+      y: 0, // Move to the original position
+      opacity: 1, // Fade in
+    },
+  };
   return (
-    <Card className="md:w-[400px]" data-aos="fade-down"
-    data-aos-easing="linear"
-    data-aos-duration="500">
+    <motion.div
+    initial="initial"
+    animate="animate"
+    variants={animationVariants}
+    transition={{ duration: 1 }} >
+    <Card className="md:w-[400px]">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Login to your account</CardTitle>
         <CardDescription>
@@ -105,5 +111,6 @@ export default function LoginForm() {
         </Form>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }
