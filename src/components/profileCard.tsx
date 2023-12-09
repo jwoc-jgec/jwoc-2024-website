@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import "../app/globals.css"; // Make sure to import your Tailwind CSS file
 import "../css/profileCard.css";

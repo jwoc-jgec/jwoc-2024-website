@@ -2,7 +2,6 @@ import LoginForm from "@/components/LoginForm";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import BarLoader from "react-spinners/BarLoader";
 const inter = Inter({ subsets: ["latin"] });
 
 export default async function page() {
