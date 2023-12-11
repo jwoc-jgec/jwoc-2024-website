@@ -43,7 +43,7 @@ export default function Home() {
               transition={{
                 duration: 0.7,
               }}
-              className="text-7xl md:text-8xl py-3"
+              className="text-7xl md:text-7xl py-3"
               style={{
                 backgroundImage:
                   "linear-gradient(to right, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241)); ",
