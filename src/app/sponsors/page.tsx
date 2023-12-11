@@ -112,9 +112,16 @@ function page() {
     animate="animate"
     variants={animationVariants}
     transition={{ duration: 1 }} className="  min-h-screen flex flex-col items-center text-white p-5">
-      <h1 className="text-4xl pt-16 md:pt-0 md:text-5xl text-center font-black py-5">
-        Our Sponsors
-      </h1>
+      <div className="text-white text-center ">
+        <p className="text-[1.35rem] text-[#5a5a5a]">MEET OUR MARVELOUS</p>
+        <h1 className="text-[2.8rem] font-extrabold" 
+        style={{
+        backgroundImage:"linear-gradient(0deg, rgb(34 0 103), rgb(159 0 72))",
+        WebkitBackgroundClip:"text",
+        backgroundClip:"text",
+        WebkitTextFillColor:"transparent",
+        }}>SPONSORS</h1>
+      </div>
       <div className="flex flex-col items-start w-full">
         {sponsorsData.map((data, idx) => {
           return (
