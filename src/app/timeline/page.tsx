@@ -29,9 +29,16 @@ function page() {
         <div className=" text-white py-8">
           <div className="heading timeline">
             <span className="pseudo"> </span>
-            <h1 className="font-bold border-stroke text-center ">
-              JWoC 2024 Timeline
-            </h1>
+            <div className="text-white text-center ">
+        <p className="text-[1.65rem] text-[#5a5a5a]">CHECKOUT THE</p>
+        <p className="text-[2.65rem] font-extrabold" 
+        style={{
+        backgroundImage:"linear-gradient(0deg, rgb(34 0 103), rgb(159 0 72))",
+        WebkitBackgroundClip:"text",
+        backgroundClip:"text",
+        WebkitTextFillColor:"transparent",
+        }}>TIMELINE</p>
+      </div>
             <span className="divider_1"></span>
           </div>
           <div
