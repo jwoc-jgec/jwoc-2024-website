@@ -22,11 +22,11 @@ export default function Home() {
         <SnowFall />
       </div>
       <main
-        className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-24 px-5 md:flex-row`}
+        className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-[80px] px-5 md:flex-row`}
       >
         {/* <img src={bg.src} alt="img" className="h-screen w-screen z-20"/> */}
         <div className="flex font-black text-center md:text-start flex-col text-[#00FFFF]">
-          <div className="pb-8">
+          <div className="pb-6">
             <motion.p
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -43,14 +43,14 @@ export default function Home() {
               transition={{
                 duration: 0.7,
               }}
-              className="text-6xl md:text-8xl py-3 btn-shine"
-              // style={{
-              //   backgroundImage:
-              //     "linear-gradient(90deg, #f887ff 2%, rgba(134,0,41,1) 48%, rgba(134,0,41,1) 54%, rgba(45,19,60,1) 87%, rgba(50,20,80,1) 136%); ",
-              //   WebkitBackgroundClip: "text",
-              //   backgroundClip: "text",
-              //   WebkitTextFillColor: "transparent",
-              // }}
+              className="text-7xl md:text-8xl py-3"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241)); ",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
             >
               A MONTH OF
             </motion.h1>
@@ -60,7 +60,7 @@ export default function Home() {
               transition={{
                 duration: 0.9,
               }}
-              className="text-7xl md:text-7xl pt-3 tracking-tight font-[1000] session"
+              className="text-7xl md:text-7xl pt-3 tracking-tight font-[1000] btn-shine"
             >
               OPEN SOURCE
             </motion.h2>
@@ -71,7 +71,7 @@ export default function Home() {
             transition={{
               duration: 0.5,
             }}
-            className={`max-w-xl font-light text-[16px] text-neutral-200 pb-8 ${inter.className}`}
+            className={`max-w-xl font-light text-[16px] text-neutral-200 pb-10 `}
           >
             JWoC (JGEC Winter of Code) is a coding event organised annually by
             JGEC which helps students to plunge into Open Source contribution
@@ -89,7 +89,7 @@ export default function Home() {
           >
             <Link
               href={"/register"}
-              className="relative rounded-md flex w-8/12 text-white items-center justify-center py-3 px-10 md:py-3 md:px-10 bg-black bg-opacity-20 font-bold text-lg md:text-2xl ring-2 ring-[#168D8F] transition-all duration-500 hover:text-[#168D8F] hover:ring-white"
+              className="relative rounded-md flex w-8/12 text-white items-center justify-center py-2 px-10 md:py-3 md:px-10 bg-black bg-opacity-20 font-bold text-lg md:text-2xl ring-2 ring-[#168D8F] transition-all duration-500 hover:text-[#168D8F] hover:ring-white"
             >
               {/* <section className="absolute py-3 md:py-10 transition-all duration-500 hover  w-0 left-0 group-hover:left-0  group-hover:w-full" /> */}
               Register Now
@@ -144,7 +144,7 @@ export default function Home() {
           </Link> */}
           </motion.div>
           <p
-            className={`text-sm max-w-xl flex flex-col items-center md:items-start mt-6 text-neutral-200 pb-10 ${inter.className} `}
+            className={`text-sm max-w-xl flex flex-col items-center md:items-start mt-6 text-neutral-200 pb-5  `}
           >
             <span className="font-light">IN ASSOCIATION WITH</span>
             <Link href="https://jgec.ac.in" target="_blank">

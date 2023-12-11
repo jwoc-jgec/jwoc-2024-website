@@ -1,6 +1,7 @@
 import React from "react";
-import sticker from "../assets/jwoc_logos/jwoc_sticker.svg";
+import sticker from "../assets/jwoc_logos/jwoc-2024.svg";
 import "../css/about.css";
+import "./font.css"
 
 const About = () => {
   return (
@@ -8,7 +9,7 @@ const About = () => {
       <section id="about" className="max-w-[84rem]">
         <div className="heading">
           <span className="pseudo"> </span>
-          <h1 className="font-bold text-white border-stroke">About Us</h1>
+          <h1 className="font-bold text-white">About Us</h1>
           <span className="divider_1"></span>
         </div>
 

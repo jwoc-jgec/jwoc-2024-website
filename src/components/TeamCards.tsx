@@ -1,4 +1,6 @@
 "use client";
+import "./font.css"
+
 import Image, { StaticImageData } from "next/image";
 import React, { useEffect, useState } from "react";
 import "../css/team1.css";

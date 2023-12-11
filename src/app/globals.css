@@ -1,7 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('https://fonts.gstatic.com/s/silkscreen/v18/wZsaSj3eK6A1Y6uk-8YQ-7h7.woff2') format('woff2'),
+       url('https://fonts.gstatic.com/s/silkscreen/v18/wZsaSj3eK6A1Y6uk-8YQ-7h7.woff') format('woff');
+  font-weight: 400;
+}
 .border-stroke {
   color: #190c32;
   -webkit-text-fill-color: transparent;
@@ -207,7 +212,7 @@
 
 
 .btn-shine {
-  background-image: linear-gradient(0deg, rgb(77, 14, 174), rgb(216,70,165));
+  background-image: radial-gradient(at bottom right , rgb(1, 35, 45), rgb(2, 133, 240), rgb(255, 255, 255));
    background-position: 0;
   background-clip: text;
   -webkit-text-fill-color: transparent;

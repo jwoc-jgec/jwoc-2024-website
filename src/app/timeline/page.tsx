@@ -51,12 +51,7 @@ function page() {
                 </p>
                 Lets start the Debugging, Decoding, Developing journey!
               </p>
-              <a
-                href="#timeline"
-                className="bg-[#00000082] flex gap-x-2 mr-auto transition-all duration-500  hover:text-[#168D8F] rounded shadow hover:shadow-lg py-2 px-4 border border-[#fff] "
-              >
-                Explore Now <Compass />
-              </a>
+              
             </div>
             <div className="ml-0 md:ml-12 lg:w-2/3 sticky" id="timeline">
               <div className=" mx-auto w-full h-full">

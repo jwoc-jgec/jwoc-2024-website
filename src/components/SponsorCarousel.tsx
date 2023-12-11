@@ -1,4 +1,6 @@
 "use client"
+import "../components/font.css"
+
 import Image from "next/image";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
@@ -23,7 +25,7 @@ const SponsorCarousel = () => {
   return (
    <div className=" text-white py-10">
       <div className="text-3xl lg:text-4xl py-10 text-center font-bold">
-        Community Partners
+        <p>Community Partners</p>
       </div>
       <div className="space-y-5">
         <Marquee>
@@ -67,7 +69,7 @@ function SponsorCard({
     href={link}
     className="flex w-64 p-3 flex-col rounded-xl items-center justify-center"
   >
-    <div className="h-44 w-44 mx-5 rounded-lg flex flex-col items-center justify-center">
+    <div className="h-44 w-44 mx-5 rounded-lg flex flex-col items-center justify-center opacity-70">
       <Image
         height={200}
         width={200}

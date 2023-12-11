@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import "./font.css"
+
 import React, { useState } from "react";
 import { Inter } from "next/font/google";
 import { useToast } from "./ui/use-toast";

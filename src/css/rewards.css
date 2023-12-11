@@ -22,7 +22,7 @@ section#rewards div.heading-1{
     /* box-shadow: 0 4px 10px rgba(50, 69, 107, 0.2); */
   }
   
-  section#rewards div.heading-1 span.pseudo-1-1-1-1 {
+  section#rewards div.heading-1 span.pseudo {
     position: absolute;
     top: -2rem;
     left: -1rem;
