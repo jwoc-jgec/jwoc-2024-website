@@ -21,6 +21,10 @@ import noobcode from '../assets/community_partner_logo/NoobCode.jpg'
 import osdev from '../assets/community_partner_logo/osdev.png'
 import sxccal from '../assets/community_partner_logo/sxccal.png'
 import tfug from '../assets/community_partner_logo/tfug.png'
+import dev from '../assets/community_partner_logo/dev.png'
+import aec from '../assets/community_partner_logo/aec.png'
+import vit from '../assets/community_partner_logo/vit.png'
+import hit from '../assets/community_partner_logo/hit.png'
 
 
 
@@ -139,5 +143,25 @@ export const community_partners = [
     name: "OS Dev Community",
     link: "https://www.linkedin.com/company/os-community/",
     imagefilename: osdev,
+  },
+  {
+    name: "Developers Community",
+    link: "https://www.linkedin.com/company/developerscommunity/",
+    imagefilename: dev,
+  },
+  {
+    name: "GDSC VIT",
+    link: "https://gdscvitc.eu.org/",
+    imagefilename: vit,
+  },
+  {
+    name: "GDSC AEC",
+    link: "https://gdsc.community.dev/asansol-engineering-college-asansol/",
+    imagefilename: aec,
+  },
+  {
+    name: "GDSC HIT",
+    link: "https://gdsc.community.dev/heritage-institute-of-technology-kolkata/",
+    imagefilename: hit,
   },
 ];

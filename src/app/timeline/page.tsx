@@ -61,7 +61,7 @@ function page() {
                     style={{
                       position: "absolute",
                       // right: "50%",
-                      border: "2px solid #4d0eae",
+                      border: "2px solid #fff",
                       borderRadius: "5%",
                     }}
                   ></div>
@@ -70,7 +70,7 @@ function page() {
                     style={{
                       position: "absolute",
                       // left: "50%",
-                      border: "2px solid #4d0eae",
+                      border: "2px solid #fff",
                       borderRadius: "5%",
                     }}
                   ></div>
