@@ -132,7 +132,7 @@ section#register {
     }
     section#register div.heading h1,
     section#register div.sub_head h2 {
-      font-size: 2.7rem;
+      font-size: 1.4rem;
     }
     section#register div.details {
       margin: 2rem;
@@ -144,7 +144,7 @@ section#register {
       width: 6rem;
     }
     section#register div.details .register_card h4 {
-      font-size: 2.8rem;
+      font-size: 1.5rem;
     }
   }
   
