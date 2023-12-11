@@ -10,6 +10,14 @@
 
 @layer base {
   :root {
+    --color-background: #000119;
+    --stroke-width: calc(1em / 16);
+    /* --font-size: 2vh; */
+    --font-weight: 700;
+    --letter-spacing: calc(1em / 8);
+
+
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -76,6 +84,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -107,7 +116,7 @@
   }
 
   30% {
-    transform: translateX(-140px,50px);
+    transform: translateX(-140px, 50px);
   }
 
   60% {
@@ -121,7 +130,7 @@
 
 @keyframes rotate-3 {
   0% {
-    transform: translateX(-160px,50px);
+    transform: translateX(-160px, 50px);
   }
 
   30% {
@@ -129,7 +138,7 @@
   }
 
   100% {
-    transform: translateX(-160px,50px);
+    transform: translateX(-160px, 50px);
   }
 }
 
@@ -162,6 +171,7 @@
   object-fit: cover;
   position: fixed;
 }
+
 .video-responsive {
   overflow: hidden;
   padding-bottom: 56.25%;
@@ -176,3 +186,53 @@
   width: 100%;
   position: absolute;
 }
+
+
+
+
+
+
+
+.session {
+  background-clip: text;
+  background-image: linear-gradient(to bottom right, #ec3f0f, #93084e, #bd069b, #fffb00);
+  color: var(--color-background);
+  /* font-size: var(--font-size); */
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  padding: calc(--stroke-width / 2);
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-width: var(--stroke-width);
+}
+
+
+.btn-shine {
+  background-image: linear-gradient(0deg, rgb(77, 14, 174), rgb(216,70,165));
+   background-position: 0;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* animation: shine 3s infinite linear; */
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* @keyframes shine {
+  0% {
+    background-position: -50px;
+  }
+
+  30% {
+    background-position: 280px;
+  }
+
+  60% {
+    background-position: 80px;
+  }
+
+  100% {
+    background-position: -50px;
+  }
+} */

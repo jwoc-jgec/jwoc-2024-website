@@ -1,4 +1,5 @@
 "use client";
+import "../components/font.css"
 import Link from "next/link";
 import "./globals.css";
 import SponsorCarousel from "@/components/SponsorCarousel";
@@ -9,7 +10,7 @@ import jgec from "../assets/img/jgec logo.png";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import SnowFall from "@/components/SnowFall"; 
+import SnowFall from "@/components/SnowFall";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,20 +22,20 @@ export default function Home() {
         <SnowFall />
       </div>
       <main
-        className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-28 px-5 md:flex-row`}
+        className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-24 px-5 md:flex-row`}
       >
         {/* <img src={bg.src} alt="img" className="h-screen w-screen z-20"/> */}
         <div className="flex font-black text-center md:text-start flex-col text-[#00FFFF]">
-          <div className="pb-14">
+          <div className="pb-8">
             <motion.p
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{
                 duration: 0.5,
               }}
-              className="text-xl md:text-4xl font-medium py-3 text-[#d846a5]"
+              className="text-xl md:text-4xl font-bold pb-3 text-[#ffffff]"
             >
-              WELCOME TO
+              YOU'VE BEEN ABDUCTED INTO
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, x: 200 }}
@@ -42,41 +43,35 @@ export default function Home() {
               transition={{
                 duration: 0.7,
               }}
-              className="text-4xl md:text-6xl py-3 "
-              style={{
-                backgroundImage: "linear-gradient(90deg, #f887ff 2%, rgba(134,0,41,1) 48%, rgba(134,0,41,1) 54%, rgba(45,19,60,1) 87%, rgba(50,20,80,1) 136%); ",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
+              className="text-6xl md:text-8xl py-3 btn-shine"
+              // style={{
+              //   backgroundImage:
+              //     "linear-gradient(90deg, #f887ff 2%, rgba(134,0,41,1) 48%, rgba(134,0,41,1) 54%, rgba(45,19,60,1) 87%, rgba(50,20,80,1) 136%); ",
+              //   WebkitBackgroundClip: "text",
+              //   backgroundClip: "text",
+              //   WebkitTextFillColor: "transparent",
+              // }}
             >
               A MONTH OF
             </motion.h1>
-            {/* <h2 className="text-5xl md:text-7xl tracking-wide drop-shadow-cyanGlow"> */}
-            <motion.h2
+             <motion.h2
               initial={{ opacity: 0, x: 300 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{
                 duration: 0.9,
               }}
-              className="text-5xl md:text-8xl tracking-tight font-bold bg-gradient-to-r from-purple-900 via-red-600 to-purple-900"
-              style={{
-                backgroundImage: "linear-gradient(0deg,#4d0eae,#d846a5)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
+              className="text-7xl md:text-7xl pt-3 tracking-tight font-[1000] session"
             >
               OPEN SOURCE
             </motion.h2>
-          </div>
+           </div>
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.5,
             }}
-            className={`max-w-xl font-light text-[16px] text-neutral-200 pb-10 ${inter.className}`}
+            className={`max-w-xl font-light text-[16px] text-neutral-200 pb-8 ${inter.className}`}
           >
             JWoC (JGEC Winter of Code) is a coding event organised annually by
             JGEC which helps students to plunge into Open Source contribution
@@ -88,16 +83,16 @@ export default function Home() {
             transition={{
               duration: 0.9,
             }}
-            whileHover={{ scale: 1.1 }}
+            // whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.8 }}
             className="group flex flex-col items-center md:items-start"
           >
             <Link
               href={"/register"}
-              className="relative rounded-md flex w-10/12 text-white items-center justify-center py-3 px-10 md:py-3 md:px-10 bg-black bg-opacity-20 font-bold text-lg md:text-2xl ring-2 ring-[#168D8F] transition-all duration-500 hover:text-[#168D8F] hover:ring-white"
+              className="relative rounded-md flex w-8/12 text-white items-center justify-center py-3 px-10 md:py-3 md:px-10 bg-black bg-opacity-20 font-bold text-lg md:text-2xl ring-2 ring-[#168D8F] transition-all duration-500 hover:text-[#168D8F] hover:ring-white"
             >
               {/* <section className="absolute py-3 md:py-10 transition-all duration-500 hover  w-0 left-0 group-hover:left-0  group-hover:w-full" /> */}
-              Register Now{" "}
+              Register Now
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
