@@ -32,9 +32,9 @@ export default function Home() {
               transition={{
                 duration: 0.5,
               }}
-              className="text-xl md:text-4xl font-medium pb-1 text-[#d846a5]"
+              className="text-xl md:text-4xl font-medium py-3 text-[#d846a5]"
             >
-              Welcome to
+              WELCOME TO
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, x: 200 }}
@@ -42,7 +42,13 @@ export default function Home() {
               transition={{
                 duration: 0.7,
               }}
-              className="text-4xl md:text-7xl text-white border-stroke"
+              className="text-4xl md:text-6xl py-3 "
+              style={{
+                backgroundImage: "linear-gradient(90deg, #f887ff 2%, rgba(134,0,41,1) 48%, rgba(134,0,41,1) 54%, rgba(45,19,60,1) 87%, rgba(50,20,80,1) 136%); ",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
             >
               A MONTH OF
             </motion.h1>
@@ -53,15 +59,15 @@ export default function Home() {
               transition={{
                 duration: 0.9,
               }}
-              className="text-5xl md:text-8xl tracking-tight font-bold"
+              className="text-5xl md:text-8xl tracking-tight font-bold bg-gradient-to-r from-purple-900 via-red-600 to-purple-900"
               style={{
-                backgroundImage: "linear-gradient(315deg,#4d0eae,#d846a5)",
+                backgroundImage: "linear-gradient(0deg,#4d0eae,#d846a5)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Open Source
+              OPEN SOURCE
             </motion.h2>
           </div>
           <motion.p

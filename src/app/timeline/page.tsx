@@ -118,7 +118,7 @@ function page() {
                     <div className="order-1 w-1/12 sm:w-5/12"></div>
                     <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4">
                       <p className="mb-3 text-base text-yellow-300">
-                        10 Dec - 14 Jan
+                        10 Jan - 14 Jan
                       </p>
                       <div className="mb-3 font-bold  text-xl md:text-xl text-left">
                         Community Bonding
