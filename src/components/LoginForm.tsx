@@ -1,4 +1,6 @@
 "use client"
+import "./font.css"
+
 import { Button } from "@/components/ui/button";
 import {
   FormField,

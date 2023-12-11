@@ -1,18 +1,20 @@
 "use client";
-
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../assets/jwoc_logos/jwoc_sticker.svg";
+import logo from "../assets/jwoc_logos/jwoc-2024.svg";
 import { LogIn } from "lucide-react";
-
-import { Inter } from "next/font/google";
+import "../components/font.css"
+import { Silkscreen } from "next/font/google";
 import { usePathname } from "next/navigation";
-const inter = Inter({ subsets: ["latin"] });
+const inter = Silkscreen({ weight: ["400","700"], subsets: ["latin"] });
 import { motion } from "framer-motion";
+import TextReveal from "./Texteffect";
+import { useEffect, useState } from "react";
 function Navbar() {
   const { status } = useSession();
   const path = usePathname();
+  const [hover , setHover] = useState(false)
   const animationVariants = {
     initial: {
       y: -100, // Start from the top (off-screen)
@@ -23,6 +25,13 @@ function Navbar() {
       opacity: 1, // Fade in
     },
   };
+    const hoverHandletrue =(e:any) =>{
+      setHover(true)
+    }
+    const hoverHandlefalse =()=>  {
+      setHover(false)
+    }
+
   return (
     <motion.div
       initial="initial"
@@ -30,7 +39,7 @@ function Navbar() {
       variants={animationVariants}
       transition={{ duration: 1 }}
     >
-      <nav className={`top-0 bg-transparent ${inter.className}`}>
+      <nav className={`top-0 bg-transparent `}>
         <div className="hidden md:visible md:flex pt-7 max-w-7xl mx-auto items-center justify-between text-white px-2 ">
           <Link href={`/`}>
             <Image
@@ -42,13 +51,18 @@ function Navbar() {
             />
           </Link>
 
-          <div className="flex items-center gap-x-10 xl:gap-x-10 text-lg xl:text-xl ">
+          <div className={`flex items-center gap-x-10 xl:gap-x-10 text-lg xl:text-xl `}>
             <Link
               href={"/"}
               className={path == "/" ? "text-blue-600 font-bold" : ""}
+              onMouseEnter={hoverHandletrue}
+              onMouseLeave={hoverHandlefalse}
             >
-              Home
-            </Link>
+              {!hover ? 
+              <span>Home</span>:
+              <TextReveal text="qweop098dfs721!@#$*()" dataValue="Home" />
+            }</Link>
+
             {/* <Link href={"/leaderboard"} className={path ==  ?"text-blue-600 font-bold":""}>
             leaderboard
           </Link> */}

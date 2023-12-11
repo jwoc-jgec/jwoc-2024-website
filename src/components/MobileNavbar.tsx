@@ -1,12 +1,14 @@
 "use client";
 
 import * as React from "react";
+import "./font.css"
+
 import Link from "next/link";
 import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useSession } from "next-auth/react";
-import logo from "../assets/jwoc_logos/jwoc_sticker.svg";
+import logo from "../assets/jwoc_logos/jwoc-2024.svg";
 import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +28,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`${inter.className} backdrop-blur-2xl sticky md:hidden text-white top-0 z-50 w-full`}
+      className={` backdrop-blur-2xl sticky md:hidden text-white top-0 z-50 w-full`}
     >
       <div className="items-center px-4  max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">

@@ -1,4 +1,6 @@
 import Navbar from "@/components/Navbar";
+import "../components/font.css"
+
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
@@ -6,7 +8,7 @@ import SessionProvider from "./Provider";
 import { getServerSession } from "next-auth";
 import MobileNavbar from "@/components/MobileNavbar";
 import { Toaster } from "@/components/ui/toaster";
-import favimg from "../assets/jwoc_logos/favicon.png";
+import favimg from "../assets/jwoc_logos/jwoc-2024.png";
 // import bg from '../assets/bg/bg.svg';
 import Footer from "@/components/Footer";
 import bg from "../assets/bg/13.png";
@@ -28,7 +30,7 @@ export default async function RootLayout({
       <link rel="icon" href={favimg.src} />
       <SessionProvider session={session}>
         <body
-          className={`${lato.className} h-auto bg-[#202020]`}
+          className={` h-auto bg-[#202020]`}
           // style={{
           // backgroundImage: `url(${bg.src})`,
           // background:`black url(${bg.src}) right no-repeat`,

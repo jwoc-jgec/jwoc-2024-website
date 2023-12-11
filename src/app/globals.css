@@ -1,7 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('https://fonts.gstatic.com/s/silkscreen/v18/wZsaSj3eK6A1Y6uk-8YQ-7h7.woff2') format('woff2'),
+       url('https://fonts.gstatic.com/s/silkscreen/v18/wZsaSj3eK6A1Y6uk-8YQ-7h7.woff') format('woff');
+  font-weight: 400;
+}
 .border-stroke {
   color: #190c32;
   -webkit-text-fill-color: transparent;

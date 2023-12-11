@@ -1,8 +1,10 @@
 "use client";
+import "../components/font.css"
+
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 import React from "react";
-import sticker from "../assets/jwoc_logos/jwoc_sticker.svg";
+import sticker from "../assets/jwoc_logos/jwoc-2024.svg";
 import "../css/rewards.css";
 import { Inter } from "next/font/google";
 import {
@@ -27,8 +29,8 @@ const Stats = () => {
     <>
       <section id="rewards" className=" text-white max-w-[82rem]">
         <div className="heading-1">
-          <span className="pseudo-1"></span>
-          <h1 className="font-bold border-stroke">Rewards</h1>
+          <span className="pseudo"></span>
+          <h1 className="font-bold">Rewards</h1>
           <span className="divider_1"></span>
         </div>
 

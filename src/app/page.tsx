@@ -1,4 +1,6 @@
 "use client";
+import "../components/font.css"
+
 import Link from "next/link";
 import "./globals.css";
 import SponsorCarousel from "@/components/SponsorCarousel";
@@ -70,7 +72,7 @@ export default function Home() {
             transition={{
               duration: 0.5,
             }}
-            className={`max-w-xl font-light text-[16px] text-neutral-200 pb-10 ${inter.className}`}
+            className={`max-w-xl font-light text-[16px] text-neutral-200 pb-10 `}
           >
             JWoC (JGEC Winter of Code) is a coding event organised annually by
             JGEC which helps students to plunge into Open Source contribution
@@ -143,7 +145,7 @@ export default function Home() {
           </Link> */}
           </motion.div>
           <p
-            className={`text-sm max-w-xl flex flex-col items-center md:items-start mt-6 text-neutral-200 pb-10 ${inter.className} `}
+            className={`text-sm max-w-xl flex flex-col items-center md:items-start mt-6 text-neutral-200 pb-10  `}
           >
             <span className="font-light">IN ASSOCIATION WITH</span>
             <Link href="https://jgec.ac.in" target="_blank">
