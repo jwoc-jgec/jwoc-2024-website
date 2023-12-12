@@ -51,7 +51,6 @@ code {
 
 .nft .main-1 .description {
   margin: 2vh;
-  font-family: Consolas;
   font-size: 1.2rem;
   width: 50%;
   padding: 1vh 0px;
@@ -147,7 +146,6 @@ code {
 }
 
 .main-1 h2 {
-  font-family: poppins;
   font-weight: 600;
   letter-spacing: 1px;
   color: rgb(103, 205, 245);

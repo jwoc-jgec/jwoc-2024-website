@@ -5,6 +5,7 @@ import abhigyan from "../assets/team/abhigyan.jpeg";
 import sandy from "../assets/team/Sandipan_Chatterjee.jpg";
 import ankit from "../assets/team/ankit.jpeg";
 import arjun from "../assets/team/arjun_chowdhury.jpg";
+import agnisha from "../assets/team/agnisha.jpg"
 
 export const team = [
   {
@@ -41,18 +42,6 @@ export const team = [
     designation: "Organiser",
   },
   {
-    Timestamp: "1/20/2023 0:05:37",
-    "Full Name": "Sandipan Chatterjee",
-    "Linkedin Url": "https://www.linkedin.com/in/sandipan-chatterjee-jgec",
-    "Github url": "https://github.com/sandy3002",
-    "Twitter Url":
-      "https://twitter.com/Sandipan2003?t=pJsCBvmrxB98Y4WTkycVlw&s=09",
-    "Your Image in 1:1":
-      "https://drive.google.com/open?id=1KtEpjXi-GY7WdsGSVzXNIcu6TMIT7872",
-    imagefilename: sandy,
-    designation: "Organiser",
-  },
-  {
     Timestamp: "1/19/2023 23:36:24",
     "Full Name": "Abhigyan Singh",
     "Linkedin Url": "https://www.linkedin.com/in/abhigyan103",
@@ -83,4 +72,26 @@ export const team = [
     imagefilename: ankit,
     designation: "Organiser",
   },
+  {
+    Timestamp: "1/19/2023 20:26:22",
+    "Full Name": "Agnisha De",
+    "Linkedin Url": "https://www.linkedin.com/in/agnisha-de-4a0018229",
+    "Github url": "https://github.com/AgnishaDe",
+    "Twitter Url": "https://twitter.com/",
+    "Your Image in 1:1": "",
+    imagefilename: agnisha,
+    designation: "Organiser",
+  },
+  {
+    Timestamp: "1/20/2023 0:05:37",
+    "Full Name": "Sandipan Chatterjee",
+    "Linkedin Url": "https://www.linkedin.com/in/sandipan-chatterjee-jgec",
+    "Github url": "https://github.com/sandy3002",
+    "Twitter Url":
+      "https://twitter.com/Sandipan2003?t=pJsCBvmrxB98Y4WTkycVlw&s=09",
+    "Your Image in 1:1":
+      "https://drive.google.com/open?id=1KtEpjXi-GY7WdsGSVzXNIcu6TMIT7872",
+    imagefilename: sandy,
+    designation: "Organiser",
+  }
 ];

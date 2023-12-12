@@ -57,10 +57,7 @@ export default async function RootLayout({
               zIndex: "-10900",
             }}
           ></div>
-          <div className="flex flex-col items-center justify-center text-white mb-4">
-            <img src={favimg.src} alt="JWoC logo" height={80} width={80} />
-            <p>Copyright © JWOC 2024. All rights reserved.</p>
-          </div>
+          
         </body>
       </SessionProvider>
     </html>
