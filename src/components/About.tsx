@@ -3,6 +3,9 @@ import sticker from "../assets/jwoc_logos/jwoc-2024.svg";
 import "../css/about.css";
 import "./font.css"
 
+import localFont from "next/font/local";
+
+
 const About = () => {
   return (
     <>
@@ -13,7 +16,7 @@ const About = () => {
           <span className="divider_1"></span>
         </div>
 
-        <div className="about container">
+        <div className="about container font-[localfont]">
           <div className="fig">
             <img src={sticker.src} alt="Logo" />
           </div>

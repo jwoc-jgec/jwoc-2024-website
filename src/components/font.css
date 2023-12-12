@@ -1,5 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen&family=VT323&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&family=Silkscreen&family=VT323&display=swap');
 a,h1,h2,h3,h4,h5,h6,p,span,div{
-    font-family: Silkscreen;
+    font-family: 'jost', sans-serif;
+}
+
+.silk{
+    font-family: silkscreen;
 }

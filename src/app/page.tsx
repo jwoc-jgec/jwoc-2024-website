@@ -12,6 +12,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import SnowFall from "@/components/SnowFall";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -33,9 +34,9 @@ export default function Home() {
               transition={{
                 duration: 0.5,
               }}
-              className="text-xl md:text-4xl font-bold pb-3 text-[#ffffff]"
+              className="text-xl silk md:text-4xl font-bold pb-3 text-[#ffffff]"
             >
-              YOU'VE BEEN ABDUCTED INTO
+              WELCOME TO
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, x: 200 }}
@@ -43,7 +44,7 @@ export default function Home() {
               transition={{
                 duration: 0.7,
               }}
-              className="text-7xl md:text-7xl py-3"
+              className="text-7xl asdf silk md:text-7xl py-3"
               style={{
                 backgroundImage:
                   "linear-gradient(to right, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241)); ",
@@ -60,7 +61,7 @@ export default function Home() {
               transition={{
                 duration: 0.9,
               }}
-              className="text-7xl md:text-7xl pt-3 tracking-tight font-[1000] btn-shine"
+              className="text-7xl silk md:text-7xl pt-3 tracking-tight font-[1000] btn-shine"
             >
               OPEN SOURCE
             </motion.h2>

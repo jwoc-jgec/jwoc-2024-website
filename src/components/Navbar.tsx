@@ -95,7 +95,7 @@ function Navbar() {
             {status === "unauthenticated" ? (
               <div
                 onClick={() => signIn()}
-                className="bg-[#4d0eae] px-2 py-2 rounded-md flex items-center gap-1 cursor-pointer hover:bg-violet-950 transition-all duration-300"
+                className="bg-[#033b74] px-2 py-2 rounded-md flex items-center gap-1 cursor-pointer hover:bg-[#1a3050] transition-all duration-300"
               >
                 <LogIn /> <span>MentorLocker</span>
               </div>

@@ -123,11 +123,14 @@ section#about div.about .desc h2 {
 
 section#about div.about .desc h2 span {
   margin: auto;
+  height: 50px;
+  display: flex;
+  align-items: center;
   margin-left: 1rem;
   padding: 0.3rem 0.5rem;
   font-size: 1.2rem;
   color: white;
-  background: #4d0eae;
+  background: #033b74;
   border-radius: 10px;
   user-select: none;
 }
