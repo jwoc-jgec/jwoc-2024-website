@@ -48,8 +48,7 @@ function page() {
           {team.map((data, idx) => {
             return (
               <>
-                <TeamCards key={idx} teamData={data} />
-                {idx}
+                <TeamCards key={idx} cardKey={idx}  teamData={data} />
               </>
             );
           })}

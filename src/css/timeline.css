@@ -6,6 +6,10 @@ div.heading{
     -moz-user-select: none;
     -ms-user-select: none;
   }
+  .backgroundCustom{
+    background: linear-gradient(77.9deg, #1d7ed9d2 20%, #0e2846a8 0%);
+ 
+  }
   
   div.heading h1{
     padding: 0.3rem 0.5rem;
@@ -18,10 +22,10 @@ div.heading{
     /* box-shadow: 0 4px 10px rgba(50, 69, 107, 0.2); */
   }
 .timecards{
-    background-color: rgba(218,175,255,.05);
-    padding: 1rem;
+    /* background-color: rgba(218,175,255,.05); */
+    padding: 2rem 1.5rem;
     border-radius: 10px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(40px);
 }
 .timecards p:first-child{
     /* color: #4d0eae; */

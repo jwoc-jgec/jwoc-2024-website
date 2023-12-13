@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Compass } from "lucide-react";
 import { Inter } from "next/font/google";
 import timeline from "../../assets/img/timeline.svg";
 import "../../css/timeline.css";
@@ -77,7 +76,7 @@ function page() {
 
                   <div className="mb-8 flex justify-between flex-row ml-5 sm:flex-row-reverse items-center left-timeline">
                     <div className="order-2 sm:order-1 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 text-left sm:text-right">
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 text-left sm:text-right backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">
                         20 Dec - 14 Jan
                       </p>
@@ -91,7 +90,7 @@ function page() {
                   </div>
                   <div className="mb-8 flex justify-between flex-row-reverse sm:flex-row ml-5 sm:ml-0 items-center w-full right-timeline">
                     <div className="order-1 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 text-left">
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 text-left backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">
                         20 Dec - 7 Jan
                       </p>
@@ -105,7 +104,7 @@ function page() {
                   </div>
                   <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
                     <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right">
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300"> 10 Jan</p>
                       <div className="mb-3 font-bold text-xl md:text-xl">
                         Project Announced
@@ -118,7 +117,7 @@ function page() {
                   </div>
                   <div className="mb-8 flex justify-between items-center flex-row-reverse sm:flex-row ml-5 sm:ml-0 w-full right-timeline">
                     <div className="order-1 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4">
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">
                         10 Jan - 14 Jan
                       </p>
@@ -133,7 +132,7 @@ function page() {
                   </div>
                   <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
                     <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right">
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">25 Jan</p>
                       <div className="mb-3 font-bold text-xl md:text-xl">
                         Coding for Phase 1 starts
@@ -146,7 +145,7 @@ function page() {
                   </div>
                   <div className="mb-8 flex justify-between items-center flex-row-reverse sm:flex-row ml-5 sm:ml-0 w-full right-timeline">
                     <div className="order-1 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4">
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">15 Feb</p>
                       <div className="mb-3 font-bold  text-xl md:text-xl text-left">
                         Phase II Begins, End of Phase I
@@ -159,7 +158,7 @@ function page() {
                   </div>
                   <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
                     <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right">
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">25 Feb</p>
                       <div className="mb-3 font-bold text-xl md:text-xl">
                         Phase II Ends - JWoC Ends
@@ -171,7 +170,7 @@ function page() {
                   </div>
                   <div className="mb-8 flex justify-between items-center flex-row-reverse sm:flex-row ml-5 sm:ml-0 w-full right-timeline">
                     <div className="order-1 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4">
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">28 Feb</p>
                       <div className="mb-3 font-bold  text-xl md:text-xl text-left">
                         Official Result Announcement

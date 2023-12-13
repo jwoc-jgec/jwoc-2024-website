@@ -1,5 +1,5 @@
 "use client";
-import "../css/font.css"
+import "../css/font.css";
 
 import Image, { StaticImageData } from "next/image";
 import React, { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { motion } from "framer-motion";
 interface TeamCardsProps {
-  key: number;
+  cardKey: number;
   teamData: {
     Timestamp: string;
     "Full Name": string;
@@ -42,14 +42,21 @@ const TeamCards = (data: TeamCardsProps) => {
       transition={{ duration: 1 }}
       className="nft"
     >
+      {/* <p className="text-white text-4xl">{data.cardKey}</p> */}
       <div className="main-1">
-        <img
+        <Image
           className="tokenImage"
           src={data.teamData.imagefilename.src}
           alt="Image"
+          width={250}
+          height={300}
         />
         <h2>{data.teamData["Full Name"]}</h2>
-        <p className="description">Organiser</p>
+        {data.cardKey === 0 ? (
+          <p className="description">Lead Organiser</p>
+        ) : (
+          <p className="description">Organiser</p>
+        )}
         <div className="tokenInfo">
           <div className="duration">
             <Link href={data.teamData["Linkedin Url"]}>

@@ -56,12 +56,14 @@ function Navbar() {
           >
             <a
               href="http://localhost:3000/"
-              className={path == "/" ? "text-blue-600 font-bold" : ""}
+              className={` relative after:content-[''] after:block after:absolute after:bottom-0 after:left-0 after:w-full after:h-2 after:bg-gradient-to-r after:from-#655F67 after:to-#655F67 after:via-transparent after:to-transparent after:bg-size-[12px 2px] ${
+                path == "/" ? "text-blue-600 font-bold" : ""
+              }`}
               onMouseEnter={hoverHandletrue}
               onMouseLeave={hoverHandlefalse}
             >
               {/* {!hover ? ( */}
-                <span>Home</span>
+              <span>Home</span>
               {/* ) : (
                 <TextReveal text="qweop098dfs721!@#$*()" dataValue="Home" />
               )} */}
@@ -88,7 +90,7 @@ function Navbar() {
             </Link>
             <Link
               href={`/team`}
-              className={path == "/team" ? "text-blue-600 font-bold" : "" }
+              className={path == "/team" ? "text-blue-600 font-bold" : ""}
             >
               Team
             </Link>

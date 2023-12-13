@@ -69,10 +69,10 @@ const Footer = () => {
                 <div className="Footerstyles__StyledFooterLinksColumn-sc-r8jcrk-5 foot8">
                   <h3 className="Footerstyles__StyledFooterLinksTitle-sc-r8jcrk-6 foot9">Archive</h3>
                   <ul>
-                    <li><a href="https://jwoc-2k23.vercel.app/" className="footer-links py-1">JWoC 2023</a></li>
-                    <li><a href="https://jwoc-2k22.vercel.app/" className="footer-links py-1">JWoC 2022</a></li>
-                    <li><a href="https://jwoc-2k21.vercel.app/" className="footer-links py-1">JWoC 2021</a></li>
-                    <li><a href="https://jwoc-2k20.vercel.app/" className="footer-links py-1">JWoC 2020</a></li>
+                    <li><a href="https://jwoc-2k23.vercel.app/" target="_blank" className="footer-links py-1">JWoC 2023</a></li>
+                    <li><a href="https://jwoc-2k22.vercel.app/" target="_blank" className="footer-links py-1">JWoC 2022</a></li>
+                    <li><a href="https://jwoc-2k21.vercel.app/" target="_blank" className="footer-links py-1">JWoC 2021</a></li>
+                    <li><a href="https://jwoc-2k20.vercel.app/" target="_blank"  className="footer-links py-1">JWoC 2020</a></li>
 
                   </ul>
                 </div>
