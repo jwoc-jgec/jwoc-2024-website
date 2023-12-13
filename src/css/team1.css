@@ -145,12 +145,12 @@ code {
   left: 200%;
 }
 
-.main-1 h2 {
+.main-1 p {
   font-weight: 600;
   letter-spacing: 1px;
   color: rgb(103, 205, 245);
   font-size: 1.4em;
-  margin-top: 1vh;
+  margin-top: 2vh;
 }
 
 .bg {

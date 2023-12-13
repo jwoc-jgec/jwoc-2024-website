@@ -45,13 +45,13 @@ const TeamCards = (data: TeamCardsProps) => {
       {/* <p className="text-white text-4xl">{data.cardKey}</p> */}
       <div className="main-1">
         <Image
-          className="tokenImage"
+          className="tokenImage hover:scale-[1.05] transition-transform "
           src={data.teamData.imagefilename.src}
           alt="Image"
           width={250}
           height={300}
         />
-        <h2>{data.teamData["Full Name"]}</h2>
+        <p>{data.teamData["Full Name"]}</p>
         {data.cardKey === 0 ? (
           <p className="description">Lead Organiser</p>
         ) : (
