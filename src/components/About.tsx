@@ -9,7 +9,7 @@ import localFont from "next/font/local";
 const About = () => {
   return (
     <>
-      <section id="about" className="max-w-[84rem]">
+      <section id="about" className="max-w-[82rem]">
         <div className="heading">
           <span className="pseudo"> </span>
           <h1 className="font-bold text-white">About Us</h1>

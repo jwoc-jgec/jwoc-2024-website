@@ -8,6 +8,21 @@ import "../globals.css";
 import { motion } from "framer-motion";
 // import "../css/team.css";
 const inter = Inter({ subsets: ["latin"] });
+function shuffle(array: Array<any>) {
+  let currentIndex = array.length;
+  let randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // Swap elements at current and random positions
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 
 function page() {
   const animationVariants = {
@@ -20,6 +35,7 @@ function page() {
       opacity: 1, // Fade in
     },
   };
+  const shuffledTeamData = shuffle([...team]);
   return (
     <section className={`${inter.className} mt-5`}>
       <motion.div
@@ -45,7 +61,7 @@ function page() {
       </motion.div>
       <div className="main-team-container">
         <div className="content">
-          {team.map((data, idx) => {
+          {shuffledTeamData.map((data, idx) => {
             return (
               <>
                 <TeamCards key={idx} cardKey={idx}  teamData={data} />

@@ -52,11 +52,12 @@ const TeamCards = (data: TeamCardsProps) => {
           height={300}
         />
         <p>{data.teamData["Full Name"]}</p>
-        {data.cardKey === 0 ? (
+        {/* {data.cardKey === 0 ? (
           <p className="description">Lead Organiser</p>
         ) : (
           <p className="description">Organiser</p>
-        )}
+        )} */}
+        <p className="description">{data.teamData['designation']}</p>
         <div className="tokenInfo">
           <div className="duration">
             <Link href={data.teamData["Linkedin Url"]}>
