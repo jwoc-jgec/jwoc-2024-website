@@ -14,7 +14,7 @@ section#register {
   section#register div.sub_head h2 {
     font-size: 1rem;
     font-weight: 600;
-    color: #787a91;
+    color: #bebecc;
     text-align: center;
     letter-spacing: 0.2px;
   }
@@ -60,7 +60,7 @@ section#register {
     font-size: 1.5rem;
     font-weight: bold;
     /* font-family: var(--codefont); */
-    color: #787a91;
+    color: #cbccda;
     text-align: center;
     letter-spacing: 0.2px;
   }
@@ -74,7 +74,7 @@ section#register {
     width: 100%;
     border-radius: 4px;
     /* background: linear-gradient(90deg, , var(--primarylight), var(--darkwhite)); */
-    background:linear-gradient(45deg, rgba(218,175,255,0),rgba(218,175,255,.05),#4d0eae,rgba(218,175,255,.05),rgba(218,175,255,0) )
+    background:linear-gradient(45deg, rgba(218,175,255,0),rgba(255, 255, 255, 0.05),#033b74,rgba(255, 255, 255, 0.05),rgba(218,175,255,0) )
   }
   
   section#register div.details .register_card p {
@@ -94,7 +94,7 @@ section#register {
     font-weight: 500;
     /* font-family: var(--codefont); */
     color: white;
-    background: #4d0eae;
+    background: #033b74;
     letter-spacing: 0.6px;
     border-radius: 10px;
     transition: all 0.2s ease;

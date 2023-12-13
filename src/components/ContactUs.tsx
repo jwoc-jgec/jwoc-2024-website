@@ -1,5 +1,5 @@
 import React from "react";
-import "./font.css"
+import "../css/font.css"
 
 function ContactUs() {
   return (

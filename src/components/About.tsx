@@ -1,7 +1,7 @@
 import React from "react";
 import sticker from "../assets/jwoc_logos/jwoc-2024.svg";
 import "../css/about.css";
-import "./font.css"
+import "../css/font.css"
 
 import localFont from "next/font/local";
 
@@ -20,7 +20,7 @@ const About = () => {
           <div className="fig">
             <img src={sticker.src} alt="Logo" />
           </div>
-          <div className={`desc`}>
+          <div className={`desc clip`}>
             <h2>
               JWoC: <span>How it Works?</span>
             </h2>

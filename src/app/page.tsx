@@ -1,5 +1,5 @@
 "use client";
-import "../components/font.css"
+import '../css/font.css'
 import Link from "next/link";
 import "./globals.css";
 import SponsorCarousel from "@/components/SponsorCarousel";
@@ -34,7 +34,7 @@ export default function Home() {
               transition={{
                 duration: 0.5,
               }}
-              className="text-xl silk md:text-4xl font-bold pb-3 text-[#ffffff]"
+              className="text-4xl silk md:text-4xl font-bold pb-2 text-[#ffffff]"
             >
               WELCOME TO
             </motion.p>
@@ -44,7 +44,7 @@ export default function Home() {
               transition={{
                 duration: 0.7,
               }}
-              className="text-7xl asdf silk md:text-7xl py-3"
+              className="text-[6vh] silk md:text-7xl "
               style={{
                 backgroundImage:
                   "linear-gradient(to right, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241)); ",
@@ -61,7 +61,7 @@ export default function Home() {
               transition={{
                 duration: 0.9,
               }}
-              className="text-7xl silk md:text-7xl pt-3 tracking-tight font-[1000] btn-shine"
+              className="text-[6vh] silk md:text-7xl  tracking-tight font-[1000] btn-shine"
             >
               OPEN SOURCE
             </motion.h2>

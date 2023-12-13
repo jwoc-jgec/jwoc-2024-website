@@ -212,7 +212,8 @@
 
 
 .btn-shine {
-  background-image: radial-gradient(at bottom right , #6366f1 20%, #f1e4e4,rgb(251, 113, 133) 80%);
+  background: linear-gradient(77.9deg, #02498b 0%, #7503d3 40%, #a00050 80%);
+  ;
    background-position: 0;
   background-clip: text;
   -webkit-text-fill-color: transparent;

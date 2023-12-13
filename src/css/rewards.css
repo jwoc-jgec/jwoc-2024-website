@@ -1,6 +1,9 @@
 section#rewards div.heading-1{
     position: relative;
     margin: auto 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -9,22 +12,19 @@ section#rewards div.heading-1{
   }
   
   section#rewards div.heading-1 h1{
-    padding: 0.3rem 0.5rem;
+    padding: 1.5rem 0.5rem 0 0.5rem;
     width: fit-content;
     font-size: 2rem;
     font-weight: 600;
     /* text-4xl md:text-6xl font-extrabold text-white border-stroke */
     /* letter-spacing: 2px; */
     align-items: center;
-    border-radius: 8px;
-    backdrop-filter: blur(4px);
-    background: rgba(0, 0, 0, 0.1);
     /* box-shadow: 0 4px 10px rgba(50, 69, 107, 0.2); */
   }
   
   section#rewards div.heading-1 span.pseudo {
     position: absolute;
-    top: -2rem;
+    top: -1.5rem;
     left: -1rem;
     width: 3rem;
     height: 3rem;
@@ -133,7 +133,7 @@ section#rewards {
     font-size: 1.3rem;
     font-weight: 500;
     /* font-family: var(--codefont);*/
-    color: #787a91;
+    color: #fff;
     text-align: center;
     letter-spacing: 0.4px;
   }
@@ -166,7 +166,7 @@ section#rewards {
       margin: auto 2rem;
     }
     section#rewards div.sub_head h2 {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
     }
     section#rewards div.sub_head p {
       font-size: 1.2rem;

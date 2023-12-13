@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import "./font.css"
+import "../css/font.css"
 
 import React, { useState } from "react";
 import { Inter } from "next/font/google";
@@ -161,7 +161,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a href="https://twitter.com/TeamJWOC">
-                        <div className="flex flex-row gap-3 items-center"><FaXTwitter fontSize="2em" />TeamJWOC</div>
+                        <div className="flex flex-row gap-3 items-center"><FaXTwitter fontSize="2em" />TeamJWoC</div>
                       </a>
                     </li>
                     <li>

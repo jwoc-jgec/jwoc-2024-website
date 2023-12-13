@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import "./font.css"
+import "../css/font.css"
 
 interface RemainingTime {
   days: number;

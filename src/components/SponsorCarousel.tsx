@@ -1,5 +1,5 @@
 "use client"
-import "../components/font.css"
+import "../css/font.css"
 
 import Image from "next/image";
 import Link from "next/link";

@@ -1,5 +1,5 @@
 "use client";
-import "../components/font.css"
+import "../css/font.css"
 
 import { StaticImageData } from "next/image";
 import Image from "next/image";
@@ -51,7 +51,7 @@ const Stats = () => {
         >
           <h2>
             Why you must register for{" "}
-            <span className="bg-[#033b74] px-2 py-1 rounded ">JWoC 2K24</span> ?
+            <span className="bg-[#033b74] px-2 py-1 rounded">JWoC 2024</span> ?
           </h2>
           <p>Because exciting rewards & prizes are waiting just for you.</p>
         </motion.div>

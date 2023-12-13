@@ -1,5 +1,5 @@
 "use client";
-import "../components/font.css"
+import "../css/font.css"
 
 import { useSession } from "next-auth/react";
 import Link from "next/link";

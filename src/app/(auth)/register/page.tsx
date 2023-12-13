@@ -23,7 +23,7 @@ function RegistrationButton({ title, link }: { title: string; link: string }) {
 
       <div className="details">
         <div className="register_card">
-          <Image src={mentee_reg.src} alt="Mentee Fig" />
+          <Image width={200} height={200} src={mentee_reg.src} alt="Mentee Fig" />
           <h4>Become a Mentee</h4>
           <p>
             If you are new to open source world or have some experience in open source and want to
@@ -44,7 +44,7 @@ function RegistrationButton({ title, link }: { title: string; link: string }) {
         {/* <img src="./assets/img/register.svg" alt="Reg Img" className="reg_img" /> */}
 
         <div className="register_card">
-          <Image src={mentor_reg.src} alt="Mentor Fig" />
+          <Image width={200} height={200} src={mentor_reg.src} alt="Mentor Fig" />
           <h4>Become a Mentor</h4>
           <p>
             If you have some unique projects which you are willing to add some features or complete

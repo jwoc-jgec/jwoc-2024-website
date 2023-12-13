@@ -38,10 +38,10 @@ function SponsorCard({
           height={200}
           width={200}
           alt=""
-          className={`rounded-xl object-cover p-4 ${
+          className={`rounded-xl object-cover p-4 shadow-[0_0_2px__rgba(255,255,255,.8)] transition-all duration-150 hover:scale-110 ${
             category != "Community Partner"
               ? "bg-[#afadad1c] backdrop-blur"
-              : "rounded-3xl"
+              : "rounded-3xl shadow-none"
           }`}
           src={imgLink}
         />

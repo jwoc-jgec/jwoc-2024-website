@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/jwoc_logos/jwoc-2024.svg";
 import { LogIn } from "lucide-react";
-import "../components/font.css";
+import "../css/font.css";
 import { Silkscreen } from "next/font/google";
 import { usePathname } from "next/navigation";
 const inter = Silkscreen({ weight: ["400", "700"], subsets: ["latin"] });
@@ -88,7 +88,7 @@ function Navbar() {
             </Link>
             <Link
               href={`/team`}
-              className={path == "/team" ? "text-blue-600 font-bold" : ""}
+              className={path == "/team" ? "text-blue-600 font-bold" : "" }
             >
               Team
             </Link>
@@ -104,7 +104,7 @@ function Navbar() {
                 href={`/profile`}
                 className="bg-violet-900 px-6 py-2 rounded-full hover:bg-violet-950 transition-all duration-300"
               >
-                profile
+                Profile
               </Link>
             )}
           </div>

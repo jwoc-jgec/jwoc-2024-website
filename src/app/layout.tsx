@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import "../components/font.css"
+import '../css/font.css'
 
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
@@ -30,7 +30,7 @@ export default async function RootLayout({
       <link rel="icon" href={favimg.src} />
       <SessionProvider session={session}>
         <body
-          className={` h-auto bg-[#202020]`}
+          className={` h-auto bg-[#202020] `}
           // style={{
           // backgroundImage: `url(${bg.src})`,
           // background:`black url(${bg.src}) right no-repeat`,

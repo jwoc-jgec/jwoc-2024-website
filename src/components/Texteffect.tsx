@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./font.css"
+import "../css/font.css"
 
 const TextReveal = ({ text, dataValue } : any) => {
   const [iteration, setIteration] = useState(0);

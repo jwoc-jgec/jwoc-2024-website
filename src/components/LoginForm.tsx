@@ -1,5 +1,5 @@
 "use client"
-import "./font.css"
+import "../css/font.css"
 
 import { Button } from "@/components/ui/button";
 import {

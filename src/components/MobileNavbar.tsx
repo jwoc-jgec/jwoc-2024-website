@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import "./font.css"
+import "../css/font.css"
 
 import Link from "next/link";
 import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={` backdrop-blur-2xl sticky md:hidden text-white top-0 z-50 w-full`}
+      className={` backdrop-blur-2xl sticky md:hidden text-white top-0 z-[5011] w-full`}
     >
       <div className="items-center px-4  max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">

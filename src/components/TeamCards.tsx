@@ -1,5 +1,5 @@
 "use client";
-import "./font.css"
+import "../css/font.css"
 
 import Image, { StaticImageData } from "next/image";
 import React, { useEffect, useState } from "react";

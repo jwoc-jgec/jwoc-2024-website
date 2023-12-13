@@ -166,7 +166,7 @@ const router = useRouter()
         if (data.message === "User registered.") {
           toast({
             title: "Congratulations",
-            description: "Successfully Registered for JWoC 2K24!",
+            description: "Successfully Registered for JWoC 2024!",
           });
           router.push('/')
         } else {
