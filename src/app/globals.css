@@ -1,12 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: 'Silkscreen';
   src: url('https://fonts.gstatic.com/s/silkscreen/v18/wZsaSj3eK6A1Y6uk-8YQ-7h7.woff2') format('woff2'),
-       url('https://fonts.gstatic.com/s/silkscreen/v18/wZsaSj3eK6A1Y6uk-8YQ-7h7.woff') format('woff');
+    url('https://fonts.gstatic.com/s/silkscreen/v18/wZsaSj3eK6A1Y6uk-8YQ-7h7.woff') format('woff');
   font-weight: 400;
 }
+
 .border-stroke {
   color: #190c32;
   -webkit-text-fill-color: transparent;
@@ -214,7 +216,7 @@
 .btn-shine {
   background: linear-gradient(77.9deg, #02498b 0%, #7503d3 40%, #a00050 80%);
   ;
-   background-position: 0;
+  background-position: 0;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   /* animation: shine 3s infinite linear; */
@@ -242,3 +244,11 @@
     background-position: -50px;
   }
 } */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(0deg, rgb(34 0 103), rgb(159 0 72));
+  border-radius: 6px;
+}

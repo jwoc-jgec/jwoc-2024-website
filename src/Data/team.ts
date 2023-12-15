@@ -17,7 +17,7 @@ export const team = [
     "Your Image in 1:1":
       "https://drive.google.com/open?id=1JLRTNtStikA4Gok56_Wv1q-xjXdkPe9B",
     imagefilename: atri,
-    designation: "Lead Organiser",
+    designation: "Organiser",
   },
   {
     Timestamp: "1/19/2023 23:29:03",

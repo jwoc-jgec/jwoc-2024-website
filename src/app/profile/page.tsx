@@ -7,6 +7,7 @@ import { signOut, useSession } from "next-auth/react";
 import "../../css/UserCard.css";
 import ProfileCard from "@/components/profileCard";
 import { TbLogout } from "react-icons/tb";
+import '../globals.css'
 interface UserData {
   name: string;
   email: string;
@@ -148,7 +149,7 @@ export default function ProfilePage() {
 
   return (
     <div className="flex flex-col md:flex-row gap-16 items-center justify-center font-sans">
-    <div className="md:w-[80vw] h-[80vh] flex flex-col justify-center items-center">
+    <div className="md:w-[100vw] h-[80vh] flex flex-col justify-center items-center">
         <ProfileCard userData={userData} />
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
@@ -158,14 +159,13 @@ export default function ProfilePage() {
           <TbLogout fontSize="1.3em" />
         </button>
       </div>
-      <div className="w-[60vw]">
+      <div className=" mt-0 md:mt-12 flex justify-center items-center w-[100vw]">
         {
-          <div className="flex justify-center flex-row">
+          <div className="flex justify-center items-center adjust">
             <div className="bg-[#debad647] backdrop-blur-[40px] focus:bg-[#FF42D947] focus:backdrop-blur-[40px] text-white p-8 w-full max-w-md mx-auto rounded-lg shadow-lg">
               <h1 className="text-2xl font-bold mb-6">
                 Uplolad Project Details &nbsp; {noOfUpload}/3
               </h1>
-
               <form onSubmit={submitForm}>
                 <div className="mb-4">
                   <label htmlFor="projectName" className="block mb-1">
@@ -239,6 +239,9 @@ export default function ProfilePage() {
                     </option>
                     <option className="text-black" value="Android">
                       Android
+                    </option>
+                    <option className="text-black" value="Android">
+                      Other
                     </option>
                   </select>
                 </div>

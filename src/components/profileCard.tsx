@@ -2,8 +2,9 @@
 import React from "react";
 import "../app/globals.css"; // Make sure to import your Tailwind CSS file
 import "../css/profileCard.css";
-
+import logo from '../assets/jwoc_logos/favicon.png'
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 
 interface UserData {
   name: string;
@@ -27,6 +28,7 @@ const ProfileCard = (userData : ProfileCardProps) => {
             <span className="logo">
               <h5>JWOC Card</h5>
             </span>
+              <Image src={logo} width={50} height={50} alt="jwoc-logo"></Image>
           </header>
 
           <div className="card-details">

@@ -40,7 +40,7 @@ const TeamCards = (data: TeamCardsProps) => {
       animate="animate"
       variants={animationVariants}
       transition={{ duration: 1 }}
-      className="nft"
+      className="card-container"
     >
       {/* <p className="text-white text-4xl">{data.cardKey}</p> */}
       <div className="main-1">
@@ -52,11 +52,6 @@ const TeamCards = (data: TeamCardsProps) => {
           height={300}
         />
         <p>{data.teamData["Full Name"]}</p>
-        {/* {data.cardKey === 0 ? (
-          <p className="description">Lead Organiser</p>
-        ) : (
-          <p className="description">Organiser</p>
-        )} */}
         <p className="description">{data.teamData['designation']}</p>
         <div className="tokenInfo">
           <div className="duration">

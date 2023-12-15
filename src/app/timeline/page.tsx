@@ -23,21 +23,25 @@ function page() {
       variants={animationVariants}
       transition={{ duration: 1 }}
     >
-      <section
-      >
+      <section>
         <div className=" text-white py-8">
           <div className="heading timeline">
             <span className="pseudo"> </span>
             <div className="text-white text-center ">
-        <p className="text-[1.65rem] text-[#5a5a5a]">CHECKOUT THE</p>
-        <p className="text-[2.65rem] font-extrabold" 
-        style={{
-        backgroundImage:"linear-gradient(0deg, rgb(34 0 103), rgb(159 0 72))",
-        WebkitBackgroundClip:"text",
-        backgroundClip:"text",
-        WebkitTextFillColor:"transparent",
-        }}>TIMELINE</p>
-      </div>
+              <p className="text-[1.65rem] text-[#5a5a5a]">CHECKOUT THE</p>
+              <p
+                className="text-[2.65rem] font-extrabold"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(0deg, rgb(34 0 103), rgb(159 0 72))",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                TIMELINE
+              </p>
+            </div>
             <span className="divider_1"></span>
           </div>
           <div
@@ -50,7 +54,6 @@ function page() {
                 </p>
                 Lets start the Debugging, Decoding, Developing journey!
               </p>
-              
             </div>
             <div className="ml-0 md:ml-12 lg:w-2/3 sticky" id="timeline">
               <div className=" mx-auto w-full h-full">
