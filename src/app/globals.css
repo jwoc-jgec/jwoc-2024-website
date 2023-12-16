@@ -252,3 +252,11 @@
   background-image: linear-gradient(0deg, rgb(34 0 103), rgb(159 0 72));
   border-radius: 6px;
 }
+
+.pixel{
+  transition: 0.5s;
+}
+.pixel:hover{
+  transform: scale(1.1) rotate(-5deg);
+
+}

@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import SnowFall from "@/components/SnowFall";
-
+import image from "../assets/jwoc_logos/image.png"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -162,7 +162,7 @@ export default function Home() {
         <div className="flex items-center justify-center">
           <div className="w-96 h-96 md:w-80 md:h-80 xl:w-[30rem] xl:h-[30rem] rounded-full  z-0 blur-3xl opacity-20" />
 
-          <div className="text-[8rem] text-white absolute z-10">05</div>
+          <div className="text-[8rem] text-white absolute z-10"><Image src={image} alt='JWoC' className='pixel'></Image></div>
         </div>
       </main>
       <About />
