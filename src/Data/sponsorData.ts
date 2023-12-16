@@ -12,7 +12,8 @@ import lwt from '../assets/sponsors_logo/lwt.png'
 import interviewbuddy from '../assets/sponsors_logo/interviewbuddy.png'
 import gdg from '../assets/sponsors_logo/gdg_siliguri.png'
 import taskade from '../assets/sponsors_logo/taskade.svg'
-
+import gmc from "../assets/sponsors_logo/gmc.png"
+import certificate from "../assets/img/certificate.png"
 // export const sponsors = [
 //     {
 //         "levels": {
@@ -208,7 +209,7 @@ export const sponsorsData = [
         {
         //   id: 1,
           name: "Quine",
-          link: "https://quine.sh/",
+          link: "https://quine.sh/?utm_source=jwoc",
           imagefilename: quine
         },
       ],
@@ -262,11 +263,24 @@ export const sponsorsData = [
       ],
     },
     {
+      tier: 'Certificate Partner',
+      tierimg:certificate,
+      data: [
+        {
+        //   id: 8,
+          name: "Give My Certificate",
+          link: "https://givemycertificate.com/",
+          imagefilename: gmc,
+        },
+        
+      ],
+    },
+    {
         tier: 'Learning Partner',
         tierimg:learning,
         data: [
           {
-          //   id: 8,
+          //   id: 9,
             name: "Learning while Travelling",
             link: "https://learningwhiletravelling.com/",
             imagefilename: lwt,
