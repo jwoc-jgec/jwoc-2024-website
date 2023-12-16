@@ -32,7 +32,7 @@ export default function Navbar() {
     >
       <div className="items-center px-4  max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
-          <Link href={`/`}>
+          <a href={`https://jwoc.tech/`}>
             <Image
               src={logo}
               alt={`JWoC Logo`}
@@ -40,7 +40,7 @@ export default function Navbar() {
               width={50}
               className="drop-shadow-cyanGlow pl-3"
             />
-          </Link>
+          </a>
           <div className="md:hidden">
             <button
               className="text-white outline-none p-2 rounded-md"
@@ -63,12 +63,13 @@ export default function Navbar() {
                   path == item.path && "text-blue-500 font-bold"
                 } text-xl`}
               >
-                <Link
+                <a
                   onClick={() => setState((prev) => !prev)}
-                  href={item.path}
+                    href={`https://jwoc.tech${item.path}`}
                 >
                   {item.title}
-                </Link>
+                </a>
+                
               </li>
             ))}
           </ul>
