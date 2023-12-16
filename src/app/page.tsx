@@ -15,13 +15,14 @@ import image from "../assets/jwoc_logos/jwoc-home.png"
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 export default function Home() {
   // const targetDate = new Date('2023-12-20T00:00:00').getTime();
   return (
     <>
       <div className="absolute w-full overflow-x-hidden">
         <SnowFall />
-      </div>
+      </div>      
       <main
         className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-[80px] px-5 md:flex-row`}
       >
