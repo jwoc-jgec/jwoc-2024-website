@@ -55,7 +55,7 @@ function Navbar() {
             className={`flex items-center gap-x-10 xl:gap-x-10 text-lg xl:text-xl `}
           >
             <a
-             href={`${process.env.BASE_URL}`}
+             href={`http://localhost:3000`}
               className={` relative after:content-[''] after:block after:absolute after:bottom-0 after:left-0 after:w-full after:h-2 after:bg-gradient-to-r after:from-#655F67 after:to-#655F67 after:via-transparent after:to-transparent after:bg-size-[12px 2px] ${
                 path == "/" ? "text-blue-600 font-bold" : ""
               }`}
@@ -74,7 +74,7 @@ function Navbar() {
           </Link> */}
 
             <a
-              href={`${process.env.BASE_URL}/timeline`}
+              href={`http://localhost:3000/timeline`}
               className={path == "/timeline" ? "text-blue-600 font-bold" : ""}
             >
               Timeline

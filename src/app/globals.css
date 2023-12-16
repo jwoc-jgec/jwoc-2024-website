@@ -255,21 +255,31 @@
 
 @keyframes anime{
   0%  {transform: rotate(-10deg);}
-  10%  {transform: rotate(-6deg);}
-  20%  {transform: rotate(-12deg);}
-  30%  {transform: rotate(-4deg);}
-  40%  {transform: rotate(-14deg);}
-  50%  {transform: rotate(-3deg);}
-  60%  {transform: rotate(-16deg);}
-  70%  {transform: rotate(-4deg);}
-  80%  {transform:  rotate(-13deg);}
-  90%  {transform:  rotate(-6deg);}
+  5%  {transform: rotate(-6deg);}
+  10%  {transform: rotate(-12deg);}
+  15%  {transform: rotate(-4deg);}
+  20%  {transform: rotate(-6deg);}
+  25%  {transform: rotate(-2deg);}
+  30%  {transform: rotate(-18deg);}
+  35%  {transform: rotate(-10deg);}
+  40%  {transform: rotate(-12deg);}
+  45%  {transform: rotate(-6deg);}
+  50%  {transform: rotate(-16deg);}
+  55%  {transform: rotate(-4deg);}
+  60%  {transform: rotate(-8deg);}
+  65%  {transform:  rotate(-2deg);}
+  70%  {transform:  rotate(-6deg);}
+  75%  {transform:  rotate(-10deg);}
+  80%  {transform:  rotate(-6deg);}
+  85%  {transform: rotate(-14deg);}
+  90%  {transform: rotate(-4deg);}
+  95%  {transform: rotate(-16deg);}
   100%  {transform: rotate(-10deg);}
 }
 
 .pixel{
   rotate: -5deg;
-  animation: anime 12.5s ease-in-out infinite;
+  animation: anime 20.5s ease-in-out infinite;
 }
 /*
 .pixel:hover{
