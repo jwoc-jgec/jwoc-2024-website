@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
@@ -21,6 +20,7 @@ export default function VerifyEmailPage() {
                     type: userType
                 }),
             })
+            
         } catch (error:any) {
             console.log(error.reponse.data); 
         }
@@ -34,7 +34,7 @@ export default function VerifyEmailPage() {
     }, []);
 
     return(
-        <div>
+        <div> scmmlkmskdmckjmdkjcx
         </div>
     )
 
