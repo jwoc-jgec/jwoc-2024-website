@@ -253,10 +253,27 @@
   border-radius: 6px;
 }
 
-.pixel{
-  transition: 0.5s;
+@keyframes anime{
+  0%  {transform: rotate(-10deg);}
+  10%  {transform: rotate(-6deg);}
+  20%  {transform: rotate(-12deg);}
+  30%  {transform: rotate(-4deg);}
+  40%  {transform: rotate(-14deg);}
+  50%  {transform: rotate(-3deg);}
+  60%  {transform: rotate(-16deg);}
+  70%  {transform: rotate(-4deg);}
+  80%  {transform:  rotate(-13deg);}
+  90%  {transform:  rotate(-6deg);}
+  100%  {transform: rotate(-10deg);}
 }
-.pixel:hover{
-  transform: scale(1.1) rotate(-5deg);
 
+.pixel{
+  rotate: -5deg;
+  animation: anime 12.5s ease-in-out infinite;
 }
+/*
+.pixel:hover{
+  transform: scale(1.2) rotate(5deg);
+  transition: 0.3s;
+
+} */

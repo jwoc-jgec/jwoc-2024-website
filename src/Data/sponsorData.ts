@@ -4,14 +4,14 @@ import silver from '../assets/img/silver.png'
 import learning from '../assets/img/learning.png'
 import community from '../assets/img/community.png'
 import { community_partners } from "@/Data/communityData";
-import quine from '../assets/sponsors_logo/quine.svg'
-import xyz from '../assets/sponsors_logo/xyz.svg'
-import axure from '../assets/sponsors_logo/axure.svg'
-import jetbrains from '../assets/sponsors_logo/jetbrains.svg'
+import quine from '../assets/sponsors_logo/quine.png'
+import xyz from '../assets/sponsors_logo/xyz.png'
+import axure from '../assets/sponsors_logo/axure.png'
+import jetbrains from '../assets/sponsors_logo/jetbrains.png'
 import lwt from '../assets/sponsors_logo/lwt.png'
 import interviewbuddy from '../assets/sponsors_logo/interviewbuddy.png'
 import gdg from '../assets/sponsors_logo/gdg_siliguri.png'
-import taskade from '../assets/sponsors_logo/taskade.svg'
+import taskade from '../assets/sponsors_logo/taskade.png'
 import gmc from "../assets/sponsors_logo/gmc.png"
 import certificate from "../assets/img/certificate.png"
 // export const sponsors = [
