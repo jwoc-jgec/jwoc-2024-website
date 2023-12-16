@@ -1,6 +1,6 @@
+// "use client"
 import Navbar from "@/components/Navbar";
 import '../css/font.css'
-
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
@@ -12,6 +12,7 @@ import favimg from "../assets/jwoc_logos/jwoc-2024.png";
 // import bg from '../assets/bg/bg.svg';
 import Footer from "@/components/Footer";
 import bg from "../assets/bg/13.png";
+// import { useEffect, useState } from "react";
 
 const lato = Lato({ weight: ["100", "300", "400"], subsets: ["latin"] });
 
@@ -24,12 +25,20 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   // Simulating data fetching
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 3000);
+  // }, []);
   const session = await getServerSession();
   return (
     <html lang="en">
       <link rel="icon" href={favimg.src} />
       <SessionProvider session={session}>
-        <body
+        {/* { loading &&  */}
+         <body
           className={` h-auto bg-[#202020] `}
           // style={{
           // backgroundImage: `url(${bg.src})`,
@@ -59,6 +68,7 @@ export default async function RootLayout({
           ></div>
           
         </body>
+        {/* } */}
       </SessionProvider>
     </html>
   );

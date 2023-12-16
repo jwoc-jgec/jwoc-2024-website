@@ -105,12 +105,12 @@ function Navbar() {
                 <LogIn /> <span>MentorLocker</span>
               </div>
             ) : (
-              <Link
-                href={`/profile`}
+              <a
+              href={"http://localhost:3000/profile"}
                 className="bg-[#033b74] px-4 py-2 rounded-md flex items-center gap-1 cursor-pointer hover:bg-[#1a3050] transition-all duration-300"
               >
                 Profile
-              </Link>
+              </a>
             )}
           </div>
         </div>

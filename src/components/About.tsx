@@ -5,7 +5,6 @@ import "../css/font.css"
 
 import localFont from "next/font/local";
 
-
 const About = () => {
   return (
     <>
