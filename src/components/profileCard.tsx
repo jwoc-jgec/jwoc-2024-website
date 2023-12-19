@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import React from "react";
 import "../app/globals.css"; // Make sure to import your Tailwind CSS file
 import "../css/profileCard.css";
-import logo from '../assets/jwoc_logos/favicon.png'
+import logo from "../assets/jwoc_logos/favicon.png";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 
@@ -15,20 +15,19 @@ interface UserData {
 }
 
 interface ProfileCardProps {
-    userData: UserData;
-  }
-  
+  userData: UserData;
+}
 
-const ProfileCard = (userData : ProfileCardProps) => {
+const ProfileCard = (userData: ProfileCardProps) => {
   return (
     <section>
       <div className="container text-white">
-        <div className="card front-face">
+        <div className="card  front-face">
           <header>
             <span className="logo">
               <h5>JWOC Card</h5>
             </span>
-              <Image src={logo} width={50} height={50} alt="jwoc-logo"></Image>
+            <Image src={logo} width={50} height={50} alt="jwoc-logo"></Image>
           </header>
 
           <div className="card-details">
@@ -46,10 +45,9 @@ const ProfileCard = (userData : ProfileCardProps) => {
         </div>
 
         <div className="card back-face">
-            
           <h6>
-            For customer service call +97 89725 68869 or email at
-         &nbsp;{userData.userData.email}
+            For customer service call +97 89725 68869 or email at &nbsp;
+            {userData.userData.email}
           </h6>
           <span className="magnetic-strip"></span>
           <div className="signature">

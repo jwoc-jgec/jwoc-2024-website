@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import '../css/font.css'
+import "../css/font.css";
 
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
@@ -57,7 +57,6 @@ export default async function RootLayout({
               zIndex: "-10900",
             }}
           ></div>
-          
         </body>
       </SessionProvider>
     </html>
