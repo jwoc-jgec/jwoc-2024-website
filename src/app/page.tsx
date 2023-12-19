@@ -1,5 +1,5 @@
 "use client";
-import '../css/font.css'
+import "../css/font.css";
 import Link from "next/link";
 import "./globals.css";
 import SponsorCarousel from "@/components/SponsorCarousel";
@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import SnowFall from "@/components/SnowFall";
-import image from "../assets/jwoc_logos/jwoc-home.png"
+import image from "../assets/jwoc_logos/jwoc-home.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <div className="absolute w-full overflow-x-hidden">
         <SnowFall />
-      </div>      
+      </div>
       <main
         className={`flex max-w-7xl mx-auto flex-col justify-between items-center pt-[80px] px-5 md:flex-row`}
       >
@@ -55,7 +55,7 @@ export default function Home() {
             >
               A MONTH OF
             </motion.h1>
-             <motion.h2
+            <motion.h2
               initial={{ opacity: 0, x: 300 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{
@@ -65,7 +65,7 @@ export default function Home() {
             >
               OPEN SOURCE
             </motion.h2>
-           </div>
+          </div>
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -162,7 +162,14 @@ export default function Home() {
         <div className="flex items-center justify-center">
           <div className="w-96 h-96 md:w-80 md:h-80 xl:w-[30rem] xl:h-[30rem] rounded-full  z-0 blur-3xl opacity-20" />
 
-          <div className="text-[8rem] text-white absolute z-10"><Image height={500}  src={image} alt='JWoC' className='pixel'></Image></div>
+          <div className="text-[8rem] text-white absolute z-10">
+            <Image
+              height={500}
+              src={image}
+              alt="JWoC"
+              className="pixel"
+            ></Image>
+          </div>
         </div>
       </main>
       <About />
