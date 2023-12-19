@@ -91,7 +91,7 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
-  const targetDate = new Date('December 20, 2023 18:00:00 GMT+0530').getTime()
+  const targetDate = new Date('December 20, 2023 12:00:00 GMT+0530').getTime()
   const [timeUp, setTimeUp] = useState(false);
 
   useEffect(() => {
