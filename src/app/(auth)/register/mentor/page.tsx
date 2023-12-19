@@ -35,12 +35,13 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useRouter } from "next/navigation";
 import CountDown from "@/components/CountDown";
+import { PulseLoader } from "react-spinners";
 const registerSchema = z.object({
  
   email: z.string().email(),
@@ -83,6 +84,7 @@ const registerSchema = z.object({
   }),
   question2: z.string().min(1, { message: "Answer Required" }).max(255),
   year: z.string().min(1).max(1),
+  otp: z.string().min(6).max(6),
   password: z.string().min(6).max(100),
   confirmPassword: z.string().min(6).max(100),
 });
@@ -91,8 +93,16 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
-  const targetDate = new Date('December 20, 2023 12:00:00 GMT+0530').getTime()
+  const targetDate = new Date('December 20, 2023 18:00:00 GMT+0530').getTime()
+  const [loading, setLoading] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
+  const [genOtp, setgenOtp] = useState("");
+  const [isverified, setIsverified] = useState(false);
+  const [firstTime, setFirstTime] = useState(true);
+  const [email, setEmail] = useState("");
   const [timeUp, setTimeUp] = useState(false);
+  const [seconds, setSeconds] = useState(60);
+  const [timesUp, setTimesUp] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -127,10 +137,11 @@ export default function Home() {
       question2: "",
       whatsapp: "",
       year: "",
+      otp: "",
     },
   });
 
-  function onSubmit(data: Input) {
+ async function onSubmit(data: Input) {
     if (data.confirmPassword !== data.password) {
       toast({
         title: "Passwords do not match",
@@ -154,8 +165,30 @@ export default function Home() {
       phone,
       answer2,
       answer1,
+      isVerified : true,
       ...rest,
     };
+
+    const resUserExists = await fetch("/api/userExist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: "Mentor",
+        email: renamedData.email,
+      }),
+    });
+
+    const { user } = await resUserExists.json();
+
+    if (user) {
+      toast({
+        title: "User Already Exist",
+        variant: "destructive",
+      });
+      return;
+    }
 
     fetch("/api/register", {
       method: "POST",
@@ -188,9 +221,93 @@ export default function Home() {
     console.log(data);
   }
 
+  function generateOTP() {
+    const digits = "0123456789abcdefghijklmnopqrstuvwxyz";
+    const otpLength = 6;
+    let otp = "";
+    for (let i = 1; i <= otpLength; i++) {
+      const index = Math.floor(Math.random() * digits.length);
+      otp = otp + digits[index];
+    }
+    return otp;
+  }
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailRegex.test(email);
+  };
+
+
+  async function handleOTP(email: string) {
+    setIsverified(false);
+    const validRes = isValidEmail(email);
+    if (!validRes) {
+      toast({
+        title: "Enter a Valid Email",
+        variant: "destructive",
+      });
+      return;
+    }
+    setLoading(true);
+    setFirstTime(false);
+    
+    toast({
+      title: "Direction",
+      description: "Have sent OTP to your email",
+    });
+    const OTP = await generateOTP().toUpperCase();
+    setgenOtp(OTP);
+    setTimeout(() => {
+      setLoading(false);
+    }, 10000);
+
+    const resUserExists = await fetch("/api/verifyEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        otp: OTP,
+        email: email,
+      }),
+    });
+    console.log("resUserExists", resUserExists);
+    if (resUserExists.ok) {
+      setOtpSent(true);
+      // setIsverified(true);
+      // toast({
+      //   title: "Congratulations",
+      //   description: "You have successfully verified your email",
+      // });
+      return;
+    }
+    setOtpSent(false);
+    toast({
+      title: "Failed to send OTP",
+      variant: "destructive",
+    });
+  }
+
+
+  function matchcOTP(otp: string) {
+    // console.log(otpSent);
+    console.log("otp   : ", genOtp);
+
+    if (otp.trim() === genOtp) {
+      setIsverified(true);
+      toast({
+        title: "Congratulations",
+        description: "You have successfully verified your email",
+      });
+      return;
+    }
+    toast({
+      title: "Wrong OTP Entered",
+      variant: "destructive",
+    });
+  }
   return (
     <>
-    {!timeUp?<CountDown targetDate={targetDate} title="Mentor"/>:<div
+    {timeUp?<CountDown targetDate={targetDate} title="Mentor"/>:<div
       className={`${inter.className}  p-10  flex flex-col items-center justify-center`}
     >
       <Card className="w-80 md:w-[400px]">
@@ -234,18 +351,109 @@ export default function Home() {
                 />
                 {/* email */}
                 <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter your email..." {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <div className="flex flex-row items-center space-x-2">
+                          <FormItem
+                            className={`${otpSent ? `w-[100%]` : `w-[70%]`}`}
+                          >
+                            <FormLabel>
+                              <span>Email</span>
+                            </FormLabel>
+                            <FormControl>
+                              {/* {!otpSent ? ( */}
+                              <Input
+                                placeholder="Enter your email..."
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                          {/* Button to verify email */}
+                          <Button
+                            type="button"
+                            className={`${cn({
+                              hidden: formStep === 2,
+                            })} mt-8 w-[30%]`}
+                          >
+                            {!loading ? (
+                              <>
+                                {!firstTime ? (
+                                  <>
+                                    {/* {timesUp ? ( */}
+                                      <span
+                                        onClick={() => handleOTP(field.value)}
+                                      >
+                                        Resend OTP
+                                      </span>
+                                    {/* ) : (
+                                      <span>00:{seconds}</span>
+                                    )} */}
+                                  </>
+                                ) : (
+                                  <span onClick={() => handleOTP(field.value)}>
+                                    Verify
+                                  </span>
+                                )}
+                              </>
+                            ) : (
+                              <span>
+                                <PulseLoader size={5} color="#36d7b7" />
+                              </span>
+                            )}
+                          </Button>
+                        </div>
+                      )}
+                    />
+                    {otpSent && (
+                      <FormField
+                        control={form.control}
+                        name="otp"
+                        render={({ field }) => (
+                          <div className="flex flex-row items-center space-x-2">
+                            <FormItem className="w-[70%]">
+                              <FormLabel>
+                                <span>OTP</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Enter your OTP..."
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                            <Button
+                              type="button"
+                              className={`${cn({
+                                hidden: formStep === 2,
+                              })} mt-8 w-[30%]`}
+                            >
+                              {!isverified ? (
+                                <span onClick={() => matchcOTP(field.value)}>
+                                  Match
+                                </span>
+                              ) : (
+                                <>
+                                  {" "}
+                                  {loading ? (
+                                    <span
+                                      onClick={() => matchcOTP(field.value)}
+                                    >
+                                      Match
+                                    </span>
+                                  ) : (
+                                    <CheckCircle2 color="#00ff00" />
+                                  )}
+                                </>
+                              )}
+                            </Button>
+                            {/* )} */}
+                          </div>
+                        )}
+                      />
+                    )}
                 {/* student id */}
                 <FormField
                   control={form.control}
@@ -343,7 +551,7 @@ export default function Home() {
                   ease: "easeInOut",
                 }}
               >
-                {/* name */}
+                {/* name */} 
                 <FormField
                   control={form.control}
                   name="Address"

@@ -19,6 +19,7 @@ export async function POST(req: Request) {
       linkedIn,
       isFirstTime,
       answer1,
+      isVerified 
     } = await req.json();
     // console.log(name);
     // console.log(email);
@@ -41,6 +42,7 @@ export async function POST(req: Request) {
       linkedIn,
       isFirstTime,
       answer1,
+      isVerified
     });
 
     // send success mail for successful registration

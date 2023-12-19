@@ -18,13 +18,13 @@ function page() {
     },
   };
 
-  const d:any = new  Date();
-  let txt:any
-  const day:any=d.getDate()
-  const month:any=d.getMonth() + 1
-  if(month=="12" && day>=10){
-    txt="Mentee & Mentor Registration"
-  }
+  // const d:any = new  Date();
+  // let txt:any
+  // const day:any=d.getDate()
+  // const month:any=d.getMonth() + 1
+  // if(month=="12" && day>=10){
+  //   txt="Mentee & Mentor Registration"
+  // }
 
   return (
     <motion.div
@@ -65,7 +65,7 @@ function page() {
                 Lets start the Debugging, Decoding, Developing journey!   
               </p>
               <div className="py-20 fixed">
-              {txt}
+              {/* {txt} */}
             </div>
             </div>
             
