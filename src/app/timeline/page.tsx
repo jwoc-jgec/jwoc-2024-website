@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import timeline from "../../assets/img/timeline.svg";
 import "../../css/timeline.css";
 import { motion } from "framer-motion";
+import { TransformStreamDefaultController } from "stream/web";
 const inter = Inter({ subsets: ["latin"] });
 function page() {
   const animationVariants = {
@@ -16,6 +17,15 @@ function page() {
       opacity: 1, // Fade in
     },
   };
+
+  const d:any = new  Date();
+  let txt:any
+  const day:any=d.getDate()
+  const month:any=d.getMonth() + 1
+  if(month=="12" && day>=10){
+    txt="Mentee & Mentor Registration"
+  }
+
   return (
     <motion.div
       initial="initial"
@@ -52,9 +62,13 @@ function page() {
                 <p className="font-extrabold text-[#168D8F]">
                   Have a look what we scheduled for you!
                 </p>
-                Lets start the Debugging, Decoding, Developing journey!
+                Lets start the Debugging, Decoding, Developing journey!   
               </p>
+              <div className="py-20 fixed">
+              {txt}
             </div>
+            </div>
+            
             <div className="ml-0 md:ml-12 lg:w-2/3 sticky" id="timeline">
               <div className=" mx-auto w-full h-full">
                 <div className="relative wrap overflow-hidden px-0 py-10 sm:p-10 h-full">
