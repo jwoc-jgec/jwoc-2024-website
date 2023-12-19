@@ -307,7 +307,7 @@ export default function Home() {
   }
   return (
     <>
-    {timeUp?<CountDown targetDate={targetDate} title="Mentor"/>:<div
+    {!timeUp?<CountDown targetDate={targetDate} title="Mentor"/>:<div
       className={`${inter.className}  p-10  flex flex-col items-center justify-center`}
     >
       <Card className="w-80 md:w-[400px]">

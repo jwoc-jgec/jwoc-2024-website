@@ -329,7 +329,7 @@ export default function Home() {
 
   return (
         <>
-      {timeUp ? (
+      {!timeUp ? (
         <CountDown targetDate={targetDate} title="Mentee" />
       ) : (
         <motion.div
