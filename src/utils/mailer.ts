@@ -1,10 +1,11 @@
-import nodemailer from "nodemailer";
+// import nodemailer from "nodemailer";
 // import bcryptjs from "bcryptjs";
 // import Mentee from "@/models/mentee";
 // import Mentor from "@/models/mentor";
+// import { render } from "@react-email/render"
+import { transport } from "./mailTransporters";
 import { NextResponse } from "next/server";
-import { render } from "@react-email/render"
-import { verificationMail, contactUsMail, registrationSuccessfulMail, resetPasswordMail } from "@/assets/emails";
+import { verificationMail, contactUsMail, registrationSuccessfulMail, resetPasswordMail } from "@/utils/emails";
 
 export interface mailInfo {
     to: string | Array<string>,
@@ -22,7 +23,10 @@ export interface mailInfo {
 
 export interface info {
     userType?: string,
-    otp?: string
+    otp?: string,
+    senderName?: string,
+    senderEmail?: string,
+    senderMessage?: string
 }
 
 export const sendEmail = async ({to, mailType, info} : mailInfo) => {
@@ -30,15 +34,15 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
         
         const from = process.env.EMAIL;
 
-        var transport = nodemailer.createTransport({
-            host: process.env.BASE_URL,
-            port: 587,
-            service: "gmail",
-            auth: {
-                user: process.env.EMAIL,
-                pass: process.env.MAIL_PASSWORD
-            }
-        });
+        // var transport = nodemailer.createTransport({
+        //     host: process.env.BASE_URL,
+        //     port: 587,
+        //     service: "gmail",
+        //     auth: {
+        //         user: process.env.EMAIL,
+        //         pass: process.env.MAIL_PASSWORD
+        //     }
+        // });
 
         console.log(to, mailType, info);
         if(mailType === "VERIFICATION") {
@@ -46,7 +50,7 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
                 from,
                 to,
                 subject: "Email Verification for JWoC-2k24",
-                html: render(verificationMail(info))
+                html: verificationMail(info)
             });
         }
         else if(mailType === "REGISTRATION SUCCESS") {
@@ -54,7 +58,7 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
                 from,
                 to,
                 subject: `Welcome To JWoC | Successfully Registered as ${info.userType}`,
-                html: render(registrationSuccessfulMail(info)),
+                html: registrationSuccessfulMail(info),
                 attachments: [
                     // attachments
                 ]
@@ -65,7 +69,7 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
                 from,
                 to,
                 subject: 'JWoC - Reset Password',
-                html: render(resetPasswordMail(info))
+                html: resetPasswordMail(info)
             });
         }
         else if(mailType === "CONTACT") {
@@ -73,7 +77,7 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
                 from,
                 to: from,
                 subject: "User Query/Feedback",
-                html: render(contactUsMail(info))
+                html: contactUsMail(info)
             })
         }
 
