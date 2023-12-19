@@ -7,7 +7,8 @@
     "turbo-dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview-email": "email dev"
   },
   "dependencies": {
     "@formspree/react": "^2.5.1",
@@ -17,6 +18,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
+    "@react-email/html": "^0.0.7",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -29,6 +31,7 @@
     "nodemailer": "^6.9.7",
     "react": "^18",
     "react-dom": "^18",
+    "react-email": "^1.10.0",
     "react-fast-marquee": "^1.6.2",
     "react-hook-form": "^7.48.2",
     "react-hot-toast": "^2.4.1",
