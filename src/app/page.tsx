@@ -1,8 +1,10 @@
 "use client";
-import "../css/font.css";
+import '../css/font.css'
+import '../css/loader.css'
 import Link from "next/link";
 import "./globals.css";
 import SponsorCarousel from "@/components/SponsorCarousel";
+import React, { useEffect, useState } from 'react';
 import About from "@/components/About";
 import Rewards from "@/components/Rewards";
 import { Inter } from "next/font/google";
@@ -11,14 +13,21 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import SnowFall from "@/components/SnowFall";
-import image from "../assets/jwoc_logos/jwoc-home.png";
+import image from "../assets/jwoc_logos/jwoc-home.png"
+import snowflake from '../assets/img/snowflake.png'
+import jwoc_load from '../assets/jwoc_logos/jwoc_icon.svg'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   // const targetDate = new Date('2023-12-20T00:00:00').getTime();
+  const [mainPageLoading, setMainPageLoading] = useState(true);
+  useEffect(() =>{
+    setTimeout(() => setMainPageLoading(false), 4000);
+   })
   return (
     <>
+    {!mainPageLoading ? <>
       <div className="absolute w-full overflow-x-hidden">
         <SnowFall />
       </div>
@@ -178,6 +187,17 @@ export default function Home() {
       <Rewards />
       {/* <ContactUs /> */}
       <Footer />
+      </>:<div id="preloader">
+      <div className="loader">
+        <div className="svglayer">
+          <Image src={snowflake} alt="Snowflake" />
+          <span>
+            <Image src={jwoc_load} alt='s'/>
+          </span>
+        </div>
+        <h4>&lt;LOADING&gt;</h4>
+      </div>
+    </div>}
     </>
   );
 }
