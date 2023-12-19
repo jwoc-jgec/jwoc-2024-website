@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import "../css/font.css"
 
 import React, { useState } from "react";
@@ -11,16 +11,16 @@ import { MdMail } from "react-icons/md";
 import '../css/footer.css'
 import '../css/footers.css'
 import logo from '../assets/jwoc_logos/jwoc-2024.svg';
-import { useForm, ValidationError } from "@formspree/react";
+// import { useForm, ValidationError } from "@formspree/react";
 
 // const jetbrains = Inter({subsets:["latin"]})
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 const Footer = () => {
 
   const { toast } = useToast();
 
-  const [state, formSubmit] = useForm("xyyqrddr");
+  // const [state, formSubmit] = useForm("xyyqrddr");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,15 +43,28 @@ const Footer = () => {
   //   setFormData({ name: "", email: "", message: "" });
   // }
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    await formSubmit(formData);
-    console.log('Form submitted:', formData);
-    toast({
-      title: "Message Sent Successfully",
-      description: "Thank you for Contact Us."
-    })
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      e.preventDefault();
+      // Add your form submission logic here
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      });
+      console.log('Form submitted:', formData);
+      setFormData({ name: "", email: "", message: "" });
+      toast({
+        title: "Message Sent Successfully",
+        description: "Thank you for Contact Us."
+      })
+    } catch (error) {
+      toast({
+        title: "Something went Wrong",
+        variant: "destructive"
+      });
+    }
   }
 
   return (
@@ -129,7 +142,7 @@ const Footer = () => {
                       </div>
                       <button
                         type="submit"
-                        disabled={state.submitting}
+                        // disabled={state.submitting}
                         className="bg-white text-blue-600 font-bold transition-all duration-1000 ease-in-out px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
                       >
                         Send

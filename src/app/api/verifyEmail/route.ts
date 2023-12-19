@@ -31,7 +31,7 @@ export async function POST(request: NextRequest){
         // user.verifyToken = undefined;
         // await user.save();
 
-        const [ otp, email ] = await request.json();
+        const { otp, email } = await request.json();
         await sendEmail({ to: email, mailType: "VERIFICATION", info: {otp}});
         
         return NextResponse.json({ message: "OTP Sent Successfully" }, {status: 200})

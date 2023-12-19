@@ -43,8 +43,9 @@ export async function POST(req: Request) {
       answer1,
     });
 
-    // send verification mail for verify Email ID
-    await sendEmail({ email, userType: "Mentee", userId: savedMentee._id})
+    // send success mail for successful registration
+    // await sendEmail({ email, userType: "Mentee", userId: savedMentee._id})
+    await sendEmail({to: email, mailType: "REGISTRATION SUCCESS", info: {userType: "Mentee"}});
 
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {

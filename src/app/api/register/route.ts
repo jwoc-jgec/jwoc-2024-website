@@ -43,7 +43,7 @@ export async function POST(req: Request) {
       answer2,
     });
 
-    // send verification mail for verify Email ID
+    // send success mail for successful registration
     // await sendEmail({ email, userType: "Mentor", userId: savedMentor._id})
     await sendEmail({to: email, mailType: "REGISTRATION SUCCESS", info: {userType: "Mentor"}});
 
