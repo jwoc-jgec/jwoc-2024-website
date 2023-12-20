@@ -25,6 +25,7 @@ import dev from '../assets/community_partner_logo/dev.png'
 import aec from '../assets/community_partner_logo/aec.png'
 import vit from '../assets/community_partner_logo/vit.png'
 import hit from '../assets/community_partner_logo/hit.png'
+import iet from '../assets/community_partner_logo/iet.png'
 
 
 
@@ -163,5 +164,10 @@ export const community_partners = [
     name: "GDSC HIT",
     link: "https://gdsc.community.dev/heritage-institute-of-technology-kolkata/",
     imagefilename: hit,
+  },
+  {
+    name: "GDSC IET",
+    link: "https://www.linkedin.com/company/google-developer-student-club-iet-lucknow/",
+    imagefilename: iet,
   },
 ];
