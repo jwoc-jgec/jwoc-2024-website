@@ -21,6 +21,9 @@ const Footer = () => {
   const { toast } = useToast();
 
   // const [state, formSubmit] = useForm("xyyqrddr");
+
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,6 +49,8 @@ const Footer = () => {
     try {
       e.preventDefault();
       // Add your form submission logic here
+
+      setLoading(true);
       await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -53,6 +58,7 @@ const Footer = () => {
         },
         body: JSON.stringify(formData)
       });
+      setLoading(false);
       console.log('Form submitted:', formData);
       setFormData({ name: "", email: "", message: "" });
       toast({
@@ -60,6 +66,7 @@ const Footer = () => {
         description: "Thank you for Contact Us."
       })
     } catch (error) {
+      setLoading(false);
       toast({
         title: "Something went Wrong",
         variant: "destructive"

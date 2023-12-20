@@ -76,9 +76,9 @@ const registerSchema = z.object({
     .min(3, { message: "Your LinkedIn Handle should not be that short!" })
     .max(255),
   question1: z.enum(["yes", "no"], {
-    required_error: "You need to select yes ot no.",
+    required_error: "You need to select yes or no.",
   }),
-  question2: z.string().min(3, { message: "Answer Required" }).max(255),
+  question2: z.string().min(2, { message: "Answer Required" }).max(500),
   otp: z.string().min(6).max(6),
   year: z.string().min(1).max(1),
   password: z.string().min(6).max(100),
@@ -91,6 +91,7 @@ type Input = z.infer<typeof registerSchema>;
 export default function Home() {
   const targetDate = new Date("December 20, 2023 18:00:00 GMT+0530").getTime();
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [genOtp, setgenOtp] = useState("");
   const [isverified, setIsverified] = useState(false);
@@ -164,6 +165,7 @@ export default function Home() {
       ...rest,
     };
     setEmail(email);
+    setLoading2(true);
     const resUserExists = await fetch("/api/userExist", {
       method: "POST",
       headers: {
@@ -176,7 +178,7 @@ export default function Home() {
     });
 
     const { user } = await resUserExists.json();
-
+    setLoading2(false);
     if (user) {
       toast({
         title: "User Already Exist",
@@ -184,7 +186,7 @@ export default function Home() {
       });
       return;
     }
-
+    setLoading2(true);
     fetch("/api/menteeReg", {
       method: "POST",
       headers: {
@@ -194,7 +196,8 @@ export default function Home() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("response from Server", data);
+        // console.log("response from Server", data);
+        setLoading2(false);
         if (data.message === "User registered.") {
           toast({
             title: "Congratulations",
@@ -209,6 +212,7 @@ export default function Home() {
         }
       })
       .catch((error) => {
+        setLoading2(false);
         console.error(error);
       });
     console.log(data);
@@ -293,7 +297,7 @@ export default function Home() {
 
   function matchcOTP(otp: string) {
     // console.log(otpSent);
-    console.log("otp   : ", genOtp);
+    // console.log("otp   : ", genOtp);
 
     if (otp.trim() === genOtp) {
       setIsverified(true);
@@ -442,6 +446,7 @@ export default function Home() {
                       <FormField
                         control={form.control}
                         name="otp"
+                        disabled={isverified}
                         render={({ field }) => (
                           <div className="flex flex-row items-center space-x-2">
                             <FormItem className="w-[70%]">
