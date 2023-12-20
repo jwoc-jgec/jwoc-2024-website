@@ -19,14 +19,14 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       answer1 ,
-      answer2,
-      isVerified
+      answer2
+      // isVerified
     } = await req.json();
     // console.log(name);
     // console.log(email);
     // console.log(password);
     // console.log(phone);
-    console.log("isVerified ---> ", isVerified);
+    // console.log("isVerified ---> ", isVerified);
     
     const hashedPassword = await bcrypt.hash(password, 10);
     await connectMongoDB();
@@ -42,14 +42,21 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       answer1,
-      answer2,
-      isVerified
+      answer2
+      // isVerified
     });
 console.log("savedMentor", savedMentor);
 
     // send success mail for successful registration
     // await sendEmail({ email, userType: "Mentor", userId: savedMentor._id})
-    await sendEmail({to: email, mailType: "REGISTRATION SUCCESS", info: {userType: "Mentor"}});
+    await sendEmail({
+      to: email, 
+      mailType: "REGISTRATION SUCCESS", 
+      info: { 
+        userType: "Mentor", 
+        userName: name 
+      }
+    });
 
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {

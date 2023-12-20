@@ -18,8 +18,8 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       isFirstTime,
-      answer1,
-      isVerified 
+      answer1
+      // isVerified 
     } = await req.json();
     // console.log(name);
     // console.log(email);
@@ -41,13 +41,20 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       isFirstTime,
-      answer1,
-      isVerified
+      answer1
+      // isVerified
     });
 
     // send success mail for successful registration
     // await sendEmail({ email, userType: "Mentee", userId: savedMentee._id})
-    await sendEmail({to: email, mailType: "REGISTRATION SUCCESS", info: {userType: "Mentee"}});
+    await sendEmail({
+      to: email,
+      mailType: "REGISTRATION SUCCESS", 
+      info: {
+        userType: "Mentee",
+        userName: name
+      }
+    });
 
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {

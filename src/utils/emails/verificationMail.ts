@@ -163,7 +163,7 @@ const verificationMail = ({ otp }: info) => {
                                                 <div style="text-align: left">
                                                     <div style="padding-bottom: 20px">
                                                         <img
-                                                            src="https://jwoc-5.vercel.app/_next/static/media/jwoc-2024.652c49b8.svg"
+                                                            src="https://www.jwoc.tech/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fjwoc-2024.693e9e27.png&w=128&q=75"
                                                             alt="JWoC-2k24"
                                                             style="width: 56px"
                                                         />
