@@ -10,7 +10,7 @@ import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { MdMail } from "react-icons/md";
 import '../css/footer.css'
 import '../css/footers.css'
-import logo from '../assets/jwoc_logos/jwoc-2024.svg';
+import logo from '../assets/jwoc_logos/jwoc-2024.png';
 // import { useForm, ValidationError } from "@formspree/react";
 
 // const jetbrains = Inter({subsets:["latin"]})
