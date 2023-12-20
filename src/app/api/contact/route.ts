@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
     try {
         const { name, email, message } = await req.json();
         await sendEmail({ 
-            to: "Animesh", 
+            to: "JWoC-2k24", 
             mailType: "CONTACT", 
             info: {
                 senderName: name,

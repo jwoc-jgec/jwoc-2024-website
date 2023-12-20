@@ -1,6 +1,6 @@
 import { connectMongoDB } from "@/lib/mongodb";
 import Mentor from "@/models/mentor";
-import Mentee from "@/models/mentee";
+// import Mentee from "@/models/mentee";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { sendEmail } from "@/utils/mailer";
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       answer2
       // isVerified
     });
-console.log("savedMentor", savedMentor);
+// console.log("savedMentor", savedMentor);
 
     // send success mail for successful registration
     // await sendEmail({ email, userType: "Mentor", userId: savedMentor._id})

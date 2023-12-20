@@ -33,8 +33,10 @@ export async function POST(request: NextRequest) {
         await sendEmail({ to: email, mailType: "VERIFICATION", info: {otp}});
         
         return NextResponse.json({ message: "OTP Sent Successfully" }, {status: 200});
+
   } catch (error) {
     console.log(error);
+    
     return NextResponse.json(
       { message: "Something Went Wrong during send OTP" },
       { status: 500 }

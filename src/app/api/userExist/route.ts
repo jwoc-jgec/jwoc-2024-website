@@ -7,8 +7,8 @@ connectMongoDB();
 export async function POST(req: NextRequest) {
     try {
     const { type,  email } = await req.json();
-    console.log('email',email);
-    console.log('type',type);
+    // console.log('email',email);
+    // console.log('type',type);
     if (type === 'Mentor') {
       const user = await Mentor.findOne({ email });
       // console.log(user);
