@@ -3,7 +3,7 @@
 // import Mentee from "@/models/mentee";
 // import Mentor from "@/models/mentor";
 // import { render } from "@react-email/render"
-import { transport } from "./mailTransporters";
+import { transport1, transport2, transport3 } from "./mailTransporters";
 import { NextResponse } from "next/server";
 import { verificationMail, contactUsMail, registrationSuccessfulMail, resetPasswordMail } from "@/utils/emails";
 
@@ -33,7 +33,7 @@ export interface info {
 export const sendEmail = async ({to, mailType, info} : mailInfo) => {
     try {
         
-        const from = process.env.EMAIL;
+        // const from = process.env.EMAIL;
 
         // var transport = nodemailer.createTransport({
         //     host: process.env.BASE_URL,
@@ -45,35 +45,35 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
         //     }
         // });
 
-        console.log(to, mailType, info);
+        // console.log(to, mailType, info);
         if(mailType === "VERIFICATION") {
-            return await transport.sendMail({
-                from,
+            return await transport3.sendMail({
+                from: process.env.VERIFY_EMAIL,
                 to,
                 subject: "Email Verification for JWoC-2k24",
                 html: verificationMail(info)
             });
         }
         else if(mailType === "REGISTRATION SUCCESS") {
-            return await transport.sendMail({
-                from,
+            return await transport1.sendMail({
+                from: process.env.EMAIL,
                 to,
                 subject: `Welcome To JWoC | Successfully Registered as ${info.userType}`,
                 html: registrationSuccessfulMail(info)
             });
         }
         else if(mailType === "FORGOT PASSWORD") {
-            return await transport.sendMail({
-                from,
+            return await transport3.sendMail({
+                from: process.env.VERIFY_EMAIL,
                 to,
                 subject: 'JWoC - Reset Password',
                 html: resetPasswordMail(info)
             });
         }
         else if(mailType === "CONTACT") {
-            return await transport.sendMail({
-                from,
-                to: from,
+            return await transport2.sendMail({
+                from: process.env.CONTACT_EMAIL,
+                to: process.env.CONTACT_EMAIL,
                 subject: "User Query/Feedback",
                 html: contactUsMail(info)
             })
