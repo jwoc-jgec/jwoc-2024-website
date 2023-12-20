@@ -23,6 +23,7 @@ export interface mailInfo {
 
 export interface info {
     userType?: string,
+    userName?: string,
     otp?: string,
     senderName?: string,
     senderEmail?: string,
@@ -58,10 +59,7 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
                 from,
                 to,
                 subject: `Welcome To JWoC | Successfully Registered as ${info.userType}`,
-                html: registrationSuccessfulMail(info),
-                attachments: [
-                    // attachments
-                ]
+                html: registrationSuccessfulMail(info)
             });
         }
         else if(mailType === "FORGOT PASSWORD") {

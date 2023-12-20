@@ -32,12 +32,7 @@ export async function POST(request: NextRequest) {
         const { otp, email } = await request.json();
         await sendEmail({ to: email, mailType: "VERIFICATION", info: {otp}});
         
-        return NextResponse.json({ message: "OTP Sent Successfully" }, {status: 200})
-
-    return NextResponse.json(
-      { message: "OTP Sent Successfully" },
-      { status: 200 }
-    );
+        return NextResponse.json({ message: "OTP Sent Successfully" }, {status: 200});
   } catch (error) {
     console.log(error);
     return NextResponse.json(
