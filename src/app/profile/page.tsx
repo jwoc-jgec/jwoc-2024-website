@@ -109,6 +109,7 @@ export default function ProfilePage() {
     const fetchData = async () => {
       if (sessionStatus === "authenticated") {
         if (session && session.user) {
+          // @ts-ignore
           const userId = session.user.id;
           console.log("sessionStatus --- ", userId);
           await getUesrData(userId);
@@ -161,7 +162,7 @@ export default function ProfilePage() {
   }
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    const techStackArray = await manageTechStack(projectData.projectTags)
+    const techStackArray = await manageTechStack(projectData.projectTags);
     try {
       console.log("project data", projectData);
 
@@ -265,38 +266,43 @@ function ProjectCard({
 }: projectDatas) {
   return (
     <div className="backdrop-blur-2xl z-50 border-2 h-72 border-gray-400 py-8 p-5 rounded-lg w-80 md:w-96">
-    <div className="flex gap-5 items-center pb-5 justify-between">
-      <p className="text-2xl font-bold text-white">{projectName}</p>
-      {/* <div className="text-xs flex items-center justify-center bg-blue-200 text-blue-700 border-dotted px-2 py-0.5 rounded-full">
+      <div className="flex gap-5 items-center pb-5 justify-between">
+        <p className="text-2xl font-bold text-white">{projectName}</p>
+        {/* <div className="text-xs flex items-center justify-center bg-blue-200 text-blue-700 border-dotted px-2 py-0.5 rounded-full">
         <p className="font-bold">! </p>
       </div> */}
-      <div className="flex flex-col items-center">
-      <FaExclamationCircle
-        fontSize="1.6rem"
-        color="#5a5a5a"
-        title="Decision Pending"
-      />
-      <p className="text-[#5a5a5a] text-[12px]">Decision Pending</p>
+        <div className="flex flex-col items-center">
+          <FaExclamationCircle
+            fontSize="1.6rem"
+            color="#5a5a5a"
+            title="Decision Pending"
+          />
+          <p className="text-[#5a5a5a] text-[12px]">Decision Pending</p>
+        </div>
+      </div>
+      <div className="flex gap-5 mb-5 text-white">
+        {/* <GithubIcon size={28} href={projectLink} /> */}
+        <FaGithub size={28} href={projectLink} className="cursor-pointer" />
+        <FaYoutubeSquare
+          size={28}
+          href={videoLink}
+          className="cursor-pointer"
+        />
+      </div>
+      <p className="text-neutral-300 line-clamp-5">
+        {projectDescription.length > 100
+          ? projectDescription.slice(0, 100) + "..."
+          : projectDescription}
+      </p>
+      {/* <p className="text-white">{projectTags.split(" ")}</p> */}
+      <div className="flex gap-3 flex-wrap mt-4 bottom-2">
+        {projectTags.map((txt, i) => {
+          return (
+            <p className="bg-[#5a5a5a59] text-white p-1 rounded-md">#{txt}</p>
+          );
+        })}
       </div>
     </div>
-    <div className="flex gap-5 mb-5 text-white">
-      {/* <GithubIcon size={28} href={projectLink} /> */}
-      <FaGithub size={28} href={projectLink} className="cursor-pointer" />
-      <FaYoutubeSquare
-        size={28}
-        href={videoLink}
-        className="cursor-pointer"
-      />
-    </div>
-    <p className="text-neutral-300 line-clamp-5">{projectDescription.length > 100 ? projectDescription.slice(0, 100) + '...' : projectDescription}</p>
-    {/* <p className="text-white">{projectTags.split(" ")}</p> */}
-    <div className="flex gap-3 flex-wrap mt-4 bottom-2">
-    {projectTags.map((txt,i)=>{
-      return (<p className="bg-[#5a5a5a59] text-white p-1 rounded-md">#{txt}</p>)
-    })}
-    </div>
-  </div>
-
   );
 }
 
