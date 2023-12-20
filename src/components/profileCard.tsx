@@ -2,23 +2,36 @@
 import React from "react";
 import "../app/globals.css"; // Make sure to import your Tailwind CSS file
 import "../css/profileCard.css";
-import logo from "../assets/jwoc_logos/favicon.png";
+import logo from "../assets/jwoc_logos/jwoc-2024.png";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 
-interface UserData {
+interface AllData {
+  id : string
   name: string;
   email: string;
   phone: string;
-  projectId: string;
   PRMerged: number;
+  registeredProjects: [
+    {
+      id: string;
+      projectName: string;
+      projectDescription: string;
+      projectTags: string[];
+      videoLink: string;
+      projectTypes: string;
+      projectLink: string;
+    }
+  ];
 }
 
 interface ProfileCardProps {
-  userData: UserData;
+  allData: AllData;
 }
 
-const ProfileCard = (userData: ProfileCardProps) => {
+const ProfileCard = (allData: ProfileCardProps) => {
+  const id = allData.allData.id.slice(0,16)
+  
   return (
     <section>
       <div className="container text-white">
@@ -33,8 +46,9 @@ const ProfileCard = (userData: ProfileCardProps) => {
           <div className="card-details">
             <div className="name-number">
               <h6>Mentor Id</h6>
-              <h5 className="number">8050 2030 3020 5040</h5>
-              <h5 className="name">{userData.userData.name}</h5>
+              <h5 className="number">{id.toUpperCase()}</h5>
+              {/* <h5 className="name">name</h5> */}
+              <h5 className="name">{allData.allData.name}</h5>
             </div>
 
             <div className="valid-date">
@@ -47,11 +61,13 @@ const ProfileCard = (userData: ProfileCardProps) => {
         <div className="card back-face">
           <h6>
             For customer service call +97 89725 68869 or email at &nbsp;
-            {userData.userData.email}
+            email
+            contact.jwoc@gmail.com
           </h6>
           <span className="magnetic-strip"></span>
           <div className="signature">
-            <i>00{userData.userData.PRMerged}</i>
+            <i>PRMerged</i>
+            <i>00{allData.allData.PRMerged}</i>
           </div>
           <h5>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia

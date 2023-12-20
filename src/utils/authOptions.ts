@@ -5,7 +5,8 @@ import CredentialsProvider, {
   CredentialInput,
 } from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { SessionStrategy } from "next-auth";
+import { DefaultSession, Session, SessionStrategy } from "next-auth";
+import { JWT } from "next-auth/jwt";
 
 interface Credentials {
   email?: string;
@@ -13,8 +14,18 @@ interface Credentials {
 }
 
 interface CustomUser {
+  _id: string;
   email: string;
   password: string;
+}
+interface SessionCallbackParams {
+  session?: { user?: { id: string } };
+  token?: { id: string };
+}
+
+interface JWTCallbackParams {
+  user?: { id: string };
+  token?: { id: string };
 }
 
 export const authOptions = {
@@ -27,11 +38,9 @@ export const authOptions = {
       } as Record<string, CredentialInput>,
 
       async authorize(credentials: Credentials | undefined) {
-        // Ensure credentials is defined before extracting values
         if (!credentials || !credentials.email || !credentials.password) {
           return null;
         }
-        console.log("credentials", credentials);
 
         const { email, password } = credentials;
 
@@ -39,7 +48,6 @@ export const authOptions = {
           await connectMongoDB();
           let user: CustomUser | null = null;
           user = await Mentor.findOne({ email });
-          console.log(user);
           if (!user) {
             return null;
           }
@@ -53,7 +61,7 @@ export const authOptions = {
             return null;
           }
 
-          return user as any;
+          return { id: user._id, email: user.email } as any;
         } catch (error) {
           console.log("Error: ", error);
         }
@@ -65,6 +73,22 @@ export const authOptions = {
     maxAge: 4 * 24 * 60 * 60, //30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
+  callbacks: {
+    async session({ session, token }: SessionCallbackParams): Promise<Session | DefaultSession> {
+      if (session?.user && token?.id) {
+        (session.user as { id: string }).id = token.id;
+      }
+      return session as Session | DefaultSession;
+    },
+
+    async jwt({ user, token }: JWTCallbackParams): Promise<JWT> {
+      if (user) {
+        (token as { id: string }).id = user.id;
+      }
+      return token as JWT;
+    },
+  },
+
   secret: process.env.NEXTAUTH_SECRET as string,
   pages: {
     signIn: "/login",

@@ -196,10 +196,6 @@
 
 
 
-
-
-
-
 .session {
   background-clip: text;
   background-image: linear-gradient(to bottom right, #ec3f0f, #93084e, #bd069b, #fffb00);
@@ -249,7 +245,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(0deg, rgb(34 0 103), rgb(159 0 72));
+  /* background-image: linear-gradient(0deg, rgb(34 0 103), rgb(159 0 72)); */
+  background-color: wheat;
   border-radius: 6px;
 }
 

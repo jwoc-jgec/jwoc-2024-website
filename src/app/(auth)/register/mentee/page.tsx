@@ -79,7 +79,7 @@ const registerSchema = z.object({
     required_error: "You need to select yes or no.",
   }),
   question2: z.string().min(2, { message: "Answer Required" }).max(500),
-  otp: z.string().min(6).max(6),
+  otp: z.string(),
   year: z.string().min(1).max(1),
   password: z.string().min(6).max(100),
   confirmPassword: z.string().min(6).max(100),
@@ -412,6 +412,7 @@ export default function Home() {
                             className={`${cn({
                               hidden: formStep === 2,
                             })} mt-8 w-[30%]`}
+                            disabled={isverified}
                           >
                             {!loading ? (
                               <>
@@ -420,6 +421,7 @@ export default function Home() {
                                     {/* {timesUp ? ( */}
                                       <span
                                         onClick={() => handleOTP(field.value)}
+                                        className="px-[21px] py-[10px]"
                                       >
                                         Resend OTP
                                       </span>
@@ -428,7 +430,7 @@ export default function Home() {
                                     )} */}
                                   </>
                                 ) : (
-                                  <span onClick={() => handleOTP(field.value)}>
+                                  <span onClick={() => handleOTP(field.value)} className="px-[21px] py-[10px] ">
                                     Verify
                                   </span>
                                 )}
@@ -446,7 +448,7 @@ export default function Home() {
                       <FormField
                         control={form.control}
                         name="otp"
-                        disabled={isverified}
+                        // disabled={isverified}
                         render={({ field }) => (
                           <div className="flex flex-row items-center space-x-2">
                             <FormItem className="w-[70%]">
@@ -457,6 +459,7 @@ export default function Home() {
                                 <Input
                                   placeholder="Enter your OTP..."
                                   {...field}
+                                  // disabled={isverified}
                                 />
                               </FormControl>
                               <FormMessage />
@@ -466,9 +469,10 @@ export default function Home() {
                               className={`${cn({
                                 hidden: formStep === 2,
                               })} mt-8 w-[30%]`}
+                              disabled={isverified}
                             >
                               {!isverified ? (
-                                <span onClick={() => matchcOTP(field.value)}>
+                                <span onClick={() => matchcOTP(field.value)} className="px-[21px] py-[10px]">
                                   Match
                                 </span>
                               ) : (
@@ -477,6 +481,7 @@ export default function Home() {
                                   {loading ? (
                                     <span
                                       onClick={() => matchcOTP(field.value)}
+                                      className="px-[21px] py-[10px]"
                                     >
                                       Match
                                     </span>
@@ -769,7 +774,7 @@ export default function Home() {
                     >
                       Go Back
                     </Button>
-                    <Button
+                    {!loading2 ? <Button
                       type="submit"
                       className={cn({
                         hidden: formStep == 0 || formStep == 1,
@@ -777,6 +782,14 @@ export default function Home() {
                     >
                       Submit
                     </Button>
+                    :
+                    <Button
+                      className={cn({
+                        hidden: formStep == 0 || formStep == 1,
+                      })}
+                    >
+                      <PulseLoader size={5} color="#36d7b7" />
+                    </Button>}
                     <Button
                       type="button"
                       variant={"outline"}

@@ -16,12 +16,33 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { useToast } from "@/components/ui/use-toast";
+import { FaExclamationCircle, FaYoutubeSquare } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
 interface UserData {
   name: string;
   email: string;
   phone: string;
   projectId: string;
   PRMerged: number;
+}
+interface AllData {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  PRMerged: number;
+  registeredProjects: [
+    {
+      id: string;
+      projectName: string;
+      projectDescription: string;
+      projectTags: string[];
+      videoLink: string;
+      projectTypes: string;
+      projectLink: string;
+    }
+  ];
 }
 interface projectData {
   ProjectName: string;
@@ -32,6 +53,16 @@ interface projectData {
   projectVideoLink: string;
   mentorId: string;
 }
+interface projectDatas {
+  id: string;
+  projectName: string;
+  projectDescription: string;
+  projectTags: string[];
+  videoLink: string;
+  projectTypes: string;
+  projectLink: string;
+}
+
 export default function ProfilePage() {
   const router = useRouter();
   const [uData, setData] = useState<any>({
@@ -44,7 +75,25 @@ export default function ProfilePage() {
     projectId: "",
     PRMerged: 0,
   });
-  const [noOfUpload, setNoOfUplolad] = useState<number>(0);
+  const [allData, setAllData] = useState<AllData>({
+    id: "",
+    name: "",
+    email: "",
+    phone: "",
+    PRMerged: 0,
+    registeredProjects: [
+      {
+        id: "",
+        projectName: "",
+        projectDescription: "",
+        projectTags: [],
+        videoLink: "",
+        projectTypes: "",
+        projectLink: "",
+      },
+    ],
+  });
+  // const [noOfUpload, setNoOfUplolad] = useState<number>(0);
   const [projectData, setProjectData] = useState<projectData>({
     ProjectName: "",
     projectDescription: "",
@@ -54,74 +103,66 @@ export default function ProfilePage() {
     projectVideoLink: "",
     mentorId: "",
   });
-
+  const { toast } = useToast();
   const { data: session, status: sessionStatus } = useSession();
-  useEffect(() => {
-    if (sessionStatus === "authenticated") {
-      getUesrData();
-    }
-  }, [uData, sessionStatus]);
-
-  useEffect(() => {
-    if (session) {
-      console.log("data  - prof", session.user?.email);
-      console.log("session - prof", sessionStatus);
-      // let cred = session.user?.email
-      setData(session);
-    } else {
-      console.log("data  - prof - den");
-    }
-  }, [session, router]);
-
   useEffect(() => {
     const fetchData = async () => {
       if (sessionStatus === "authenticated") {
-        await getUesrData();
+        if (session && session.user) {
+          const userId = session.user.id;
+          console.log("sessionStatus --- ", userId);
+          await getUesrData(userId);
+        }
       }
     };
 
     fetchData();
-  }, [uData, sessionStatus]);
+  }, [sessionStatus]);
 
-  async function getUesrData() {
-    // if (uData && uData.email) {
-    console.log("uData.email", uData.user.email);
-    console.log("uData", uData);
-    const email = uData.user.email;
+  async function getUesrData(userId: any) {
     const type = "Mentor";
     try {
       console.log("entered");
+      console.log("userId --->");
 
-      const resUserExists = await fetch("api/userExist", {
-        method: "POST",
+      let resUser = await fetch(`api/project?mentorId=${userId}`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ type, email }),
       });
-      const { user } = await resUserExists.json();
-      console.log("user --- ", user);
-      setProjectData((prev) => ({
-        ...prev,
-        mentorId: user._id,
-      }));
-      setUserData(user);
-      setNoOfUplolad(user.RegisteredProjectId.length);
-
-      console.log("userData", userData);
+      // console.log("user --- > ", resUser);
+      if (resUser.ok) {
+        const { message, mentor, status } = await resUser.json();
+        console.log("Mentor:", mentor);
+        const userDataFromBackend = mentor[0];
+        setAllData({
+          id: userDataFromBackend._id,
+          name: userDataFromBackend.name,
+          email: userDataFromBackend.email,
+          phone: userDataFromBackend.phone,
+          PRMerged: userDataFromBackend.PRMerged,
+          registeredProjects: userDataFromBackend.registeredProjects,
+        });
+      }
     } catch (error) {
-      toast.error("Failed to retrieve User Data");
+      toast({
+        title: "Failed to retrieve User Data",
+        variant: "destructive",
+      });
       console.log("Failed to retrieve User Data");
       console.log("error", error);
     }
   }
 
+  function manageTechStack(ele: string) {
+    const techStackArray = ele.split(" ");
+    return techStackArray;
+  }
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("hit 1");
-
+    const techStackArray = await manageTechStack(projectData.projectTags)
     try {
-      // Make a POST request to /api/project
       console.log("project data", projectData);
 
       const response = await fetch("/api/project", {
@@ -134,75 +175,63 @@ export default function ProfilePage() {
           projectLink: projectData.projectLink,
           projectDescription: projectData.projectDescription,
           projectTypes: projectData.projectType,
-          projectTags: projectData.projectTags,
+          projectTags: techStackArray,
           videoLink: projectData.projectVideoLink,
-          mentorId: projectData.mentorId,
+          mentorId: allData.id,
         }),
       });
       console.log("response from backend ", response);
 
       if (response.ok) {
-        console.log("Project submitted successfully!");
+        toast({
+          title: "Congratulations",
+          description: "You have successfully registered your project",
+        });
+        // console.log("Project submitted successfully!");
       } else {
         console.error("Failed to submit project");
       }
     } catch (error) {
+      toast({
+        title: "Error submitting project",
+        variant: "destructive",
+      });
       console.error("Error submitting project", error);
       // Handle the error or show a user-friendly message
     }
   };
 
-  // console.log("userData", userData.name);
-
-  const projects: projectData[] = [
-    {
-      ProjectName: "Project Name",
-      projectDescription:
-        "loren ipsum dolor sit amet loren ipsum dolor sit amet loren ipsum dolor sit amet loren ipsum dolor sit amet loren ipsum dolor sit amet loren ipsum dolor sit amet loren ipsum dolor sit amet loren ipsum dolor sit amet loren ipsum dolor sit amet loren ipsum dolor sit amet ",
-      projectType: "Web",
-      projectTags: "Tech Stack",
-      projectLink: "",
-      projectVideoLink: "",
-      mentorId: "",
-    },
-    {
-      ProjectName: "Project Name",
-      projectDescription: "Project Description",
-      projectType: "Web",
-      projectTags: "Tech Stack",
-      projectLink: "",
-      projectVideoLink: "",
-      mentorId: "",
-    },
-  ];
-
   return (
     <div className="flex flex-col pt-5 gap-10 items-center justify-center font-sans">
-      <ProfileCard userData={userData} />
+      <ProfileCard allData={allData} />
       <button
         onClick={() => signOut({ callbackUrl: "/" })}
-        className="  bg-[#debad647] shadow-lg backdrop-blur-[40px] flex flex-row gap-5 p-[2vh] mt-[3vh] rounded-[10px] text-white"
+        className="  bg-red-400 shadow-lg backdrop-blur-[40px] flex flex-row gap-5 p-[2vh] mt-[3vh] rounded-[10px] text-white"
       >
-        <span className=" font-mono text-xl ">Logout</span>
+        <span className=" font-mono text-xl  ">Logout</span>
         <TbLogout fontSize="1.3em" />
       </button>
       <div className="flex flex-col gap-5 items-center justify-center">
         <h1 className="text-3xl font-bold text-white">Your Projects</h1>
         <p className="text-xl text-white">
-          You have uploaded {noOfUpload}/3 projects
+          You have uploaded {allData.registeredProjects.length}/3 projects
         </p>
       </div>
       <div className="flex gap-10 pb-20  flex-col md:flex-row  flex-wrap items-center justify-center">
-        {projects.map((project, idx) => (
+        {allData.registeredProjects.map((project, idx) => (
           <ProjectCard {...project} key={idx} />
         ))}
         <Dialog>
           <DialogTrigger>
-            {noOfUpload < 3 && <AddProjectCard noOfProjects={noOfUpload} />}
+            {allData.registeredProjects.length < 3 && (
+              <AddProjectCard
+                noOfProjects={allData.registeredProjects.length}
+              />
+            )}
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <ProjectForm
-              noOfUpload={noOfUpload}
+              noOfUpload={allData.registeredProjects.length}
               submitForm={submitForm}
               setProjectData={setProjectData}
               projectData={projectData}
@@ -227,30 +256,47 @@ function AddProjectCard({ noOfProjects }: { noOfProjects: number }) {
 }
 
 function ProjectCard({
-  ProjectName,
+  projectName,
   projectDescription,
   projectLink,
+  videoLink,
   projectTags,
-  projectVideoLink,
-}: projectData) {
+  projectTypes,
+}: projectDatas) {
   return (
     <div className="backdrop-blur-2xl z-50 border-2 h-72 border-gray-400 py-8 p-5 rounded-lg w-80 md:w-96">
-      <div className="flex gap-5 items-center pb-5">
-        <p className="text-2xl font-bold text-white">{ProjectName}</p>
-        <div className="text-xs flex items-center justify-center bg-blue-200 text-blue-700 border-dotted px-2 py-0.5 rounded-full">
-          <p className="font-bold">! </p>
-        </div>
+    <div className="flex gap-5 items-center pb-5 justify-between">
+      <p className="text-2xl font-bold text-white">{projectName}</p>
+      {/* <div className="text-xs flex items-center justify-center bg-blue-200 text-blue-700 border-dotted px-2 py-0.5 rounded-full">
+        <p className="font-bold">! </p>
+      </div> */}
+      <div className="flex flex-col items-center">
+      <FaExclamationCircle
+        fontSize="1.6rem"
+        color="#5a5a5a"
+        title="Decision Pending"
+      />
+      <p className="text-[#5a5a5a] text-[12px]">Decision Pending</p>
       </div>
-      <div className="flex gap-5 mb-5 text-white">
-        <GithubIcon size={28} href={projectLink} className="cursor-pointer" />
-        <YoutubeIcon
-          size={28}
-          href={projectVideoLink}
-          className="cursor-pointer"
-        />
-      </div>
-      <p className="text-neutral-300 line-clamp-5">{projectDescription}</p>
     </div>
+    <div className="flex gap-5 mb-5 text-white">
+      {/* <GithubIcon size={28} href={projectLink} /> */}
+      <FaGithub size={28} href={projectLink} className="cursor-pointer" />
+      <FaYoutubeSquare
+        size={28}
+        href={videoLink}
+        className="cursor-pointer"
+      />
+    </div>
+    <p className="text-neutral-300 line-clamp-5">{projectDescription.length > 100 ? projectDescription.slice(0, 100) + '...' : projectDescription}</p>
+    {/* <p className="text-white">{projectTags.split(" ")}</p> */}
+    <div className="flex gap-3 flex-wrap mt-4 bottom-2">
+    {projectTags.map((txt,i)=>{
+      return (<p className="bg-[#5a5a5a59] text-white p-1 rounded-md">#{txt}</p>)
+    })}
+    </div>
+  </div>
+
   );
 }
 
@@ -267,11 +313,11 @@ function ProjectForm({
 }) {
   return (
     <div className="flex justify-center text-black items-center">
-      <div className=" backdrop-blur-[40px] focus:bg-[#FF42D947] focus:backdrop-blur-[40px] text-white p-8 w-full max-w-md mx-auto rounded-lg shadow-lg">
-        <h1 className="text-2xl text-black font-bold mb-6">
-          Upload Project Details &nbsp; {noOfUpload}/3
+      <div className=" focus:bg-[#FF42D947] text-white p-8 w-full max-w-md mx-auto rounded-lg shadow-lg">
+        <h1 className="text-2xl text-black font-bold mb-6 text-center">
+          Upload Project Details
         </h1>
-        <form onSubmit={submitForm}>
+        <form onSubmit={submitForm} className="h-[400px] overflow-y-scroll">
           <div className="mb-4 text-black">
             <label htmlFor="projectName" className="block mb-1">
               Project Name
@@ -359,7 +405,7 @@ function ProjectForm({
               id="ProjectTags"
               name="ProjectTags"
               className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
-              placeholder="Enter Tech stack of this project"
+              placeholder="Enter project tech stacks, space seperatedly"
               autoComplete="off"
               required
               onChange={(e) =>
@@ -382,7 +428,7 @@ function ProjectForm({
               className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
               placeholder="Enter YouTube link"
               autoComplete="off"
-              required
+              // required
               onChange={(e) =>
                 setProjectData({
                   ...projectData,
@@ -412,30 +458,32 @@ function ProjectForm({
             ></textarea>
           </div>
 
-          <div className="mb-4 text-black">
+          {/* <div className="mb-4 text-black">
             <label htmlFor="techStack" className="block mb-1">
               Tech Stack
             </label>
             <input
               type="text"
-              id="ProjectYtLink"
-              name="ProjectYtLink"
+              id="ProjectTechStack"
+              name="ProjectTechStack"
               className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
-              placeholder="Enter the tech stack"
+              placeholder="Enter project tech stacks, space seperatedly"
               autoComplete="off"
               required
               onChange={(e) =>
                 setProjectData({
                   ...projectData,
-                  projectVideoLink: e.target.value,
+                  projectTags: e.target.value,
                 })
               }
             />
-          </div>
+          </div> */}
           <div className="text-center">
             <button
               type="submit"
-              className={`bg-black text-white px-4 py-2 w-full  rounded-[5px] hover:bg-gray-300 transition duration-300`}
+              className={
+                "bg-black text-white px-4 py-2 w-full  rounded-[5px] hover:bg-gray-300 transition duration-300"
+              }
             >
               Submit
             </button>

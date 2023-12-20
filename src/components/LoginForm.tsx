@@ -1,5 +1,5 @@
-"use client"
-import "../css/font.css"
+"use client";
+import "../css/font.css";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -22,8 +22,10 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { PulseLoader } from "react-spinners";
 const formSchema = z.object({
   email: z.string().email({ message: "Enter a vaild email" }),
   password: z.string().min(6, {
@@ -32,7 +34,7 @@ const formSchema = z.object({
 });
 
 export default function LoginForm() {
- 
+  const [loading, setLoading] = useState(false);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,13 +48,16 @@ export default function LoginForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-   if (window.event ) {
-    window.event.preventDefault();
-   } 
+    setLoading(false);
+    if (window.event) {
+      window.event.preventDefault();
+    }
+    setLoading(true);
     signIn("credentials", {
       email: values.email.trim(),
       password: values.password.trim(),
     });
+    setLoading(false);
     console.log(values);
   }
   const animationVariants = {
@@ -67,53 +72,62 @@ export default function LoginForm() {
   };
   return (
     <motion.div
-    initial="initial"
-    animate="animate"
-    variants={animationVariants}
-    transition={{ duration: 1 }} >
-    <Card className="md:w-[400px]">
-      <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Login to your account</CardTitle>
-        <CardDescription>
-          Enter your email below to login your account
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="jwoc@gmail.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" className="w-full">
-              Submit
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+      initial="initial"
+      animate="animate"
+      variants={animationVariants}
+      transition={{ duration: 1 }}
+    >
+      <Card className="md:w-[400px]">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl">Login to your account</CardTitle>
+          <CardDescription>
+            Enter your email below to login your account
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="jwoc@gmail.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input type="password" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full">
+                <>
+                  {!loading ? (
+                    <span className=" px-[155px] py-[10px]">
+                      Submit
+                    </span>
+                  ) : (
+                    <PulseLoader size={5} color="#36d7b7" />
+                  )}
+                </>
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }
