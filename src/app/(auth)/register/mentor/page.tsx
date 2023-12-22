@@ -82,7 +82,7 @@ const registerSchema = z.object({
     required_error: "You need to select yes or no.",
   }),
   question2: z.string().min(1, { message: "Answer Required" }).max(500),
-  year: z.string().min(1).max(1),
+  year: z.string(),
   otp: z.string(),
   password: z.string().min(6).max(100),
   confirmPassword: z.string().min(6).max(100),
@@ -92,7 +92,7 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
-  const targetDate = new Date("December 20, 2023 18:00:00 GMT+0530").getTime();
+  const targetDate = new Date("December 20, 2023 12:00:00 GMT+0530").getTime();
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
@@ -309,9 +309,9 @@ export default function Home() {
   }
   return (
     <>
-      {!timeUp ? (
+      {/* {!timeUp ? (
         <CountDown targetDate={targetDate} title="Mentor" />
-      ) : (
+      ) : ( */}
         <div
           className={`${inter.className}  p-10  flex flex-col items-center justify-center`}
         >
@@ -363,9 +363,7 @@ export default function Home() {
                       name="email"
                       render={({ field }) => (
                         <div className="flex flex-row items-center space-x-2">
-                          <FormItem
-                            className={`${otpSent ? `w-[100%]` : `w-[70%]`}`}
-                          >
+                          <FormItem className={`w-[100%]`}>
                             <FormLabel>
                               <span>Email</span>
                             </FormLabel>
@@ -379,51 +377,23 @@ export default function Home() {
                             <FormMessage />
                           </FormItem>
                           {/* Button to verify email */}
-                          <Button
+                          {/* <Button
                             type="button"
                             className={`${cn({
                               hidden: formStep === 2,
                             })} mt-8 w-[30%]`}
-                            disabled={isverified}
+                            // disabled={isverified}
                           >
-                            {!loading ? (
-                              <>
-                                {!firstTime ? (
-                                  <>
-                                    {/* {timesUp ? ( */}
-                                    <span
-                                      onClick={() => handleOTP(field.value)}
-                                      className="px-[21px] py-[10px]"
-                                    >
-                                      Resend OTP
-                                    </span>
-                                    {/* ) : (
-                                      <span>00:{seconds}</span>
-                                    )} */}
-                                  </>
-                                ) : (
-                                  <span
-                                    onClick={() => handleOTP(field.value)}
-                                    className="px-[21px] py-[10px]"
-                                  >
-                                    Verify
-                                  </span>
-                                )}
-                              </>
-                            ) : (
-                              <span>
-                                <PulseLoader size={5} color="#36d7b7" />
-                              </span>
-                            )}
-                          </Button>
+                            
+                          </Button> */}
                         </div>
                       )}
                     />
-                    {otpSent && (
-                      <FormField
+                    {/* {otpSent && ( */}
+                    {/* <FormField
                         control={form.control}
                         name="otp"
-                        disabled={isverified}
+                        // disabled={isverified}
                         render={({ field }) => (
                           <div className="flex flex-row items-center space-x-2">
                             <FormItem className="w-[70%]">
@@ -443,6 +413,7 @@ export default function Home() {
                               className={`${cn({
                                 hidden: formStep === 2,
                               })} mt-8 w-[30%]`}
+                              disabled={isverified}
                             >
                               {!isverified ? (
                                 <span
@@ -468,10 +439,10 @@ export default function Home() {
                               )}
                             </Button>
                             {/* )} */}
-                          </div>
-                        )}
-                      />
-                    )}
+                    {/* </div>
+                        )} */}
+                    {/* /> */}
+                    {/* )} */}
                     {/* student id */}
                     <FormField
                       control={form.control}
@@ -539,13 +510,19 @@ export default function Home() {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              {[1, 2, 3, 4].map((year) => {
+                              {[1, 2, 3, 4, "Others"].map((year) => {
                                 return (
                                   <SelectItem
                                     value={year.toString()}
                                     key={year}
                                   >
-                                    Year {year}
+                                    <>
+                                      {year === "Others" ? (
+                                        <span>{year} </span>
+                                      ) : (
+                                        <span> Year {year}</span>
+                                      )}
+                                    </>
                                   </SelectItem>
                                 );
                               })}
@@ -756,8 +733,8 @@ export default function Home() {
                       })}
                     >
                       <>
-                        {loading2 ? (
-                          <span className="px-[21px] py-[10px]"> Submit </span>
+                        {!loading2 ? (
+                          <span className="px-[18px] py-[8px]"> Submit </span>
                         ) : (
                           <PulseLoader size={5} color="#36d7b7" />
                         )}
@@ -791,6 +768,7 @@ export default function Home() {
                           if (!collegeName.isDirty || collegeName.invalid)
                             return;
                           if (!phoneNo.isDirty || phoneNo.invalid) return;
+                          // if (!isverified) return;
                         } else if (formStep == 1) {
                           form.trigger([
                             "Address",
@@ -804,7 +782,7 @@ export default function Home() {
                           const linkedInState = form.getFieldState("linkedIn");
                           const q1State = form.getFieldState("question1");
                           const q2State = form.getFieldState("question2");
-
+                          // if (!isverified) return;
                           if (!addressState.isDirty || addressState.invalid)
                             return;
                           if (!githubState.isDirty || githubState.invalid)
@@ -827,7 +805,7 @@ export default function Home() {
             </CardContent>
           </Card>
         </div>
-      )}
+      {/* )} */}
     </>
   );
 }

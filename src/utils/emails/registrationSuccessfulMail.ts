@@ -422,9 +422,9 @@ const registrationSuccessfulMail = ({ userType, userName }: info) => {
                             >
                             as a Project Mentor. You are now successfully registered for
                             the event. <br />
-                            Kindly log into our
+                            Kindly log into your
                             <a
-                                href="www.jwoc.tech"
+                                href="www.jwoc.tech/login"
                                 style="
                                     font-style: italic;
                                     font-family: monospace;
@@ -432,9 +432,9 @@ const registrationSuccessfulMail = ({ userType, userName }: info) => {
                                     text-decoration: none;
                                     font-weight: 600;
                                 "
-                                >official website</a
+                                >MentorLocker</a
                             >
-                            and submit your projects. We will update you if your project
+                            in our official website and submit your projects. We will update you if your project
                             get selected. We would also like you to prepare a proper
                             README documentation and/or a youtube video explaining your
                             projects. The organizers shall get in touch with you

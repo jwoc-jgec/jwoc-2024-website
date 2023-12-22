@@ -58,7 +58,7 @@ const ProfileCard = (allData: ProfileCardProps) => {
           </div>
         </div>
 
-        <div className="card back-face">
+        {/* <div className="card back-face">
           <h6>
             For customer service call +97 89725 68869 or email at &nbsp;
             email
@@ -69,13 +69,13 @@ const ProfileCard = (allData: ProfileCardProps) => {
             <i>PRMerged</i>
             <i>00{allData.allData.PRMerged}</i>
           </div>
-          <h5>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
+          <h5> */}
+            {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
             maiores sed doloremque nesciunt neque beatae voluptatibus doloribus.
             Libero et quis magni magnam nihil temporibus? Facere consectetur
-            dolore reiciendis et veniam.
-          </h5>
-        </div>
+            dolore reiciendis et veniam. */}
+          {/* </h5>
+        </div> */}
       </div>
     </section>
   );

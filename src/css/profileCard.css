@@ -11,9 +11,9 @@ section {
   justify-content: center;
   color: white;
 }
-.container:hover {
+/* .container:hover {
   transform: rotateY(180deg);
-}
+} */
 /* section::before {
   content: "";
   position: absolute;

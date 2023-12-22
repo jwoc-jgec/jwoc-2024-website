@@ -9,7 +9,6 @@ export async function POST(req: Request) {
     const {
       name,
       email,
-      password,
       phone,
       whatsapp,
       ipAddress,
@@ -18,21 +17,24 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       isFirstTime,
-      answer1
-      // isVerified 
+      answer1,
+      // isVerified
     } = await req.json();
+    // console.log( name , email , password , phone , whatsapp , ipAddress ,college , year , github , linkedIn , isFirstTime , answer1 );
+    
     // console.log(name);
     // console.log(email);
     // console.log(password);
     // console.log(phone);
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log("hit 2");
+    // const hashedPassword = await bcrypt.hash(password, 10);
     await connectMongoDB();
+    console.log("hit 1");    
     const savedMentee = await Mentee.create({
       type: "Mentee",
       name,
       email,
-      password: hashedPassword,
       phone,
       whatsapp,
       ipAddress,
@@ -41,19 +43,19 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       isFirstTime,
-      answer1
-      // isVerified
+      answer1,
     });
+    console.log("savedMentee", savedMentee);
 
     // send success mail for successful registration
     // await sendEmail({ email, userType: "Mentee", userId: savedMentee._id})
     await sendEmail({
       to: email,
-      mailType: "REGISTRATION SUCCESS", 
+      mailType: "REGISTRATION SUCCESS",
       info: {
         userType: "Mentee",
-        userName: name
-      }
+        userName: name,
+      },
     });
 
     return NextResponse.json({ message: "User registered." }, { status: 201 });

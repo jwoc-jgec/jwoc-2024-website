@@ -31,7 +31,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -76,10 +76,9 @@ const registerSchema = z.object({
     .min(3, { message: "Your LinkedIn Handle should not be that short!" })
     .max(255),
   question1: z.enum(["yes", "no"], {
-    required_error: "You need to select yes or no.",
+    required_error: "You need to select yes ot no.",
   }),
-  question2: z.string().min(2, { message: "Answer Required" }).max(500),
-  otp: z.string(),
+  question2: z.string().min(3, { message: "Answer Required" }).max(255),
   year: z.string().min(1).max(1),
   password: z.string().min(6).max(100),
   confirmPassword: z.string().min(6).max(100),
@@ -89,17 +88,10 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
-  const targetDate = new Date("December 20, 2023 18:00:00 GMT+0530").getTime();
+  const targetDate = new Date("December 20, 2023 15:25:00 GMT+0530").getTime();
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
-  const [otpSent, setOtpSent] = useState(false);
-  const [genOtp, setgenOtp] = useState("");
-  const [isverified, setIsverified] = useState(false);
-  const [firstTime, setFirstTime] = useState(true);
-  const [email, setEmail] = useState("");
   const [timeUp, setTimeUp] = useState(false);
-  const [seconds, setSeconds] = useState(60);
-  const [timesUp, setTimesUp] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const interval = setInterval(() => {
@@ -133,7 +125,6 @@ export default function Home() {
       question2: "",
       whatsapp: "",
       year: "",
-      otp: "",
     },
   });
 
@@ -161,10 +152,8 @@ export default function Home() {
       phone,
       isFirstTime,
       answer1,
-      isVerified : true,
       ...rest,
     };
-    setEmail(email);
     setLoading2(true);
     const resUserExists = await fetch("/api/userExist", {
       method: "POST",
@@ -178,7 +167,9 @@ export default function Home() {
     });
 
     const { user } = await resUserExists.json();
+
     setLoading2(false);
+
     if (user) {
       toast({
         title: "User Already Exist",
@@ -186,7 +177,9 @@ export default function Home() {
       });
       return;
     }
+
     setLoading2(true);
+
     fetch("/api/menteeReg", {
       method: "POST",
       headers: {
@@ -196,12 +189,12 @@ export default function Home() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log("response from Server", data);
+        console.log("response from Server", data);
         setLoading2(false);
         if (data.message === "User registered.") {
           toast({
             title: "Congratulations",
-            description: "Successfully Registered for JWoC 2024!",
+            description: "Successfully Registered for JWoC 2024! You will receive the confirmation mail duly",
           });
           router.push("/");
         } else {
@@ -228,114 +221,14 @@ export default function Home() {
     },
   };
 
-
-
-  function generateOTP() {
-    const digits = "0123456789abcdefghijklmnopqrstuvwxyz";
-    const otpLength = 6;
-    let otp = "";
-    for (let i = 1; i <= otpLength; i++) {
-      const index = Math.floor(Math.random() * digits.length);
-      otp = otp + digits[index];
-    }
-    return otp;
-  }
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    return emailRegex.test(email);
-  };
-
-  async function handleOTP(email: string) {
-    setIsverified(false);
-    const validRes = isValidEmail(email);
-    if (!validRes) {
-      toast({
-        title: "Enter a Valid Email",
-        variant: "destructive",
-      });
-      return;
-    }
-    setLoading(true);
-    setFirstTime(false);
-    
-    toast({
-      title: "Direction",
-      description: "Have sent OTP to your email",
-    });
-    const OTP = await generateOTP().toUpperCase();
-    setgenOtp(OTP);
-    setTimeout(() => {
-      setLoading(false);
-    }, 10000);
-
-    const resUserExists = await fetch("/api/verifyEmail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        otp: OTP,
-        email: email,
-      }),
-    });
-    console.log("resUserExists", resUserExists);
-    if (resUserExists.ok) {
-      setOtpSent(true);
-      // setIsverified(true);
-      // toast({
-      //   title: "Congratulations",
-      //   description: "You have successfully verified your email",
-      // });
-      return;
-    }
-    setOtpSent(false);
-    toast({
-      title: "Failed to send OTP",
-      variant: "destructive",
-    });
-  }
-
-  function matchcOTP(otp: string) {
-    // console.log(otpSent);
-    // console.log("otp   : ", genOtp);
-
-    if (otp.trim() === genOtp) {
-      setIsverified(true);
-      toast({
-        title: "Congratulations",
-        description: "You have successfully verified your email",
-      });
-      return;
-    }
-    toast({
-      title: "Wrong OTP Entered",
-      variant: "destructive",
-    });
-  }
-  
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setSeconds((prevSeconds) => {
-  //       if (prevSeconds === 0) {
-  //         clearInterval(interval);
-  //         // Do something when the countdown reaches 0
-  //         return 0;
-  //       }
-  //       return prevSeconds - 1;
-  //     });
-  //   }, 1000);
-  //   if (seconds === 0) {
-  //     setTimesUp(true);
-  //   }
-  //   setTimesUp(true);
-  //   return () => clearInterval(interval); // Cleanup the interval on component unmount
-  // }, [isverified]);
-
   return (
-        <>
-      {!timeUp ? (
+    // <div
+    //   className={`${inter.className}  absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}
+    // >
+    <>
+{/*       {!timeUp ? (
         <CountDown targetDate={targetDate} title="Mentee" />
-      ) : (
+      ) : ( */}
         <motion.div
           initial="initial"
           animate="animate"
@@ -352,7 +245,7 @@ export default function Home() {
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="relative space-y-3 overflow-x-hidden"
+                  className="relative space-y-3 overflow-x-hidden "
                 >
                   <motion.div
                     className={cn("space-y-3", {
@@ -390,113 +283,18 @@ export default function Home() {
                       control={form.control}
                       name="email"
                       render={({ field }) => (
-                        <div className="flex flex-row items-center space-x-2">
-                          <FormItem
-                            className={`${otpSent ? `w-[100%]` : `w-[70%]`}`}
-                          >
-                            <FormLabel>
-                              <span>Email</span>
-                            </FormLabel>
-                            <FormControl>
-                              {/* {!otpSent ? ( */}
-                              <Input
-                                placeholder="Enter your email..."
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                          {/* Button to verify email */}
-                          <Button
-                            type="button"
-                            className={`${cn({
-                              hidden: formStep === 2,
-                            })} mt-8 w-[30%]`}
-                            disabled={isverified}
-                          >
-                            {!loading ? (
-                              <>
-                                {!firstTime ? (
-                                  <>
-                                    {/* {timesUp ? ( */}
-                                      <span
-                                        onClick={() => handleOTP(field.value)}
-                                        className="px-[21px] py-[10px]"
-                                      >
-                                        Resend OTP
-                                      </span>
-                                    {/* ) : (
-                                      <span>00:{seconds}</span>
-                                    )} */}
-                                  </>
-                                ) : (
-                                  <span onClick={() => handleOTP(field.value)} className="px-[21px] py-[10px] ">
-                                    Verify
-                                  </span>
-                                )}
-                              </>
-                            ) : (
-                              <span>
-                                <PulseLoader size={5} color="#36d7b7" />
-                              </span>
-                            )}
-                          </Button>
-                        </div>
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter your email..."
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                       )}
                     />
-                    {otpSent && (
-                      <FormField
-                        control={form.control}
-                        name="otp"
-                        // disabled={isverified}
-                        render={({ field }) => (
-                          <div className="flex flex-row items-center space-x-2">
-                            <FormItem className="w-[70%]">
-                              <FormLabel>
-                                <span>OTP</span>
-                              </FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="Enter your OTP..."
-                                  {...field}
-                                  // disabled={isverified}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                            <Button
-                              type="button"
-                              className={`${cn({
-                                hidden: formStep === 2,
-                              })} mt-8 w-[30%]`}
-                              disabled={isverified}
-                            >
-                              {!isverified ? (
-                                <span onClick={() => matchcOTP(field.value)} className="px-[21px] py-[10px]">
-                                  Match
-                                </span>
-                              ) : (
-                                <>
-                                  {" "}
-                                  {loading ? (
-                                    <span
-                                      onClick={() => matchcOTP(field.value)}
-                                      className="px-[21px] py-[10px]"
-                                    >
-                                      Match
-                                    </span>
-                                  ) : (
-                                    <CheckCircle2 color="#00ff00" />
-                                  )}
-                                </>
-                              )}
-                            </Button>
-                            {/* )} */}
-                          </div>
-                        )}
-                      />
-                    )}
-
                     {/* student id */}
                     <FormField
                       control={form.control}
@@ -774,22 +572,21 @@ export default function Home() {
                     >
                       Go Back
                     </Button>
-                    {!loading2 ? <Button
+                    <Button
                       type="submit"
                       className={cn({
                         hidden: formStep == 0 || formStep == 1,
                       })}
                     >
-                      Submit
+                      <>
+                        {" "}
+                        {!loading2 ? (
+                          <span className="px-[18px] py-[8px]"> Submit </span>
+                        ) : (
+                          <PulseLoader size={5} color="#36d7b7" />
+                        )}
+                      </>
                     </Button>
-                    :
-                    <Button
-                      className={cn({
-                        hidden: formStep == 0 || formStep == 1,
-                      })}
-                    >
-                      <PulseLoader size={5} color="#36d7b7" />
-                    </Button>}
                     <Button
                       type="button"
                       variant={"outline"}
@@ -805,15 +602,12 @@ export default function Home() {
                             "year",
                             "collegeName",
                             "phoneNo",
-                            "whatsapp",
                           ]);
                           const emailState = form.getFieldState("email");
                           const nameState = form.getFieldState("name");
                           const yearState = form.getFieldState("year");
                           const collegeName = form.getFieldState("collegeName");
                           const phoneNo = form.getFieldState("phoneNo");
-                          const whatsapp = form.getFieldState("phoneNo");
-                          // console.log(phoneNo);
 
                           if (!emailState.isDirty || emailState.invalid) return;
                           if (!nameState.isDirty || nameState.invalid) return;
@@ -821,8 +615,6 @@ export default function Home() {
                           if (!collegeName.isDirty || collegeName.invalid)
                             return;
                           if (!phoneNo.isDirty || phoneNo.invalid) return;
-                          if (!whatsapp.isDirty || whatsapp.invalid) return;
-                          if (!isverified) return;
                         } else if (formStep == 1) {
                           form.trigger([
                             "Address",
@@ -845,7 +637,6 @@ export default function Home() {
                             return;
                           //   if (!q1State.isDirty || q1State.invalid) return;
                           if (!q2State.isDirty || q2State.invalid) return;
-                          if (!isverified) return;
                         }
 
                         setFormStep((prev) => prev + 1);
@@ -860,7 +651,7 @@ export default function Home() {
             </CardContent>
           </Card>
         </motion.div>
-      )}
+{/*       )} */}
     </>
   );
 }

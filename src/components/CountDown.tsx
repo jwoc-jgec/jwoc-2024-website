@@ -49,7 +49,7 @@ const CountDown: React.FC<Props> = ({ targetDate,title }) => {
   return (
     <div className="text-center flex flex-col h-[100vh] justify-center items-center">
     <h1 className="text-4xl tracking-wider md:text-4xl text-white font-bold p-5 pt-0 text-center">
-        {title} Registration begins in</h1>
+        {title} Registration is Down for maintenance & will begin in </h1>
         <div className='flex items-center gap-3 text-[#787a91]'>
       <span className="flex flex-col items-center justify-center bg-[#00000082] rounded-xl p-4">
         <span className="text-3xl font-bold">{remaining.days}</span> 

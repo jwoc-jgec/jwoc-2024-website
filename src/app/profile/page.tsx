@@ -105,13 +105,13 @@ export default function ProfilePage() {
   });
   const { toast } = useToast();
   const { data: session, status: sessionStatus } = useSession();
+  // const router = useRouter()
   useEffect(() => {
     const fetchData = async () => {
       if (sessionStatus === "authenticated") {
         if (session && session.user) {
           // @ts-ignore
           const userId = session.user.id;
-          console.log("sessionStatus --- ", userId);
           await getUesrData(userId);
         }
       }
@@ -123,9 +123,6 @@ export default function ProfilePage() {
   async function getUesrData(userId: any) {
     const type = "Mentor";
     try {
-      console.log("entered");
-      console.log("userId --->");
-
       let resUser = await fetch(`api/project?mentorId=${userId}`, {
         method: "GET",
         headers: {
@@ -135,7 +132,6 @@ export default function ProfilePage() {
       // console.log("user --- > ", resUser);
       if (resUser.ok) {
         const { message, mentor, status } = await resUser.json();
-        console.log("Mentor:", mentor);
         const userDataFromBackend = mentor[0];
         setAllData({
           id: userDataFromBackend._id,
@@ -181,13 +177,14 @@ export default function ProfilePage() {
           mentorId: allData.id,
         }),
       });
-      console.log("response from backend ", response);
 
       if (response.ok) {
+        // router.refresh()
         toast({
           title: "Congratulations",
           description: "You have successfully registered your project",
         });
+
         // console.log("Project submitted successfully!");
       } else {
         console.error("Failed to submit project");
@@ -298,7 +295,9 @@ function ProjectCard({
       <div className="flex gap-3 flex-wrap mt-4 bottom-2">
         {projectTags.map((txt, i) => {
           return (
-            <p className="bg-[#5a5a5a59] text-white p-1 rounded-md">#{txt}</p>
+            <p key={i} className="bg-[#5a5a5a59] text-white p-1 rounded-md">
+              #{txt}
+            </p>
           );
         })}
       </div>
