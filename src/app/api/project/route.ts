@@ -186,3 +186,27 @@ export async function PATCH(req: NextRequest) {
     );
   }
 }
+
+
+// Delete a specific project by its id
+export async function DELETE(req: NextRequest) {
+  try {
+
+    // Connect mongoDB
+    await connectMongoDB();
+
+    // Get the project ID from the body
+    const { projectID } = await req.json();
+    if (!projectID) {
+      throw new Error("No project ID provided");
+    }
+    // Connect to MongoDB and delete the project
+    await Project.findByIdAndDelete(projectID);
+    await Mentor.findOneAndUpdate({RegisteredProjectId : projectID}, {
+      $pull:{ RegisteredProjectId : projectID }
+    });
+    return NextResponse.json({ message: "Deleted Successfully" }, { status: 200 });
+  } catch (err) {
+    return NextResponse.json({ message: `Error deleting the project: ${err}` }, { status: 400 });
+  }
+}
