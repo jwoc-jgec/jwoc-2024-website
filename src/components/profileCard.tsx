@@ -14,7 +14,7 @@ interface AllData {
   PRMerged: number;
   registeredProjects: [
     {
-      id: string;
+      _id: string;
       projectName: string;
       projectDescription: string;
       projectTags: string[];

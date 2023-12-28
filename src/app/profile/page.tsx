@@ -1,13 +1,19 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import "../../css/UserCard.css";
 import ProfileCard from "@/components/profileCard";
-import { TbLogout } from "react-icons/tb";
+import { TbLogout, TbPlaceholder } from "react-icons/tb";
 import "../globals.css";
-import { GithubIcon, PlusCircle, YoutubeIcon } from "lucide-react";
+import {
+  Edit2Icon,
+  EditIcon,
+  GithubIcon,
+  PlusCircle,
+  SaveIcon,
+  YoutubeIcon,
+} from "lucide-react";
 
 import {
   Dialog,
@@ -19,6 +25,7 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import { FaExclamationCircle, FaYoutubeSquare } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
+import { MdCancel, MdCancelPresentation } from "react-icons/md";
 interface UserData {
   name: string;
   email: string;
@@ -34,7 +41,7 @@ interface AllData {
   PRMerged: number;
   registeredProjects: [
     {
-      id: string;
+      _id: string;
       projectName: string;
       projectDescription: string;
       projectTags: string[];
@@ -54,7 +61,7 @@ interface projectData {
   mentorId: string;
 }
 interface projectDatas {
-  id: string;
+  _id: string;
   projectName: string;
   projectDescription: string;
   projectTags: string[];
@@ -83,7 +90,7 @@ export default function ProfilePage() {
     PRMerged: 0,
     registeredProjects: [
       {
-        id: "",
+        _id: "",
         projectName: "",
         projectDescription: "",
         projectTags: [],
@@ -93,6 +100,7 @@ export default function ProfilePage() {
       },
     ],
   });
+  const { toast } = useToast();
   // const [noOfUpload, setNoOfUplolad] = useState<number>(0);
   const [projectData, setProjectData] = useState<projectData>({
     ProjectName: "",
@@ -103,7 +111,6 @@ export default function ProfilePage() {
     projectVideoLink: "",
     mentorId: "",
   });
-  const { toast } = useToast();
   const { data: session, status: sessionStatus } = useSession();
   // const router = useRouter()
   useEffect(() => {
@@ -114,6 +121,7 @@ export default function ProfilePage() {
           const userId = session.user.id;
           await getUesrData(userId);
         }
+        console.log("allData", allData);
       }
     };
 
@@ -179,12 +187,12 @@ export default function ProfilePage() {
       });
 
       if (response.ok) {
-        // router.refresh()
         toast({
           title: "Congratulations",
           description: "You have successfully registered your project",
         });
 
+        router.refresh();
         // console.log("Project submitted successfully!");
       } else {
         console.error("Failed to submit project");
@@ -198,6 +206,7 @@ export default function ProfilePage() {
       // Handle the error or show a user-friendly message
     }
   };
+  console.log("allData.registeredProjects", allData.registeredProjects);
 
   return (
     <div className="flex flex-col pt-5 gap-10 items-center justify-center font-sans">
@@ -253,54 +262,290 @@ function AddProjectCard({ noOfProjects }: { noOfProjects: number }) {
   );
 }
 
+// interface EditableFieldProps {
+//   value: string;
+//   onChange: (value: string) => void;
+// }
+
+// export const EditableField: React.FC<EditableFieldProps> = ({
+//   value,
+//   onChange,
+// }) => {
+//   const [editedValue, setEditedValue] = useState(value);
+//   const handleSaveClick = () => {
+//     console.log("clicked -2 ");
+
+//     onChange(editedValue);
+//   };
+
+//   return (
+//     <div className="flex flex-col gap-4">
+//       {/* {isEditing ? ( */}
+//       <input
+//         className="h-[5vh] p-2 rounded-sm"
+//         type="text"
+//         value={editedValue}
+//         onChange={(e) => setEditedValue(e.target.value)}
+//       />
+//       <button
+//         onClick={handleSaveClick}
+//         className="h-[5vh] p-2 w-[30%] rounded-sm bg-red-300"
+//       >
+//         Save
+//       </button>
+//     </div>
+//   );
+// };
+
 function ProjectCard({
+  _id,
   projectName,
   projectDescription,
-  projectLink,
-  videoLink,
   projectTags,
+  videoLink,
   projectTypes,
+  projectLink,
 }: projectDatas) {
+  console.log("id", _id);
+  console.log("projectName", projectName);
+const router = useRouter()
+  const [projId, setprojId] = useState(_id);
+  const [editedName, setEditedName] = useState(projectName);
+  const [editedVideoLink, setEditedVideoLink] = useState(videoLink);
+  const [editedGithubLink, setEditedGithubLink] = useState(projectLink);
+  const [editedDescription, setEditedDescription] =
+    useState(projectDescription);
+  const [editedTechStack, setEditedTechStack] = useState(projectTags.join(" "));
+
+  const [editable, setEditable] = useState(false);
+  const [projectType, setProjectType] = useState(projectTypes);
+  const { toast } = useToast();
+  const handleSaveChanges = async () => {
+    console.log("setprojId", projId);
+    function manageTechStack(ele: string) {
+      const techStackArray = ele.split(" ");
+      return techStackArray;
+    }
+    const techStackArray = await manageTechStack(editedTechStack);
+
+    try {
+      const response = await fetch("/api/project", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          projectId: projId,
+          projectName: editedName,
+          projectDescription: editedDescription,
+          githubLink: editedGithubLink,
+          projectTypes: projectType,
+          projectTags: techStackArray,
+          videoLink: editedVideoLink,
+        }),
+      });
+      if (response.ok) {
+        toast({
+          title: "Please reload the page once.",
+          description: "You have successfully Edited your project",
+        });
+        router.push("/profile");
+      }
+    } catch (error) {
+      toast({
+        title: "Failed to Edit Project",
+        variant: "destructive",
+      });
+      console.log("Failed to retrieve User Data");
+      console.log("error", error);
+    }
+    console.log("projectType", projectType);
+    console.log("Saving changes...");
+    setEditable(false);
+  };
+
+  const cancelChanges = () => {
+    setEditedName(projectName);
+    setEditedVideoLink(videoLink);
+    setEditedGithubLink(projectLink);
+    setEditedDescription(projectDescription);
+    setProjectType(projectTypes);
+    setEditedTechStack(projectTags.join(" "));
+    setEditable(false);
+  };
+
+  const handleEditOptions = () => {
+    setprojId(_id);
+    setEditedName(projectName);
+    setProjectType(projectTypes);
+    setEditedVideoLink(videoLink);
+    setEditedGithubLink(projectLink);
+    setEditedDescription(projectDescription);
+    setEditedTechStack(projectTags.join(" "));
+    setEditable(true);
+  };
+
   return (
-    <div className="backdrop-blur-2xl z-50 border-2 h-72 border-gray-400 py-8 p-5 rounded-lg w-80 md:w-96">
-      <div className="flex gap-5 items-center pb-5 justify-between">
-        <p className="text-2xl font-bold text-white">{projectName}</p>
-        {/* <div className="text-xs flex items-center justify-center bg-blue-200 text-blue-700 border-dotted px-2 py-0.5 rounded-full">
-        <p className="font-bold">! </p>
-      </div> */}
-        <div className="flex flex-col items-center">
-          <FaExclamationCircle
-            fontSize="1.6rem"
-            color="#5a5a5a"
-            title="Decision Pending"
-          />
-          <p className="text-[#5a5a5a] text-[12px]">Decision Pending</p>
-        </div>
-      </div>
-      <div className="flex gap-5 mb-5 text-white">
-        {/* <GithubIcon size={28} href={projectLink} /> */}
-        <FaGithub size={28} href={projectLink} className="cursor-pointer" />
-        <FaYoutubeSquare
-          size={28}
-          href={videoLink}
-          className="cursor-pointer"
-        />
-      </div>
-      <p className="text-neutral-300 line-clamp-5">
-        {projectDescription.length > 100
-          ? projectDescription.slice(0, 100) + "..."
-          : projectDescription}
-      </p>
-      {/* <p className="text-white">{projectTags.split(" ")}</p> */}
-      <div className="flex gap-3 flex-wrap mt-4 bottom-2">
-        {projectTags.map((txt, i) => {
-          return (
-            <p key={i} className="bg-[#5a5a5a59] text-white p-1 rounded-md">
-              #{txt}
-            </p>
-          );
-        })}
-      </div>
+    <div className="backdrop-blur-2xl z-50 border-2 border-gray-400 py-8 p-5 rounded-lg w-80 md:w-96">
+      {!editable ? (
+        <>
+          <div className="flex gap-5 items-center pb-5 justify-between">
+            <p className="text-2xl font-bold text-white">{projectName}</p>
+            <div className="flex flex-col items-center">
+              <FaExclamationCircle
+                fontSize="1.6rem"
+                color="#5a5a5a"
+                title="Decision Pending"
+              />
+              <p className="text-[#5a5a5a] text-[12px]">Decision Pending</p>
+            </div>
+          </div>
+          <div className="flex gap-5 mb-5 text-white">
+            <a href={projectLink} target="_blank">
+              <FaGithub size={28} className="cursor-pointer" />
+            </a>
+            <a href={videoLink} target="_blank">
+              <FaYoutubeSquare size={28} className="cursor-pointer" />
+            </a>
+          </div>
+          <p className="text-neutral-300 line-clamp-5">
+            {projectDescription.length > 100
+              ? projectDescription.slice(0, 100) + "..."
+              : projectDescription}
+          </p>
+          <div className="flex gap-3 flex-wrap mt-4 bottom-2">
+            {projectTags.map((txt, i) => {
+              return (
+                <p key={i} className="bg-[#5a5a5a59] text-white p-1 rounded-md">
+                  #{txt}
+                </p>
+              );
+            })}
+          </div>
+          <div className="flex flex-row w-[30%] mt-5 items-center gap-4 cursor-pointer">
+            <span onClick={handleEditOptions} className="flex flex-row gap-2 pt-1 bg-green-500 rounded-sm px-3">
+              <span>Edit</span>
+              <EditIcon
+                className="mb-2"
+                fontSize={20}
+                color="black"
+              />
+            </span>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="mb-4">
+            <label  className="block text-white text-sm font-bold mb-2">
+              Project Name
+            </label>
+            <input
+            placeholder = "Enter Project Name"
+              type="text"
+              value={editedName}
+              onChange={(e) => setEditedName(e.target.value)}
+              className="w-full bg-gray-200 text-gray-800 border border-gray-300 rounded-md py-2 px-3"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-white text-sm font-bold mb-2">
+              YouTube Link
+            </label>
+            <input
+            placeholder="Enter YouTube link"
+              type="text"
+              value={editedVideoLink}
+              onChange={(e) => setEditedVideoLink(e.target.value)}
+              className="w-full bg-gray-200 text-gray-800 border border-gray-300 rounded-md py-2 px-3"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-white text-sm font-bold mb-2">
+              GitHub Link
+            </label>
+            <input
+            placeholder="Enter project Github Link"
+              type="text"
+              value={editedGithubLink}
+              onChange={(e) => setEditedGithubLink(e.target.value)}
+              className="w-full bg-gray-200 text-gray-800 border border-gray-300 rounded-md py-2 px-3"
+            />
+          </div>
+          <div className="mb-4 text-white">
+            <label htmlFor="projectType" className="block mb-1">
+              Project Type
+            </label>
+            <select
+              id="projectType"
+              name="projectType"
+              className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
+              required
+              onChange={(e) => setProjectType(e.target.value)}
+            >
+              <option className="text-white" value="">
+              Select Project Type
+              </option>
+              <option className="text-black" value="Web">
+                Web
+              </option>
+              <option className="text-black" value="AI/ML">
+                AI/ML
+              </option>
+              <option className="text-black" value="Blockchain">
+                Blockchain
+              </option>
+              <option className="text-black" value="Android">
+                Android
+              </option>
+              <option className="text-black" value="Android">
+                Other
+              </option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <label className="block text-white text-sm font-bold mb-2">
+              Project Description
+            </label>
+            <textarea
+             placeholder="Enter project description"
+              value={editedDescription}
+              onChange={(e) => setEditedDescription(e.target.value)}
+              className="w-full bg-gray-200 text-gray-800 border border-gray-300 rounded-md py-2 px-3"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-white text-sm font-bold mb-2">
+              Tech Stack
+            </label>
+            <input
+            placeholder="Enter project tech stacks, space seperatedly"
+              type="text"
+              value={editedTechStack}
+              onChange={(e) => setEditedTechStack(e.target.value)}
+              className="w-full bg-gray-200 text-gray-800 border border-gray-300 rounded-md py-2 px-3"
+            />
+          </div>
+          <div className="flex flex-row w-[30%]  items-center gap-4 cursor-pointer">
+            <span className="flex flex-row gap-2 rounded-sm">
+              <span
+                className="flex flex-row gap-2 pt-1 bg-green-500 rounded-sm px-3 cursor-pointer"
+                onClick={handleSaveChanges}
+              >
+                <span>Save</span>
+                <SaveIcon className="mb-2" fontSize={25} color="black" />
+              </span>
+              <span onClick={cancelChanges} className="flex flex-row gap-2 pt-1 bg-red-500 rounded-sm px-3 cursor-pointer">
+                <span>Cancel</span>
+                <MdCancelPresentation
+                  className="mb-2"
+                  fontSize={25}
+                  color="black"
+                />
+              </span>
+            </span>
+          </div>
+        </>
+      )}
     </div>
   );
 }

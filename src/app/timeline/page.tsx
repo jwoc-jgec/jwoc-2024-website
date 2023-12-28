@@ -150,7 +150,7 @@ function page() {
                   <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
                     <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
                     <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
-                      <p className="mb-3 text-base text-yellow-300">25 Jan</p>
+                      <p className="mb-3 text-base text-yellow-300">15 Jan</p>
                       <div className="mb-3 font-bold text-xl md:text-xl">
                         Coding for Phase 1 starts
                       </div>

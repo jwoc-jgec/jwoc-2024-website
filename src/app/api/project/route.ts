@@ -2,7 +2,7 @@ import { connectMongoDB } from "@/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import Project from "@/models/project";
 import Mentor from "@/models/mentor";
-import mongoose, { ObjectId } from "mongoose";
+import mongoose from "mongoose";
 
 export async function POST(req: NextRequest) {
   try {
@@ -160,19 +160,27 @@ export async function PATCH(req: NextRequest) {
       projectId,
       projectName,
       projectDescription,
-      projectLink,
+      githubLink,
+      projectTypes,
       projectTags,
-      videoLink,
+      videoLink
     } = await req.json();
+console.log("projectId --- > ",projectId);
+console.log("projectTags --- > ",projectTags);
+console.log("projectTypes --- > ",projectTypes);
 
     // Update the datails as require
-    await Project.findByIdAndUpdate(projectId, {
+    const response = await Project.findByIdAndUpdate(projectId, {
       projectName,
       projectDescription,
-      projectLink,
+      projectLink: githubLink,
+      projectTypes,
       projectTags,
       videoLink,
     });
+    // const re = await response.save()
+    // console.log("response from edit",  re);
+    
 
     return NextResponse.json(
       { message: "Project Details updated successfully." },

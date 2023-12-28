@@ -51,7 +51,6 @@ export async function POST(req: Request) {
         answer2,
         // isVerified
       });
-      // console.log("savedMentor", savedMentor);
     } else {
       const savedMentor = await Mentor.create({
         name,
@@ -61,7 +60,7 @@ export async function POST(req: Request) {
         whatsapp,
         ipAddress,
         college,
-        year: 5,
+        year,
         github,
         linkedIn,
         answer1,
