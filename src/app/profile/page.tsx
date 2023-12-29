@@ -6,26 +6,13 @@ import "../../css/UserCard.css";
 import ProfileCard from "@/components/profileCard";
 import { TbLogout, TbPlaceholder } from "react-icons/tb";
 import "../globals.css";
-import {
-  Edit2Icon,
-  EditIcon,
-  GithubIcon,
-  PlusCircle,
-  SaveIcon,
-  YoutubeIcon,
-} from "lucide-react";
+import { EditIcon, PlusCircle, SaveIcon } from "lucide-react";
 
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
 import { FaExclamationCircle, FaYoutubeSquare } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
-import { MdCancel, MdCancelPresentation } from "react-icons/md";
+import { MdCancelPresentation, MdDelete } from "react-icons/md";
 interface UserData {
   name: string;
   email: string;
@@ -166,7 +153,7 @@ export default function ProfilePage() {
   }
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    const techStackArray = await manageTechStack(projectData.projectTags);
+    const techStackArray = await manageTechStack(projectData.projectTags.trim());
     try {
       console.log("project data", projectData);
 
@@ -192,7 +179,7 @@ export default function ProfilePage() {
           description: "You have successfully registered your project",
         });
 
-        router.refresh();
+        window.location.reload();
         // console.log("Project submitted successfully!");
       } else {
         console.error("Failed to submit project");
@@ -308,7 +295,8 @@ function ProjectCard({
 }: projectDatas) {
   console.log("id", _id);
   console.log("projectName", projectName);
-const router = useRouter()
+  const router = useRouter();
+  const projectId = _id ;
   const [projId, setprojId] = useState(_id);
   const [editedName, setEditedName] = useState(projectName);
   const [editedVideoLink, setEditedVideoLink] = useState(videoLink);
@@ -316,17 +304,17 @@ const router = useRouter()
   const [editedDescription, setEditedDescription] =
     useState(projectDescription);
   const [editedTechStack, setEditedTechStack] = useState(projectTags.join(" "));
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const [editable, setEditable] = useState(false);
   const [projectType, setProjectType] = useState(projectTypes);
   const { toast } = useToast();
   const handleSaveChanges = async () => {
-    console.log("setprojId", projId);
     function manageTechStack(ele: string) {
       const techStackArray = ele.split(" ");
       return techStackArray;
     }
-    const techStackArray = await manageTechStack(editedTechStack);
+    const techStackArray = await manageTechStack(editedTechStack.trim());
 
     try {
       const response = await fetch("/api/project", {
@@ -349,7 +337,7 @@ const router = useRouter()
           title: "Please reload the page once.",
           description: "You have successfully Edited your project",
         });
-        router.push("/profile");
+        window.location.reload();
       }
     } catch (error) {
       toast({
@@ -383,6 +371,42 @@ const router = useRouter()
     setEditedDescription(projectDescription);
     setEditedTechStack(projectTags.join(" "));
     setEditable(true);
+  };
+  const handleDeleteOptions = async () => {
+    if (!showDeleteModal) {
+      setShowDeleteModal(true);
+      return;
+    }
+    console.log("projectId - > ",projectId);
+    
+    try {
+      const response = await fetch("/api/project", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          projectId: projectId,
+        }),
+      });
+      console.log("response",response);
+      
+      if (response.ok) {
+        toast({
+          title: "Please refresh the page once.",
+          description: "You have successfully Deleted this project",
+        });
+        setShowDeleteModal(false);
+        window.location.reload();
+      }
+    } catch (error) {
+      toast({
+        title: "Failed to Delete Project",
+        variant: "destructive",
+      });
+      console.log("Failed to Delete Project");
+      console.log("error", error);
+    }
   };
 
   return (
@@ -422,27 +446,58 @@ const router = useRouter()
               );
             })}
           </div>
-          <div className="flex flex-row w-[30%] mt-5 items-center gap-4 cursor-pointer">
-            <span onClick={handleEditOptions} className="flex flex-row gap-2 pt-1 bg-green-500 rounded-sm px-3">
+          <div className="flex flex-row w-[100%] mt-5 items-center justify-between cursor-pointer">
+            <span
+              onClick={handleEditOptions}
+              className="flex flex-row gap-1 pt-1 bg-green-500 rounded-sm px-3"
+            >
               <span>Edit</span>
-              <EditIcon
-                className="mb-2"
-                fontSize={20}
-                color="black"
-              />
+              <EditIcon className="mb-2" fontSize={20} color="black" />
+            </span>
+            <span
+              onClick={handleDeleteOptions}
+              className="flex flex-row pt-1 gap-1 bg-red-500 rounded-sm px-3"
+            >
+              <span>Delete</span>
+              <MdDelete className="mb-2" fontSize={20} color="black" />
             </span>
           </div>
+          {showDeleteModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-8 rounded shadow-lg">
+            <p className="text-lg">Are you sure you want to delete this project?</p>
+            <div className="mt-4 flex justify-end space-x-4">
+              <button
+                onClick={handleDeleteOptions}
+                className="px-4 py-2 bg-red-500 text-white rounded"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="px-4 py-2 bg-green-500 rounded"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
         </>
       ) : (
-        <>
+        <form
+          onSubmit={handleSaveChanges}
+          className="h-[400px] overflow-y-scroll"
+        >
           <div className="mb-4">
-            <label  className="block text-white text-sm font-bold mb-2">
+            <label className="block text-white text-sm font-bold mb-2">
               Project Name
             </label>
             <input
-            placeholder = "Enter Project Name"
+              placeholder="Enter Project Name"
               type="text"
               value={editedName}
+              required
               onChange={(e) => setEditedName(e.target.value)}
               className="w-full bg-gray-200 text-gray-800 border border-gray-300 rounded-md py-2 px-3"
             />
@@ -452,7 +507,7 @@ const router = useRouter()
               YouTube Link
             </label>
             <input
-            placeholder="Enter YouTube link"
+              placeholder="Enter YouTube link"
               type="text"
               value={editedVideoLink}
               onChange={(e) => setEditedVideoLink(e.target.value)}
@@ -464,7 +519,8 @@ const router = useRouter()
               GitHub Link
             </label>
             <input
-            placeholder="Enter project Github Link"
+              required
+              placeholder="Enter project Github Link"
               type="text"
               value={editedGithubLink}
               onChange={(e) => setEditedGithubLink(e.target.value)}
@@ -483,7 +539,7 @@ const router = useRouter()
               onChange={(e) => setProjectType(e.target.value)}
             >
               <option className="text-white" value="">
-              Select Project Type
+                Select Project Type
               </option>
               <option className="text-black" value="Web">
                 Web
@@ -507,7 +563,8 @@ const router = useRouter()
               Project Description
             </label>
             <textarea
-             placeholder="Enter project description"
+              required
+              placeholder="Enter project description"
               value={editedDescription}
               onChange={(e) => setEditedDescription(e.target.value)}
               className="w-full bg-gray-200 text-gray-800 border border-gray-300 rounded-md py-2 px-3"
@@ -518,33 +575,67 @@ const router = useRouter()
               Tech Stack
             </label>
             <input
-            placeholder="Enter project tech stacks, space seperatedly"
+              placeholder="Enter project tech stacks, space seperatedly"
               type="text"
+              required
               value={editedTechStack}
               onChange={(e) => setEditedTechStack(e.target.value)}
               className="w-full bg-gray-200 text-gray-800 border border-gray-300 rounded-md py-2 px-3"
             />
           </div>
-          <div className="flex flex-row w-[30%]  items-center gap-4 cursor-pointer">
-            <span className="flex flex-row gap-2 rounded-sm">
-              <span
-                className="flex flex-row gap-2 pt-1 bg-green-500 rounded-sm px-3 cursor-pointer"
-                onClick={handleSaveChanges}
-              >
-                <span>Save</span>
-                <SaveIcon className="mb-2" fontSize={25} color="black" />
+          <div className="flex flex-row w-[100%] justify-between items-center gap-4 cursor-pointer">
+            <div className="flex flex-row w-[30%]  items-center gap-1 cursor-pointer">
+              <span className="flex flex-row gap-2 rounded-sm">
+                <button
+                  type="submit"
+                  className="flex flex-row gap-1 pt-2 bg-green-500 rounded-sm px-1 cursor-pointer text-white"
+                >
+                  Save
+                  <SaveIcon className="mb-2" fontSize={25} color="white" />
+                </button>
+                <span
+                  onClick={cancelChanges}
+                  className="flex flex-row gap-1 pt-2 bg-red-300 rounded-sm px-1 cursor-pointer "
+                >
+                  <span>Cancel</span>
+                  <MdCancelPresentation
+                    className="mb-2"
+                    fontSize={25}
+                    color="black"
+                  />
+                </span>
               </span>
-              <span onClick={cancelChanges} className="flex flex-row gap-2 pt-1 bg-red-500 rounded-sm px-3 cursor-pointer">
-                <span>Cancel</span>
-                <MdCancelPresentation
-                  className="mb-2"
-                  fontSize={25}
-                  color="black"
-                />
-              </span>
+            </div>
+            <span
+              onClick={handleDeleteOptions}
+              className="flex flex-row py-1 pt-[9px] gap-2 bg-red-500 rounded-sm px-2"
+            >
+              <span>Delete</span>
+              <MdDelete className="mb-2" fontSize={20} color="black" />
             </span>
+            {showDeleteModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-8 rounded shadow-lg">
+            <p className="text-lg">Are you sure you want to delete this project?</p>
+            <div className="mt-4 flex justify-end space-x-4">
+              <button
+                onClick={handleDeleteOptions}
+                className="px-4 py-2 bg-red-500 text-white rounded"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="px-4 py-2 bg-gray-300 rounded"
+              >
+                No
+              </button>
+            </div>
           </div>
-        </>
+        </div>
+      )}
+          </div>
+        </form>
       )}
     </div>
   );
@@ -707,27 +798,6 @@ function ProjectForm({
               }
             ></textarea>
           </div>
-
-          {/* <div className="mb-4 text-black">
-            <label htmlFor="techStack" className="block mb-1">
-              Tech Stack
-            </label>
-            <input
-              type="text"
-              id="ProjectTechStack"
-              name="ProjectTechStack"
-              className="w-full p-2 border-b border-white bg-transparent focus:outline-none focus:border-gray-400"
-              placeholder="Enter project tech stacks, space seperatedly"
-              autoComplete="off"
-              required
-              onChange={(e) =>
-                setProjectData({
-                  ...projectData,
-                  projectTags: e.target.value,
-                })
-              }
-            />
-          </div> */}
           <div className="text-center">
             <button
               type="submit"

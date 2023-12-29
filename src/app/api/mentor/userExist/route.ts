@@ -5,7 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 connectMongoDB();
 export async function POST(req: NextRequest) {
-  console.log('hit 1');
     try {
     const { type,  email } = await req.json();
     // console.log('email',email);

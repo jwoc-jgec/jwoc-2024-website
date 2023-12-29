@@ -165,10 +165,6 @@ export async function PATCH(req: NextRequest) {
       projectTags,
       videoLink
     } = await req.json();
-console.log("projectId --- > ",projectId);
-console.log("projectTags --- > ",projectTags);
-console.log("projectTypes --- > ",projectTypes);
-
     // Update the datails as require
     const response = await Project.findByIdAndUpdate(projectId, {
       projectName,
@@ -178,9 +174,6 @@ console.log("projectTypes --- > ",projectTypes);
       projectTags,
       videoLink,
     });
-    // const re = await response.save()
-    // console.log("response from edit",  re);
-    
 
     return NextResponse.json(
       { message: "Project Details updated successfully." },
@@ -204,14 +197,16 @@ export async function DELETE(req: NextRequest) {
     await connectMongoDB();
 
     // Get the project ID from the body
-    const { projectID } = await req.json();
-    if (!projectID) {
+    const { projectId } = await req.json();
+    console.log("projectID",projectId);
+    
+    if (!projectId) {
       throw new Error("No project ID provided");
     }
     // Connect to MongoDB and delete the project
-    await Project.findByIdAndDelete(projectID);
-    await Mentor.findOneAndUpdate({RegisteredProjectId : projectID}, {
-      $pull:{ RegisteredProjectId : projectID }
+    await Project.findByIdAndDelete(projectId);
+    await Mentor.findOneAndUpdate({ RegisteredProjectId: projectId }, {
+      $pull: { RegisteredProjectId: projectId }
     });
     return NextResponse.json({ message: "Deleted Successfully" }, { status: 200 });
   } catch (err) {
