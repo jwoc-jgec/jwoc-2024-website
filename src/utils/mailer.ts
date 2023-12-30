@@ -29,7 +29,8 @@ export interface info {
     otp?: string,
     senderName?: string,
     senderEmail?: string,
-    senderMessage?: string
+    senderMessage?: string,
+    link?: string
 }
 
 export const sendEmail = async ({to, mailType, info} : mailInfo) => {
@@ -50,8 +51,41 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
         // console.log(to, mailType, info);
         // await consumer();
 
+        // if(mailType === "VERIFICATION") {
+        //     return await producer({
+        //         from: process.env.VERIFY_EMAIL,
+        //         to,
+        //         subject: "Email Verification for JWoC-2k24",
+        //         html: verificationMail(info)
+        //     });
+        // }
+        // else if(mailType === "REGISTRATION SUCCESS") {
+        //     return await producer({
+        //         from: process.env.EMAIL,
+        //         to,
+        //         subject: `Welcome To JWoC | Successfully Registered as ${info.userType}`,
+        //         html: registrationSuccessfulMail(info)
+        //     });
+        // }
+        // else if(mailType === "FORGOT PASSWORD") {
+        //     return await producer({
+        //         from: process.env.VERIFY_EMAIL,
+        //         to,
+        //         subject: 'JWoC - Reset Password',
+        //         html: resetPasswordMail(info)
+        //     });
+        // }
+        // else if(mailType === "CONTACT") {
+        //     return await producer({
+        //         from: process.env.CONTACT_EMAIL,
+        //         to: process.env.CONTACT_EMAIL,
+        //         subject: "User Query/Feedback",
+        //         html: contactUsMail(info)
+        //     })
+        // }
+
+
         if(mailType === "VERIFICATION") {
-            // return await producer({
             return await transport3.sendMail({
                 from: process.env.VERIFY_EMAIL,
                 to,
@@ -60,7 +94,6 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
             });
         }
         else if(mailType === "REGISTRATION SUCCESS") {
-            // return await producer({
             return await transport1.sendMail({
                 from: process.env.EMAIL,
                 to,
@@ -69,7 +102,6 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
             });
         }
         else if(mailType === "FORGOT PASSWORD") {
-            // return await producer({
             return await transport3.sendMail({
                 from: process.env.VERIFY_EMAIL,
                 to,
@@ -78,7 +110,6 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
             });
         }
         else if(mailType === "CONTACT") {
-            // return await producer({
             return await transport2.sendMail({
                 from: process.env.CONTACT_EMAIL,
                 to: process.env.CONTACT_EMAIL,
@@ -86,38 +117,6 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
                 html: contactUsMail(info)
             })
         }
-        // if(mailType === "VERIFICATION") {
-        //     return await transport3.sendMail({
-        //         from: process.env.VERIFY_EMAIL,
-        //         to,
-        //         subject: "Email Verification for JWoC-2k24",
-        //         html: verificationMail(info)
-        //     });
-        // }
-        // else if(mailType === "REGISTRATION SUCCESS") {
-        //     return await transport1.sendMail({
-        //         from: process.env.EMAIL,
-        //         to,
-        //         subject: `Welcome To JWoC | Successfully Registered as ${info.userType}`,
-        //         html: registrationSuccessfulMail(info)
-        //     });
-        // }
-        // else if(mailType === "FORGOT PASSWORD") {
-        //     return await transport3.sendMail({
-        //         from: process.env.VERIFY_EMAIL,
-        //         to,
-        //         subject: 'JWoC - Reset Password',
-        //         html: resetPasswordMail(info)
-        //     });
-        // }
-        // else if(mailType === "CONTACT") {
-        //     return await transport2.sendMail({
-        //         from: process.env.CONTACT_EMAIL,
-        //         to: process.env.CONTACT_EMAIL,
-        //         subject: "User Query/Feedback",
-        //         html: contactUsMail(info)
-        //     })
-        // }
 
         
     } catch (error) {
