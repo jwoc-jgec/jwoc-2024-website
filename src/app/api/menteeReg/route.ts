@@ -1,7 +1,7 @@
 import { connectMongoDB } from "@/lib/mongodb";
 import Mentee from "@/models/mentee";
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import { sendEmail } from "@/utils/mailer";
 
 export async function POST(req: Request) {
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       isFirstTime,
-      answer1,
+      answer1
       // isVerified
     } = await req.json();
     // console.log( name , email , password , phone , whatsapp , ipAddress ,college , year , github , linkedIn , isFirstTime , answer1 );
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
       github,
       linkedIn,
       isFirstTime,
-      answer1,
+      answer1
     });
     console.log("savedMentee", savedMentee);
 

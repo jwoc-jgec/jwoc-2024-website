@@ -270,7 +270,8 @@ export default function Home() {
       },
       body: JSON.stringify({
         otp: OTP,
-        email: email,
+        email,
+        type: "VERIFICATION"
       }),
     });
     console.log("resUserExists", resUserExists);
