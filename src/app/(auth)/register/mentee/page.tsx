@@ -88,6 +88,7 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
+  console.log = () => {};
   const targetDate = new Date("December 20, 2023 15:25:00 GMT+0530").getTime();
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
@@ -222,9 +223,6 @@ export default function Home() {
   };
 
   return (
-    // <div
-    //   className={`${inter.className}  absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}
-    // >
     <>
 {/*       {!timeUp ? (
         <CountDown targetDate={targetDate} title="Mentee" />

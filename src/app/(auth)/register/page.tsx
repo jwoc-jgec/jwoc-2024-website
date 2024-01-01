@@ -10,6 +10,7 @@ import Image from "next/image";
 
 
 function RegistrationButton({ title, link }: { title: string; link: string }) {
+  console.log = () => {};
   return (
     <>
     <section id="register">

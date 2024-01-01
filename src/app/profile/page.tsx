@@ -58,6 +58,8 @@ interface projectDatas {
 }
 
 export default function ProfilePage() {
+  
+  console.log = () => {};
   const router = useRouter();
   const [uData, setData] = useState<any>({
     email: "",
