@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 const formSchema = z.object({
   email: z.string().email({ message: "Enter a vaild email" }),
   password: z.string().min(6, {
@@ -43,6 +44,7 @@ export default function LoginForm() {
   });
 
   // 2. Define a submit handler.
+  const router = useRouter()
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
@@ -65,6 +67,9 @@ export default function LoginForm() {
       opacity: 1, // Fade in
     },
   };
+  const forgetPwHandle = () => {
+    router.push("/forgetpassword")
+  }
   return (
     <motion.div
     initial="initial"
@@ -111,6 +116,10 @@ export default function LoginForm() {
               Submit
             </Button>
           </form>
+          <div className="flex flex-row justify-between pt-2">
+            <span className=" cursor-pointer hover:underline" onClick={forgetPwHandle}>Forgot Password</span>
+            <span className=" cursor-pointer hover:underline" onClick={() => {router.push("/register")}}>Sign Up</span>
+          </div>
         </Form>
       </CardContent>
     </Card>
