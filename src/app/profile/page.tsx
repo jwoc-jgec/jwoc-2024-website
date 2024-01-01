@@ -119,11 +119,13 @@ export default function ProfilePage() {
 
   async function getUesrData(userId: any) {
     const type = "Mentor";
+    console.log(process.env.NEXT_PUBLIC_BACKEND_SECURITY_TOKEN);
     try {
       let resUser = await fetch(`api/project?mentorId=${userId}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "secureToken": `${process.env.NEXT_PUBLIC_BACKEND_SECURITY_TOKEN}`
         },
       });
       // console.log("user --- > ", resUser);

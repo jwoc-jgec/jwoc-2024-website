@@ -79,6 +79,10 @@ export async function GET(req: NextRequest) {
         // Connect to database
         await connectMongoDB();
 
+        // Check secure request
+        if(req.headers.get("secureToken") !== process.env.BACKEND_SECURITY_TOKEN)
+            return NextResponse.json({ message: "Unauthorize request" }, {status: 401});
+
         // Get all queries
         const queries = req.nextUrl.searchParams;
         // console.log("quaries",queries);
@@ -92,16 +96,24 @@ export async function GET(req: NextRequest) {
                         from: "mentors",
                         localField: "projectOwner",
                         foreignField: "_id",
-                        as: "ownerDetails",
+                        as: "projectOwner",
+                        pipeline: [
+                            {
+                                $project: {
+                                    name: true,
+                                    email: true,
+                                    college: true,
+                                    year: true,
+                                    isBanned: true,
+                                    linkedIn: true,
+                                },
+                            },
+                        ],
                     },
                 },
                 {
-                    $project: {
-                        "ownerDetails.password": false,
-                        "ownerDetails.question1": false,
-                        "ownerDetails.question2": false,
-                        "ownerDetails.answer1": false,
-                        "ownerDetails.answer2": false,
+                    $addFields: {
+                        projectOwner: { $first: "$projectOwner" },
                     },
                 },
             ]);
@@ -139,11 +151,13 @@ export async function GET(req: NextRequest) {
                     },
                 },
             ]);
-            return NextResponse.json({
-                message: "Projects found successfully.",
-                mentor,
-                status: 200,
-            });
+            return NextResponse.json(
+                {
+                    message: "Projects found successfully.",
+                    mentor,
+                },
+                { status: 200 }
+            );
         }
     } catch (error) {
         console.log(error);
@@ -168,7 +182,9 @@ export async function PATCH(req: NextRequest) {
             projectTypes,
             projectTags,
             videoLink,
+            isSelected
         } = await req.json();
+
         // Update the datails as require
         const response = await Project.findByIdAndUpdate(projectId, {
             projectName,
@@ -177,6 +193,7 @@ export async function PATCH(req: NextRequest) {
             projectTypes,
             projectTags,
             videoLink,
+            isSelected
         });
 
         return NextResponse.json(

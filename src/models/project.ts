@@ -32,6 +32,10 @@ const projectSchema = new mongoose.Schema(
         PRMerged: {
             type: Number,
             default: 0
+        },
+        isSelected: {
+            type: Boolean,
+            default: false
         }
     },
     {
