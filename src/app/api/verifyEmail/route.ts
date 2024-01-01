@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
                 to: email,
                 mailType: "FORGOT PASSWORD",
                 info: {
-                    link: `http://${process.env.BASE_URL}/resetPassword?token=${hashedToken}`,
+                    link: `${process.env.BASE_URL}/resetPassword?token=${hashedToken}`,
                 },
             });
 
