@@ -178,7 +178,9 @@ export async function PATCH(req: NextRequest) {
             projectTypes,
             projectTags,
             videoLink,
+            isSelected
         } = await req.json();
+
         // Update the datails as require
         const response = await Project.findByIdAndUpdate(projectId, {
             projectName,
@@ -187,6 +189,7 @@ export async function PATCH(req: NextRequest) {
             projectTypes,
             projectTags,
             videoLink,
+            isSelected
         });
 
         return NextResponse.json(
