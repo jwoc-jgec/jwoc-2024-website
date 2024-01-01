@@ -8,6 +8,8 @@ export async function GET(req: NextRequest) {
         await connectMongoDB();
 
         // check request security
+        if(req.headers.get("secureToken") !== process.env.BACKEND_SECURITY_TOKEN)
+            return NextResponse.json({ message: "Unauthorize request" }, {status: 401});
 
         // Give all the mentor details with aggregation
         const mentors = await Mentor.aggregate([

@@ -79,6 +79,10 @@ export async function GET(req: NextRequest) {
         // Connect to database
         await connectMongoDB();
 
+        // Check secure request
+        if(req.headers.get("secureToken") !== process.env.BACKEND_SECURITY_TOKEN)
+            return NextResponse.json({ message: "Unauthorize request" }, {status: 401});
+
         // Get all queries
         const queries = req.nextUrl.searchParams;
         // console.log("quaries",queries);
