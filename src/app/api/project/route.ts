@@ -92,16 +92,24 @@ export async function GET(req: NextRequest) {
                         from: "mentors",
                         localField: "projectOwner",
                         foreignField: "_id",
-                        as: "ownerDetails",
+                        as: "projectOwner",
+                        pipeline: [
+                            {
+                                $project: {
+                                    name: true,
+                                    email: true,
+                                    college: true,
+                                    year: true,
+                                    isBanned: true,
+                                    linkedIn: true,
+                                },
+                            },
+                        ],
                     },
                 },
                 {
-                    $project: {
-                        "ownerDetails.password": false,
-                        "ownerDetails.question1": false,
-                        "ownerDetails.question2": false,
-                        "ownerDetails.answer1": false,
-                        "ownerDetails.answer2": false,
+                    $addFields: {
+                        projectOwner: { $first: "$projectOwner" },
                     },
                 },
             ]);
@@ -139,11 +147,13 @@ export async function GET(req: NextRequest) {
                     },
                 },
             ]);
-            return NextResponse.json({
-                message: "Projects found successfully.",
-                mentor,
-                status: 200,
-            });
+            return NextResponse.json(
+                {
+                    message: "Projects found successfully.",
+                    mentor,
+                },
+                { status: 200 }
+            );
         }
     } catch (error) {
         console.log(error);
