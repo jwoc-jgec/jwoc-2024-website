@@ -32,11 +32,12 @@ export async function PATCH(req: NextRequest) {
         await connectMongoDB();
         // details from request
         const { menteeId } = await req.json();
-        console.log(menteeId);
+        // console.log(menteeId);
+
         // Update mentor
         const mentee = await Mentee.findById(menteeId);
         mentee.isBanned = !mentee.isBanned;
-        await mentee.save()
+        await mentee.save();
 
         return NextResponse.json(
             { message: "Updated Mentee details" },
