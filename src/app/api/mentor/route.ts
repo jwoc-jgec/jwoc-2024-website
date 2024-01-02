@@ -8,8 +8,8 @@ export async function GET(req: NextRequest) {
         await connectMongoDB();
 
         // check request security
-        if(req.headers.get("secureToken") !== process.env.BACKEND_SECURITY_TOKEN)
-            return NextResponse.json({ message: "Unauthorize request" }, {status: 401});
+        if (req.headers.get("secureToken") !== process.env.BACKEND_SECURITY_TOKEN)
+            return NextResponse.json({ message: "Unauthorize request" }, { status: 401 });
 
         // Give all the mentor details with aggregation
         const mentors = await Mentor.aggregate([
@@ -48,10 +48,14 @@ export async function PATCH(req: NextRequest) {
         await connectMongoDB();
 
         // details from request
-        const { mentorId, isBanned } = await req.json();
+        const { mentorId } = await req.json();
+        console.log(mentorId);
 
-        // update mentor
-        await Mentor.findByIdAndUpdate(mentorId, { isBanned });
+        const mentor = await Mentor.findById(mentorId);
+
+        // Update mentor
+        mentor.isBanned = !mentor.isBanned;
+        await mentor.save();
 
         return NextResponse.json(
             { message: "Updated Mentor details" },

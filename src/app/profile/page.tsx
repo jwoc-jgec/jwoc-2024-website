@@ -12,17 +12,19 @@ import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
 import { FaExclamationCircle, FaYoutubeSquare } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
-import { MdCancelPresentation, MdDelete } from "react-icons/md";
-interface UserData {
-  name: string;
-  email: string;
-  phone: string;
-  projectId: string;
-  PRMerged: number;
-}
+import { MdAdminPanelSettings, MdCancelPresentation, MdDelete } from "react-icons/md";
+// interface UserData {
+//   name: string;
+//   type : string
+//   email: string;
+//   phone: string;
+//   projectId: string;
+//   PRMerged: number;
+// }
 interface AllData {
   id: string;
   name: string;
+  type: string;
   email: string;
   phone: string;
   PRMerged: number;
@@ -58,22 +60,23 @@ interface projectDatas {
 }
 
 export default function ProfilePage() {
-  
-  console.log = () => {};
+  // console.log = () => {};
   const router = useRouter();
   const [uData, setData] = useState<any>({
     email: "",
   });
-  const [userData, setUserData] = useState<UserData>({
-    name: "",
-    email: "",
-    phone: "",
-    projectId: "",
-    PRMerged: 0,
-  });
+  // const [userData, setUserData] = useState<UserData>({
+  //   name: "",
+  //   type : "",
+  //   email: "",
+  //   phone: "",
+  //   projectId: "",
+  //   PRMerged: 0,
+  // });
   const [allData, setAllData] = useState<AllData>({
     id: "",
     name: "",
+    type: "",
     email: "",
     phone: "",
     PRMerged: 0,
@@ -125,15 +128,18 @@ export default function ProfilePage() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "secureToken": `${process.env.NEXT_PUBLIC_BACKEND_SECURITY_TOKEN}`
+          secureToken: `${process.env.NEXT_PUBLIC_BACKEND_SECURITY_TOKEN}`,
         },
       });
       // console.log("user --- > ", resUser);
       if (resUser.ok) {
         const { message, mentor, status } = await resUser.json();
         const userDataFromBackend = mentor[0];
+        console.log("mentor[0]", userDataFromBackend);
+
         setAllData({
           id: userDataFromBackend._id,
+          type: userDataFromBackend.type,
           name: userDataFromBackend.name,
           email: userDataFromBackend.email,
           phone: userDataFromBackend.phone,
@@ -157,7 +163,9 @@ export default function ProfilePage() {
   }
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    const techStackArray = await manageTechStack(projectData.projectTags.trim());
+    const techStackArray = await manageTechStack(
+      projectData.projectTags.trim()
+    );
     try {
       console.log("project data", projectData);
 
@@ -209,6 +217,15 @@ export default function ProfilePage() {
         <span className=" font-mono text-xl  ">Logout</span>
         <TbLogout fontSize="1.3em" />
       </button>
+      {allData.type === "Mentor&Admin" && (
+        <button
+          onClick={() => router.push("/admin")}
+          className="  bg-red-400 shadow-lg backdrop-blur-[40px] flex flex-row gap-5 p-[2vh] mt-[3vh] rounded-[10px] text-white"
+        >
+          <span className=" font-mono text-xl  ">Admin</span>
+          <MdAdminPanelSettings  fontSize="1.3em" />
+        </button>
+      )}
       <div className="flex flex-col gap-5 items-center justify-center">
         <h1 className="text-3xl font-bold text-white">Your Projects</h1>
         <p className="text-xl text-white">
@@ -300,7 +317,7 @@ function ProjectCard({
   console.log("id", _id);
   console.log("projectName", projectName);
   const router = useRouter();
-  const projectId = _id ;
+  const projectId = _id;
   const [projId, setprojId] = useState(_id);
   const [editedName, setEditedName] = useState(projectName);
   const [editedVideoLink, setEditedVideoLink] = useState(videoLink);
@@ -381,8 +398,8 @@ function ProjectCard({
       setShowDeleteModal(true);
       return;
     }
-    console.log("projectId - > ",projectId);
-    
+    console.log("projectId - > ", projectId);
+
     try {
       const response = await fetch("/api/project", {
         method: "DELETE",
@@ -393,8 +410,8 @@ function ProjectCard({
           projectId: projectId,
         }),
       });
-      console.log("response",response);
-      
+      console.log("response", response);
+
       if (response.ok) {
         toast({
           title: "Please refresh the page once.",
@@ -467,26 +484,28 @@ function ProjectCard({
             </span>
           </div>
           {showDeleteModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-8 rounded shadow-lg">
-            <p className="text-lg">Are you sure you want to delete this project?</p>
-            <div className="mt-4 flex justify-end space-x-4">
-              <button
-                onClick={handleDeleteOptions}
-                className="px-4 py-2 bg-red-500 text-white rounded"
-              >
-                Yes
-              </button>
-              <button
-                onClick={() => setShowDeleteModal(false)}
-                className="px-4 py-2 bg-green-500 rounded"
-              >
-                No
-              </button>
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+              <div className="bg-white p-8 rounded shadow-lg">
+                <p className="text-lg">
+                  Are you sure you want to delete this project?
+                </p>
+                <div className="mt-4 flex justify-end space-x-4">
+                  <button
+                    onClick={handleDeleteOptions}
+                    className="px-4 py-2 bg-red-500 text-white rounded"
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => setShowDeleteModal(false)}
+                    className="px-4 py-2 bg-green-500 rounded"
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
         </>
       ) : (
         <form
@@ -618,26 +637,28 @@ function ProjectCard({
               <MdDelete className="mb-2" fontSize={20} color="black" />
             </span>
             {showDeleteModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-8 rounded shadow-lg">
-            <p className="text-lg">Are you sure you want to delete this project?</p>
-            <div className="mt-4 flex justify-end space-x-4">
-              <button
-                onClick={handleDeleteOptions}
-                className="px-4 py-2 bg-red-500 text-white rounded"
-              >
-                Yes
-              </button>
-              <button
-                onClick={() => setShowDeleteModal(false)}
-                className="px-4 py-2 bg-gray-300 rounded"
-              >
-                No
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+              <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="bg-white p-8 rounded shadow-lg">
+                  <p className="text-lg">
+                    Are you sure you want to delete this project?
+                  </p>
+                  <div className="mt-4 flex justify-end space-x-4">
+                    <button
+                      onClick={handleDeleteOptions}
+                      className="px-4 py-2 bg-red-500 text-white rounded"
+                    >
+                      Yes
+                    </button>
+                    <button
+                      onClick={() => setShowDeleteModal(false)}
+                      className="px-4 py-2 bg-gray-300 rounded"
+                    >
+                      No
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </form>
       )}

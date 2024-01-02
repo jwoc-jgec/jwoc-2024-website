@@ -30,12 +30,13 @@ export async function PATCH(req: NextRequest) {
     try {
         // Connect with database
         await connectMongoDB();
-
         // details from request
-        const { menteeId, isBanned } = await req.json();
-
-        // update mentor
-        await Mentee.findByIdAndUpdate(menteeId, { isBanned });
+        const { menteeId } = await req.json();
+        console.log(menteeId);
+        // Update mentor
+        const mentee = await Mentee.findById(menteeId);
+        mentee.isBanned = !mentee.isBanned;
+        await mentee.save()
 
         return NextResponse.json(
             { message: "Updated Mentee details" },

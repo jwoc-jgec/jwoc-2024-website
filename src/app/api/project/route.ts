@@ -80,8 +80,8 @@ export async function GET(req: NextRequest) {
         await connectMongoDB();
 
         // Check secure request
-        if(req.headers.get("secureToken") !== process.env.BACKEND_SECURITY_TOKEN)
-            return NextResponse.json({ message: "Unauthorize request" }, {status: 401});
+        if (req.headers.get("secureToken") !== process.env.BACKEND_SECURITY_TOKEN)
+            return NextResponse.json({ message: "Unauthorize request" }, { status: 401 });
 
         // Get all queries
         const queries = req.nextUrl.searchParams;
@@ -104,7 +104,7 @@ export async function GET(req: NextRequest) {
                                     email: true,
                                     college: true,
                                     year: true,
-                                    isBanned: true,
+                                    isSelected: true,
                                     linkedIn: true,
                                 },
                             },
@@ -169,6 +169,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
+
     try {
         // Connect to database
         await connectMongoDB();
@@ -182,9 +183,19 @@ export async function PATCH(req: NextRequest) {
             projectTypes,
             projectTags,
             videoLink,
-            isSelected
+            msg
         } = await req.json();
+        if (msg === "UPDATE FROM ADMIN" && projectId) {
+            const project = await Project.findById(projectId);
+            project.isSelected = !project.isSelected;
+            await project.save()
+            console.log(project);
 
+            return NextResponse.json(
+                { message: "Project Selection status updated successfully." },
+                { status: 200 }
+            );
+        }
         // Update the datails as require
         const response = await Project.findByIdAndUpdate(projectId, {
             projectName,
@@ -193,7 +204,6 @@ export async function PATCH(req: NextRequest) {
             projectTypes,
             projectTags,
             videoLink,
-            isSelected
         });
 
         return NextResponse.json(
