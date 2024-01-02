@@ -60,7 +60,7 @@ interface projectDatas {
 }
 
 export default function ProfilePage() {
-  // console.log = () => {};
+  console.log = () => {};
   const router = useRouter();
   const [uData, setData] = useState<any>({
     email: "",
@@ -217,7 +217,7 @@ export default function ProfilePage() {
         <span className=" font-mono text-xl  ">Logout</span>
         <TbLogout fontSize="1.3em" />
       </button>
-      {allData.type === "Mentor&Admin" && (
+      {allData.type === "admin" && (
         <button
           onClick={() => router.push("/admin")}
           className="  bg-red-400 shadow-lg backdrop-blur-[40px] flex flex-row gap-5 p-[2vh] mt-[3vh] rounded-[10px] text-white"

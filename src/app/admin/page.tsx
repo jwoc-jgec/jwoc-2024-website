@@ -2,11 +2,16 @@
 import React, { useEffect, useState } from "react";
 import "../../css/sidebar.css";
 import { Github, Key, Linkedin } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 function Page() {
   console.log = () => {}
   const [collapsed, setCollapsed] = useState(false);
   const [options, setOptions] = useState("Mentor");
   const [data, setData] = useState<any[]>([]);
+  const { data: session, status: sessionStatus } = useSession();
+  const router = useRouter();
   const fetchData = async (endpoint: string) => {
     try {
       const response = await fetch(`api/${endpoint}`, {
@@ -35,9 +40,37 @@ function Page() {
       console.error("Error fetching data:", error);
     }
   };
+  // const router = useRouter()
   useEffect(() => {
-    fetchData("mentor");
-  }, []);
+    const fetchData1 = async () => {
+      if (sessionStatus === "authenticated") {
+        if (session && session.user) {
+          // @ts-ignore
+          const userEmail = session.user.email;
+          const resUserExists = await fetch("/api/userExist", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              type: "Mentor",
+              email: userEmail,
+            }),
+          });
+          const { user } = await resUserExists.json()
+          if(user.type === "admin")
+            fetchData("mentor");
+          else
+            router.push("/profile");
+        }
+      }
+    };
+
+    fetchData1();
+  }, [sessionStatus]);
+  // useEffect(() => {
+
+  // }, []);
 
   const handleCollapse = () => {
     setCollapsed(!collapsed);
