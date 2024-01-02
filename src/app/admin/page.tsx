@@ -1,12 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "../../css/sidebar.css";
-import { Github, Linkedin } from "lucide-react";
-import Link from "next/link";
-type Props = {};
-
-function page({}: Props) {
-  // console.log = () => {}
+import { Github, Key, Linkedin } from "lucide-react";
+function Page() {
+  console.log = () => {}
   const [collapsed, setCollapsed] = useState(false);
   const [options, setOptions] = useState("Mentor");
   const [data, setData] = useState<any[]>([]);
@@ -62,9 +59,9 @@ function page({}: Props) {
       console.log("response", response);
 
       setData((prevData) =>
-        prevData.map((item) =>
+        prevData.map((item , idx) =>
           item._id === id ? { ...item, isBanned: !item.isBanned } : item
-        )
+          )
       );
     } catch (error) {
       console.error("Error toggling data:", error);
@@ -201,7 +198,7 @@ function page({}: Props) {
                 <div className="flex flex-col items-center gap-3">
                   {Array.isArray(item.RegisteredProjectId) &&
                     item.RegisteredProjectId.map((items: any, indx: any) => (
-                      <div className="card bg-slate-700 p-4 rounded-md shadow-md w-full text-white">
+                      <div className="card bg-slate-700 p-4 rounded-md shadow-md w-full text-white" key={idx}>
                         Project {indx + 1}
                         <h2 className="text-lg font-bold mb-2">
                           {items.projectName}
@@ -379,4 +376,4 @@ function page({}: Props) {
   );
 }
 
-export default page;
+export default Page;
