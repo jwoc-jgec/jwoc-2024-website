@@ -50,10 +50,9 @@ export async function PATCH(req: NextRequest) {
         // details from request
         const { mentorId } = await req.json();
         console.log(mentorId);
-
-        const mentor = await Mentor.findById(mentorId);
-
+        
         // Update mentor
+        const mentor = await Mentor.findById(mentorId);
         mentor.isBanned = !mentor.isBanned;
         await mentor.save();
 

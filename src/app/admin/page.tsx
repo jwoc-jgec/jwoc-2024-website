@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "../../css/sidebar.css";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Key, Linkedin } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
 function Page() {
-  // console.log = () => {};
+  console.log = () => {};
   const [collapsed, setCollapsed] = useState(false);
   const [options, setOptions] = useState("Mentor");
   const [data, setData] = useState<any[]>([]);
@@ -42,6 +43,7 @@ function Page() {
       console.error("Error fetching data:", error);
     }
   };
+  // const router = useRouter()
   useEffect(() => {
     console.log("hit" , sessionStatus);
     console.log("hit - 2" , session);

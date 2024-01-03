@@ -80,8 +80,14 @@ export async function GET(req: NextRequest) {
         await connectMongoDB();
 
         // Check secure request
-        if (req.headers.get("secureToken") !== process.env.BACKEND_SECURITY_TOKEN)
-            return NextResponse.json({ message: "Unauthorize request" }, { status: 401 });
+        if (
+            req.headers.get("secureToken") !==
+            process.env.BACKEND_SECURITY_TOKEN
+        )
+            return NextResponse.json(
+                { message: "Unauthorize request" },
+                { status: 401 }
+            );
 
         // Get all queries
         const queries = req.nextUrl.searchParams;
@@ -169,7 +175,6 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-
     try {
         // Connect to database
         await connectMongoDB();
@@ -183,13 +188,15 @@ export async function PATCH(req: NextRequest) {
             projectTypes,
             projectTags,
             videoLink,
-            msg
+            msg,
         } = await req.json();
+
+        // For admin request
         if (msg === "UPDATE FROM ADMIN" && projectId) {
             const project = await Project.findById(projectId);
             project.isSelected = !project.isSelected;
-            await project.save()
-            console.log(project);
+            await project.save();
+            // console.log(project);
 
             return NextResponse.json(
                 { message: "Project Selection status updated successfully." },
