@@ -311,6 +311,9 @@ export default function Home() {
     });
   }
   return (
+    <CountDown targetDate={targetDate} title="Mentor" />
+  )
+  return (
     <>
       {/* {!timeUp ? (
         <CountDown targetDate={targetDate} title="Mentor" />
