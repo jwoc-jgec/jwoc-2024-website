@@ -236,7 +236,8 @@ export default function ProfilePage() {
         {allData.registeredProjects.map((project, idx) => (
           <ProjectCard {...project} key={idx} />
         ))}
-        <Dialog>
+        {/* Hiding Add project feature */}
+        {/* <Dialog>
           <DialogTrigger>
             {allData.registeredProjects.length < 3 && (
               <AddProjectCard
@@ -252,7 +253,7 @@ export default function ProfilePage() {
               projectData={projectData}
             />
           </DialogContent>
-        </Dialog>
+        </Dialog> */}
       </div>
     </div>
   );
@@ -467,7 +468,8 @@ function ProjectCard({
               );
             })}
           </div>
-          <div className="flex flex-row w-[100%] mt-5 items-center justify-between cursor-pointer">
+          {/* Hiding Edit and delete project feature */}
+          {/* <div className="flex flex-row w-[100%] mt-5 items-center justify-between cursor-pointer">
             <span
               onClick={handleEditOptions}
               className="flex flex-row gap-1 pt-1 bg-green-500 rounded-sm px-3"
@@ -482,7 +484,7 @@ function ProjectCard({
               <span>Delete</span>
               <MdDelete className="mb-2" fontSize={20} color="black" />
             </span>
-          </div>
+          </div> */}
           {showDeleteModal && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white p-8 rounded shadow-lg">
