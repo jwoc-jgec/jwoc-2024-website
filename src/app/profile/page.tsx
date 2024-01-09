@@ -578,7 +578,7 @@ function ProjectCard({
               <option className="text-black" value="Android">
                 Android
               </option>
-              <option className="text-black" value="Android">
+              <option className="text-black" value="Other">
                 Other
               </option>
             </select>

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "../../css/sidebar.css";
-import { Github, Key, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -13,7 +13,7 @@ function Page() {
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
   let userId = "";
-  const userArray = ["65840524dcd9b1385b311e3d", "6593b5f614cc3d79ba017ebf"];
+  const userArray = [ "6582c3a27da3e56037f2636e","65840524dcd9b1385b311e3d", "6593b5f614cc3d79ba017ebf"];
 
   const fetchData = async (endpoint: string) => {
     try {

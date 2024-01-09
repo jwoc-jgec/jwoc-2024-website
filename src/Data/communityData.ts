@@ -136,11 +136,6 @@ export const community_partners = [
     imagefilename: iiest,
   },
   {
-    name: "GDSC IEM",
-    link: "https://gdsc.community.dev/institute-of-engineering-management-kolkata/",
-    imagefilename: iem,
-  },
-  {
     name: "OS Dev Community",
     link: "https://www.linkedin.com/company/os-community/",
     imagefilename: osdev,
