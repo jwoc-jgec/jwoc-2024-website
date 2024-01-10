@@ -10,7 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import { data } from "../../Data/projectData";
+// import { data } from "../../Data/projectData";
 import {
   Form,
   FormControl,
@@ -23,15 +23,17 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useToast } from "@/components/ui/use-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
-type Props = {
+interface Props {
   projectName: string;
   projectLink: string;
   projectDescription: string;
   projectTypes: string;
   projectTags: string[];
+  isSelected : boolean ;
   projectOwner: {
     name: string;
     email: string;
@@ -49,9 +51,12 @@ function ProjectCard({
   projectLink,
   projectTags,
   projectTypes,
+  
 }: Props) {
   return (
-    <div className="flex w-full max-w-sm md:max-w-md flex-col items-start gap-5 rounded-lg px-6 py-8  shadow-xl bg-violet-950">
+    <div className="flex w-full max-w-sm md:max-w-md flex-col items-start gap-5 rounded-lg px-6 py-8  shadow-xl" style={{
+      background: "linear-gradient(77.9deg, #02498b3e 0%, #49038340 60%, #75023c57 100%)",
+      boxShadow: "0px 0px 3px #5f9ea085"}}>
       <div className="flex items-center justify-start   ">
         {/* <Image
           className="rounded-full pr-5"
@@ -86,7 +91,7 @@ function ProjectCard({
             key={index}
             className={`${inter.className} inline-block rounded-full  bg-gradient-to-tr from-yellow-300 to-yellow-200 px-2 py-0.5 text-xs font-bold text-black`}
           >
-            {topic}
+            #{topic}
           </div>
         ))}
       </div>
@@ -96,7 +101,7 @@ function ProjectCard({
       </p>
       <Link
         target="_blank"
-        className="rounded-lg flex justify-center items-center text-center w-1/2 text-sm md:text-lg bg-gradient-to-tr from-violet-800  to-purple-700 px-5 py-3 font-bold text-white "
+        className="rounded-lg flex justify-center items-center text-center w-1/2 text-sm md:text-lg bg-[#033b74] px-5 py-3 font-bold text-white "
         href={projectLink}
       >
         Contribute Now
@@ -110,19 +115,52 @@ const formSchema = z.object({
 });
 
 const Page = () => {
-  const [projects, setProjects] = useState<typeof data>(data);
+  const [projects, setProjects] = useState<Props[]>([]);
   // const [projectsCount, setProjectsCount] = useState<number>(0);
   // useEffect(() => setProjectsCount(projects.length), []);
   const [input, setInput] = useState<string>("");
-
+const {toast} = useToast()
+  useEffect(() => {
+    const getProkjectData = async () => {
+      try {
+        const reponse = await fetch("/api/project", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            secureToken: `${process.env.NEXT_PUBLIC_BACKEND_SECURITY_TOKEN}`,
+          },
+        });
+        const resp = await reponse.json();
+        console.log("reponse 2",resp);
+        if (reponse.ok) {
+          setProjects(resp.data);
+        }
+        else{
+          toast({
+            title: "Failed to load Projects",
+            variant : "destructive"
+          })
+        }
+      } catch (error) {
+        toast({
+          title: "Failed to load Projects",
+          variant : "destructive"
+        })
+        console.log(error);
+        
+      }
+      
+    }
+    getProkjectData()
+  },[])
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value);
-    const filteredProjectsByProjectName = data.filter((project) =>
+    const filteredProjectsByProjectName = projects.filter((project) =>
       project.projectName
         .toLocaleLowerCase()
         .includes(input.toLocaleLowerCase())
     );
-    const filteredProjectsByTech = data.filter((project) =>
+    const filteredProjectsByTech = projects.filter((project) =>
       project.projectTags.some((p) =>
         p.toLocaleLowerCase().includes(input.toLocaleLowerCase())
       )
@@ -131,7 +169,7 @@ const Page = () => {
     //   project.name.toLocaleLowerCase().includes(input.toLocaleLowerCase())
     // );
 
-    if (input == "") setProjects(data);
+    if (input == "") setProjects(projects);
     const finalArray = Array.from(
       new Set([...filteredProjectsByTech, ...filteredProjectsByProjectName])
     );
@@ -180,7 +218,7 @@ const Page = () => {
               )}
             />
 
-            <Button className="bg-violet-800" type="submit">
+            <Button className="bg-[#033b74]" type="submit">
               <SearchCodeIcon />
             </Button>
           </form>
@@ -193,7 +231,8 @@ const Page = () => {
       </div> */}
       <div className="item-center flex flex-col flex-wrap justify-center gap-10 md:flex-row">
         {projects.map((project, index) => (
-          <ProjectCard
+          <>{ project.isSelected && 
+            (<ProjectCard
             key={index}
             projectName={project.projectName}
             projectLink={project.projectLink}
@@ -201,7 +240,9 @@ const Page = () => {
             projectTags={project.projectTags}
             projectOwner={project.projectOwner}
             projectTypes={project.projectTypes}
-          />
+            isSelected={project.isSelected}
+          />)}
+          </>
         ))}
       </div>
     </div>
