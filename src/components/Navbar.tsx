@@ -55,8 +55,8 @@ function Navbar() {
             className={`flex items-center gap-x-10 xl:gap-x-10 text-lg xl:text-xl `}
           >
             <a
-            //  href={`http://localhost:3000/`}
-             href={`https://jwoc.tech/`}
+              //  href={`http://localhost:3000/`}
+              href={`https://jwoc.tech/`}
               className={` relative after:content-[''] after:block after:absolute after:bottom-0 after:left-0 after:w-full after:h-2 after:bg-gradient-to-r after:from-#655F67 after:to-#655F67 after:via-transparent after:to-transparent after:bg-size-[12px 2px] ${
                 path == "/" ? "text-blue-600 font-bold" : ""
               }`}
@@ -75,22 +75,27 @@ function Navbar() {
           </Link> */}
 
             <a
+              href={"/projects"}
+              className={path == "/projects" ? "text-blue-600 font-bold" : ""}
+            >
+              Projects
+            </a>
+
+            <a
               // href={`http://localhost:3000/timeline`}
               href={`https://jwoc.tech/timeline`}
               className={path == "/timeline" ? "text-blue-600 font-bold" : ""}
             >
               Timeline
             </a>
-            {/* <Link href={"/project"} className={path ==  ?"text-blue-600 font-bold":""}>
-            Projects
-          </Link> */}
+
             <a
               href={"https://jwoc.tech/sponsors"}
               className={path == "/sponsors" ? "text-blue-600 font-bold" : ""}
             >
               Sponsors
             </a>
-              <a
+            <a
               // href={`http://localhost:3000/timeline`}
               href={`https://jwoc.tech/team`}
               className={path == "/team" ? "text-blue-600 font-bold" : ""}
