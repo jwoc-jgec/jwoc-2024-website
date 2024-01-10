@@ -6,13 +6,19 @@ import "../../css/UserCard.css";
 import ProfileCard from "@/components/profileCard";
 import { TbLogout, TbPlaceholder } from "react-icons/tb";
 import "../globals.css";
-import { EditIcon, PlusCircle, SaveIcon } from "lucide-react";
+import { EditIcon, GitCompareArrows, GitMerge, PlusCircle, SaveIcon } from "lucide-react";
+import { GitPullRequestClosed } from 'lucide-react';
 
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
 import { FaExclamationCircle, FaYoutubeSquare } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
-import { MdAdminPanelSettings, MdCancelPresentation, MdDelete } from "react-icons/md";
+import {
+  MdAdminPanelSettings,
+  MdCancelPresentation,
+  MdDelete,
+} from "react-icons/md";
+import { boolean } from "zod";
 // interface UserData {
 //   name: string;
 //   type : string
@@ -37,6 +43,7 @@ interface AllData {
       videoLink: string;
       projectTypes: string;
       projectLink: string;
+      isSelected: boolean;
     }
   ];
 }
@@ -57,14 +64,15 @@ interface projectDatas {
   videoLink: string;
   projectTypes: string;
   projectLink: string;
+  isSelected : boolean;
 }
 
 export default function ProfilePage() {
-  console.log = () => {};
+  // console.log = () => {};
   const router = useRouter();
-  const [uData, setData] = useState<any>({
-    email: "",
-  });
+  // const [uData, setData] = useState<any>({
+  //   email: "",
+  // });
   // const [userData, setUserData] = useState<UserData>({
   //   name: "",
   //   type : "",
@@ -89,6 +97,7 @@ export default function ProfilePage() {
         videoLink: "",
         projectTypes: "",
         projectLink: "",
+        isSelected: false,
       },
     ],
   });
@@ -223,7 +232,7 @@ export default function ProfilePage() {
           className="  bg-red-400 shadow-lg backdrop-blur-[40px] flex flex-row gap-5 p-[2vh] mt-[3vh] rounded-[10px] text-white"
         >
           <span className=" font-mono text-xl  ">Admin</span>
-          <MdAdminPanelSettings  fontSize="1.3em" />
+          <MdAdminPanelSettings fontSize="1.3em" />
         </button>
       )}
       <div className="flex flex-col gap-5 items-center justify-center">
@@ -314,6 +323,7 @@ function ProjectCard({
   videoLink,
   projectTypes,
   projectLink,
+  isSelected
 }: projectDatas) {
   console.log("id", _id);
   console.log("projectName", projectName);
@@ -321,6 +331,7 @@ function ProjectCard({
   const projectId = _id;
   const [projId, setprojId] = useState(_id);
   const [editedName, setEditedName] = useState(projectName);
+  const [status, setStatus] = useState(isSelected);
   const [editedVideoLink, setEditedVideoLink] = useState(videoLink);
   const [editedGithubLink, setEditedGithubLink] = useState(projectLink);
   const [editedDescription, setEditedDescription] =
@@ -438,12 +449,16 @@ function ProjectCard({
           <div className="flex gap-5 items-center pb-5 justify-between">
             <p className="text-2xl font-bold text-white">{projectName}</p>
             <div className="flex flex-col items-center">
-              <FaExclamationCircle
-                fontSize="1.6rem"
-                color="#5a5a5a"
-                title="Decision Pending"
-              />
-              <p className="text-[#5a5a5a] text-[12px]">Decision Pending</p>
+              {isSelected ? <GitMerge fontSize="1.6rem"
+                color="#b6e64e" /> :
+              //    <GitPullRequestClosed 
+              //   fontSize="1.6rem"
+              //   color="#bd3d3d"
+              // />
+              <GitCompareArrows  fontSize="1.6rem"
+                 color="#808080" />
+              }
+              <p className="text-[#5a5a5a] text-[12px]">{isSelected ?<span className=" text-green-400 ">Selected</span> : <span className=" text-[#808080] ">Decision Pending</span> }</p>
             </div>
           </div>
           <div className="flex gap-5 mb-5 text-white">
