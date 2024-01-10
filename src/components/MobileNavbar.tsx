@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import "../css/font.css"
+import "../css/font.css";
 
 import Link from "next/link";
 import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
@@ -20,8 +20,8 @@ export default function Navbar() {
 
   const menus = [
     { title: "Home", path: "/" },
+    { title: "Projects", path: "/projects" },
     { title: "Timeline", path: "/timeline" },
-    // { title: "Projects", path: "/project" },
     { title: "Sponsors", path: "/sponsors" },
     { title: "Team", path: "/team" },
   ];
@@ -65,11 +65,10 @@ export default function Navbar() {
               >
                 <a
                   onClick={() => setState((prev) => !prev)}
-                    href={`https://jwoc.tech${item.path}`}
+                  href={`${item.path}`}
                 >
                   {item.title}
                 </a>
-                
               </li>
             ))}
           </ul>
