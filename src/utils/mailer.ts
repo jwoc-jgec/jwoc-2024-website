@@ -5,7 +5,7 @@
 // import { render } from "@react-email/render"
 import { transport1, transport2, transport3 } from "./mailTransporters";
 import { NextResponse } from "next/server";
-import { verificationMail, contactUsMail, registrationSuccessfulMail, resetPasswordMail } from "@/utils/emails";
+import { verificationMail, contactUsMail, registrationSuccessfulMail, resetPasswordMail, projectSelectionMail } from "@/utils/emails";
 // import producer from "./socket.io/producer";
 // import consumer from "./socket.io/consumer";
 
@@ -115,6 +115,14 @@ export const sendEmail = async ({to, mailType, info} : mailInfo) => {
                 to: process.env.CONTACT_EMAIL,
                 subject: "User Query/Feedback",
                 html: contactUsMail(info)
+            })
+        }
+        else if(mailType === "PROJECTSELECTION") {
+            return await transport1.sendMail({
+                from: process.env.EMAIL,
+                to,
+                subject: (info.userType === "SELECTED") ? "Project Accepted to JWoC" : "Project got Rejected",
+                html: projectSelectionMail(info)
             })
         }
 
