@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Project from "@/models/project";
 import Mentor from "@/models/mentor";
 import mongoose from "mongoose";
+import { sendEmail } from "@/utils/mailer";
 
 export async function POST(req: NextRequest) {
     try {
@@ -124,6 +125,34 @@ export async function GET(req: NextRequest) {
                 },
             ]);
 
+            // for(let i = 0; i < projects.length; i++) {
+            //     if(projects[i].isSelected) {
+            //         await sendEmail(
+            //             {
+            //                 to: projects[i].projectOwner.email,
+            //                 mailType: "PROJECTSELECTION",
+            //                 info: {
+            //                     userType: "SELECTED",
+            //                     userName: projects[i].projectName,
+            //                     senderName: projects[i].projectOwner.name
+            //                 }
+            //             }
+            //         )
+            //     }
+            //     else {
+            //         await sendEmail(
+            //             {
+            //                 to: projects[i].projectOwner.email,
+            //                 mailType: "PROJECTSELECTION",
+            //                 info: {
+            //                     userType: "REJECTED",
+            //                     userName: projects[i].projectName,
+            //                     senderName: projects[i].projectOwner.name
+            //                 }
+            //             }
+            //         )
+            //     }
+            // };
             return NextResponse.json(
                 { message: "Projects found successfully.", data: projects },
                 { status: 200 }
