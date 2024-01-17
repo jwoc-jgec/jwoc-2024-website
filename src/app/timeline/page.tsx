@@ -62,13 +62,11 @@ function page() {
                 <p className="font-extrabold text-[#168D8F]">
                   Have a look what we scheduled for you!
                 </p>
-                Lets start the Debugging, Decoding, Developing journey!   
+                Lets start the Debugging, Decoding, Developing journey!
               </p>
-              <div className="py-20 fixed">
-              {/* {txt} */}
+              <div className="py-20 fixed">{/* {txt} */}</div>
             </div>
-            </div>
-            
+
             <div className="ml-0 md:ml-12 lg:w-2/3 sticky" id="timeline">
               <div className=" mx-auto w-full h-full">
                 <div className="relative wrap overflow-hidden px-0 py-10 sm:p-10 h-full">
@@ -163,8 +161,70 @@ function page() {
                   <div className="mb-8 flex justify-between items-center flex-row-reverse sm:flex-row ml-5 sm:ml-0 w-full right-timeline">
                     <div className="order-1 w-1/12 sm:w-5/12"></div>
                     <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 backgroundCustom">
-                      <p className="mb-3 text-base text-yellow-300">15 Feb</p>
+                      <p className="mb-3 text-base text-yellow-300">21 Jan</p>
                       <div className="mb-3 font-bold  text-xl md:text-xl text-left">
+                        JWOC GSOC and More.
+                      </div>
+                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                        Session By Sudipto Ghosh
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
+                    <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
+                      <p className="mb-3 text-base text-yellow-300">28 Jan</p>
+                      <div className="mb-3 font-bold text-xl md:text-xl">
+                        XROS Fellowship
+                      </div>
+                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                        Session By Akshita Gupta
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mb-8 flex justify-between items-center flex-row-reverse sm:flex-row ml-5 sm:ml-0 w-full right-timeline">
+                    <div className="order-1 w-1/12 sm:w-5/12"></div>
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 backgroundCustom">
+                      <p className="mb-3 text-base text-yellow-300">31 Jan</p>
+                      <div className="mb-3 font-bold  text-xl md:text-xl text-left">
+                        Quine Workshop
+                      </div>
+                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                        Session By Jay Sadana.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
+                    <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
+                      <p className="mb-3 text-base text-yellow-300">4 Feb</p>
+                      <div className="mb-3 font-bold text-xl md:text-xl">
+                        Flutter Workshop
+                      </div>
+                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                        Session By
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mb-8 flex justify-between items-center flex-row-reverse sm:flex-row ml-5 sm:ml-0 w-full right-timeline">
+                    <div className="order-1 w-1/12 sm:w-5/12"></div>
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 backgroundCustom">
+                      <p className="mb-3 text-base text-yellow-300">18 Feb</p>
+                      <div className="mb-3 font-bold  text-xl md:text-xl text-left">
+                        CI/CD Pipeline
+                      </div>
+                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                        Session By Monica Rajput
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
+                    <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
+                      <p className="mb-3 text-base text-yellow-300">15 Feb</p>
+                      <div className="mb-3 font-bold text-xl md:text-xl">
                         Phase II Begins, End of Phase I
                       </div>
                       <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
@@ -173,11 +233,12 @@ function page() {
                       </p>
                     </div>
                   </div>
-                  <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
-                    <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
+
+                  <div className="mb-8 flex justify-between items-center flex-row-reverse sm:flex-row ml-5 sm:ml-0 w-full right-timeline">
+                    <div className="order-1 w-1/12 sm:w-5/12"></div>
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">25 Feb</p>
-                      <div className="mb-3 font-bold text-xl md:text-xl">
+                      <div className="mb-3 font-bold  text-xl md:text-xl text-left">
                         Phase II Ends - JWoC Ends
                       </div>
                       <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
@@ -185,11 +246,11 @@ function page() {
                       </p>
                     </div>
                   </div>
-                  <div className="mb-8 flex justify-between items-center flex-row-reverse sm:flex-row ml-5 sm:ml-0 w-full right-timeline">
-                    <div className="order-1 w-1/12 sm:w-5/12"></div>
-                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4 backgroundCustom">
+                  <div className="mb-8 flex justify-between flex-row sm:flex-row-reverse ml-5 sm:ml-0  items-center w-full left-timeline">
+                    <div className="sm:order-1 order-2 w-1/12 sm:w-5/12"></div>
+                    <div className="timecards order-1 w-full sm:w-5/12 px-1 py-4  text-left sm:text-right backgroundCustom">
                       <p className="mb-3 text-base text-yellow-300">28 Feb</p>
-                      <div className="mb-3 font-bold  text-xl md:text-xl text-left">
+                      <div className="mb-3 font-bold text-xl md:text-xl">
                         Official Result Announcement
                       </div>
                       <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
