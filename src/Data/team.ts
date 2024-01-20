@@ -6,6 +6,7 @@ import sandy from "../assets/team/Sandipan_Chatterjee.jpg";
 import ankit from "../assets/team/ankit.jpeg";
 import arjun from "../assets/team/arjun_chowdhury.jpg";
 import agnisha from "../assets/team/agnisha.jpg"
+import ubuntuu from "../assets/team/ubuntuu.jpeg"
 
 export const team = [
   {
@@ -80,6 +81,16 @@ export const team = [
     "Twitter Url": "https://twitter.com/",
     "Your Image in 1:1": "",
     imagefilename: agnisha,
+    designation: "Organiser",
+  },
+  {
+    Timestamp: "1/19/2023 20:26:22",
+    "Full Name": "Ubuntuu",
+    "Linkedin Url": "https://www.linkedin.com/",
+    "Github url": "https://github.com/",
+    "Twitter Url": "https://twitter.com/",
+    "Your Image in 1:1": "",
+    imagefilename: ubuntuu,
     designation: "Organiser",
   },
   {
